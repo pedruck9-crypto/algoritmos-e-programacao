@@ -1,0 +1,2 @@
+[tool.vercel]
+entrypoint = "crud_filmes_e_series:app"
