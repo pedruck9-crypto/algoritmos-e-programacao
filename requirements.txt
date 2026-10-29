@@ -3,4 +3,4 @@ uvicorn[standard]
 pydantic
 sqlmodel
 pytest
-httpx2
+httpx
