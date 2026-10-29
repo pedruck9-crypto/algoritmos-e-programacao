@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Catálogo de filmes e séries</title>
+  <style>
+    body{font:16px system-ui,sans-serif;max-width:900px;margin:2rem auto;padding:0 1rem;color:#222} form,.toolbar{display:flex;gap:.6rem;flex-wrap:wrap;margin:1rem 0} input,select,textarea,button{font:inherit;padding:.55rem} input,textarea{flex:1;min-width:140px} textarea{min-height:2.5rem} table{width:100%;border-collapse:collapse;margin-top:1rem} th,td{text-align:left;padding:.6rem;border-bottom:1px solid #ddd} button{cursor:pointer} #status{min-height:1.5em;color:#8b1c1c}
+  </style>
+</head>
+<body>
+  <h1>Catálogo de filmes e séries</h1>
+  <p>Cadastre e gerencie mídias usando a API do projeto.</p>
+  <form id="form">
+    <input name="titulo" placeholder="Título" required>
+    <select name="tipo"><option value="filme">Filme</option><option value="série">Série</option></select>
+    <input name="genero" placeholder="Gênero">
+    <input name="ano" type="number" min="1900" max="2100" placeholder="Ano">
+    <textarea name="sinopse" placeholder="Sinopse"></textarea>
+    <button type="submit">Cadastrar</button>
+  </form>
+  <div class="toolbar"><input id="busca" placeholder="Buscar por título"><button id="buscar">Buscar</button><button id="limpar">Limpar busca</button></div>
+  <p id="status" role="status"></p>
+  <table><thead><tr><th>Título</th><th>Tipo</th><th>Gênero</th><th>Ano</th><th>Ações</th></tr></thead><tbody id="lista"></tbody></table>
+  <p><a href="/docs">Documentação da API</a></p>
+  <script>
+    const form=document.querySelector('#form'), lista=document.querySelector('#lista'), status=document.querySelector('#status');
+    async function api(url,options){const r=await fetch(url,options);if(!r.ok){let d=await r.json().catch(()=>({}));throw new Error(d.detail||`Erro HTTP ${r.status}`)}return r.status===204?null:r.json()}
+    async function carregar(filtro=''){try{const url=filtro?`/midias?titulo=${encodeURIComponent(filtro)}`:'/midias';const itens=await api(url);lista.replaceChildren();for(const m of itens){const tr=document.createElement('tr');for(const v of [m.titulo,m.tipo,m.genero||'',m.ano||'']){const td=document.createElement('td');td.textContent=v;tr.append(td)}const a=document.createElement('td'),editar=document.createElement('button'),excluir=document.createElement('button');editar.textContent='Editar';excluir.textContent='Excluir';editar.onclick=async()=>{const titulo=prompt('Novo título:',m.titulo);if(titulo===null)return;try{await api(`/midias/${m.id}`,{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify({titulo})});await carregar(filtro)}catch(e){status.textContent=e.message}};excluir.onclick=async()=>{if(!confirm(`Excluir ${m.titulo}?`))return;try{await api(`/midias/${m.id}`,{method:'DELETE'});await carregar(filtro)}catch(e){status.textContent=e.message}};a.append(editar,document.createTextNode(' '),excluir);tr.append(a);lista.append(tr)}status.textContent=itens.length?`${itens.length} mídia(s) encontrada(s).`:'Nenhuma mídia cadastrada.'}catch(e){status.textContent=e.message}}
+    form.onsubmit=async e=>{e.preventDefault();const d=Object.fromEntries(new FormData(form));d.ano=d.ano?Number(d.ano):null;d.genero=d.genero||null;d.sinopse=d.sinopse||null;try{await api('/midias',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(d)});form.reset();await carregar()}catch(err){status.textContent=err.message}};
+    document.querySelector('#buscar').onclick=()=>carregar(document.querySelector('#busca').value.trim());document.querySelector('#limpar').onclick=()=>{document.querySelector('#busca').value='';carregar()};carregar();
+  </script>
+</body>
+</html>
