@@ -1,34 +1,1084 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Catálogo de filmes e séries</title>
-  <style>
-    body{font:16px system-ui,sans-serif;max-width:900px;margin:2rem auto;padding:0 1rem;color:#222} form,.toolbar{display:flex;gap:.6rem;flex-wrap:wrap;margin:1rem 0} input,select,textarea,button{font:inherit;padding:.55rem} input,textarea{flex:1;min-width:140px} textarea{min-height:2.5rem} table{width:100%;border-collapse:collapse;margin-top:1rem} th,td{text-align:left;padding:.6rem;border-bottom:1px solid #ddd} button{cursor:pointer} #status{min-height:1.5em;color:#8b1c1c}
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD de Filmes e Séries</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            padding: 30px;
+        }
+
+        h1 {
+            color: #667eea;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #eee;
+            flex-wrap: wrap;
+        }
+
+        .tab-button {
+            padding: 12px 24px;
+            background: none;
+            border: none;
+            border-bottom: 3px solid transparent;
+            cursor: pointer;
+            font-size: 16px;
+            color: #666;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        .tab-button.active {
+            color: #667eea;
+            border-bottom-color: #667eea;
+        }
+
+        .tab-button:hover {
+            color: #667eea;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.3s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .form-section {
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 500;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+            font-family: inherit;
+            transition: border 0.3s;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        button {
+            padding: 12px 24px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s;
+            margin-right: 10px;
+        }
+
+        button:hover {
+            background: #5568d3;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+        }
+
+        .btn-secondary:hover {
+            background: #5a6268;
+        }
+
+        .btn-danger {
+            background: #dc3545;
+        }
+
+        .btn-danger:hover {
+            background: #c82333;
+        }
+
+        .results {
+            background: #f8f9fa;
+            border-radius: 5px;
+            padding: 20px;
+            margin-top: 20px;
+            border-left: 4px solid #667eea;
+        }
+
+        .media-card {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 20px;
+            margin-bottom: 15px;
+            transition: all 0.3s;
+        }
+
+        .media-card:hover {
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .media-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 12px;
+        }
+
+        .media-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .media-badge {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            background: #667eea;
+            color: white;
+        }
+
+        .media-badge.serie {
+            background: #764ba2;
+        }
+
+        .media-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            background: #f0f0f0;
+            border: 1px solid #ddd;
+        }
+
+        .media-image-placeholder {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 5px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 14px;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .media-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .media-info-item {
+            font-size: 13px;
+            color: #666;
+        }
+
+        .media-info-label {
+            font-weight: 600;
+            color: #333;
+        }
+
+        .media-sinopse {
+            font-size: 14px;
+            color: #555;
+            line-height: 1.5;
+            margin-bottom: 12px;
+        }
+
+        .media-actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .media-actions button {
+            margin: 0;
+            padding: 8px 16px;
+            font-size: 12px;
+        }
+
+        .alert {
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        .alert.show {
+            display: block;
+        }
+
+        .alert-success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .alert-error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .alert-info {
+            background: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+
+        .loading {
+            text-align: center;
+            color: #667eea;
+            display: none;
+        }
+
+        .loading.show {
+            display: block;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .info-box {
+            background: #e7f3ff;
+            border-left: 4px solid #2196F3;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-size: 14px;
+            color: #0c3a66;
+        }
+
+        .pagination {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .pagination button {
+            padding: 8px 12px;
+            min-width: 40px;
+        }
+
+        .pagination button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
+        footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 2px solid #eee;
+            text-align: center;
+            color: #999;
+            font-size: 12px;
+            line-height: 1.6;
+        }
+
+        footer p {
+            margin: 5px 0;
+        }
+
+        footer strong {
+            color: #667eea;
+        }
+    </style>
 </head>
 <body>
-  <h1>Catálogo de filmes e séries</h1>
-  <p>Cadastre e gerencie mídias usando a API do projeto.</p>
-  <form id="form">
-    <input name="titulo" placeholder="Título" required>
-    <select name="tipo"><option value="filme">Filme</option><option value="série">Série</option></select>
-    <input name="genero" placeholder="Gênero">
-    <input name="ano" type="number" min="1900" max="2100" placeholder="Ano">
-    <textarea name="sinopse" placeholder="Sinopse"></textarea>
-    <button type="submit">Cadastrar</button>
-  </form>
-  <div class="toolbar"><input id="busca" placeholder="Buscar por título"><button id="buscar">Buscar</button><button id="limpar">Limpar busca</button></div>
-  <p id="status" role="status"></p>
-  <table><thead><tr><th>Título</th><th>Tipo</th><th>Gênero</th><th>Ano</th><th>Ações</th></tr></thead><tbody id="lista"></tbody></table>
-  <p><a href="/docs">Documentação da API</a></p>
-  <script>
-    const form=document.querySelector('#form'), lista=document.querySelector('#lista'), status=document.querySelector('#status');
-    async function api(url,options){const r=await fetch(url,options);if(!r.ok){let d=await r.json().catch(()=>({}));throw new Error(d.detail||`Erro HTTP ${r.status}`)}return r.status===204?null:r.json()}
-    async function carregar(filtro=''){try{const url=filtro?`/midias?titulo=${encodeURIComponent(filtro)}`:'/midias';const itens=await api(url);lista.replaceChildren();for(const m of itens){const tr=document.createElement('tr');for(const v of [m.titulo,m.tipo,m.genero||'',m.ano||'']){const td=document.createElement('td');td.textContent=v;tr.append(td)}const a=document.createElement('td'),editar=document.createElement('button'),excluir=document.createElement('button');editar.textContent='Editar';excluir.textContent='Excluir';editar.onclick=async()=>{const titulo=prompt('Novo título:',m.titulo);if(titulo===null)return;try{await api(`/midias/${m.id}`,{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify({titulo})});await carregar(filtro)}catch(e){status.textContent=e.message}};excluir.onclick=async()=>{if(!confirm(`Excluir ${m.titulo}?`))return;try{await api(`/midias/${m.id}`,{method:'DELETE'});await carregar(filtro)}catch(e){status.textContent=e.message}};a.append(editar,document.createTextNode(' '),excluir);tr.append(a);lista.append(tr)}status.textContent=itens.length?`${itens.length} mídia(s) encontrada(s).`:'Nenhuma mídia cadastrada.'}catch(e){status.textContent=e.message}}
-    form.onsubmit=async e=>{e.preventDefault();const d=Object.fromEntries(new FormData(form));d.ano=d.ano?Number(d.ano):null;d.genero=d.genero||null;d.sinopse=d.sinopse||null;try{await api('/midias',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(d)});form.reset();await carregar()}catch(err){status.textContent=err.message}};
-    document.querySelector('#buscar').onclick=()=>carregar(document.querySelector('#busca').value.trim());document.querySelector('#limpar').onclick=()=>{document.querySelector('#busca').value='';carregar()};carregar();
-  </script>
+    <div class="container">
+        <h1>🎬 CRUD de Filmes e Séries</h1>
+        <p class="subtitle">Gerenciador de catálogo com interface amigável</p>
+
+        <div class="alert alert-success" id="alertSuccess"></div>
+        <div class="alert alert-error" id="alertError"></div>
+        <div class="alert alert-info" id="alertInfo"></div>
+
+        <div class="tabs">
+            <button class="tab-button active" onclick="switchTab('listar')">📋 Listar</button>
+            <button class="tab-button" onclick="switchTab('criar')">➕ Criar</button>
+            <button class="tab-button" onclick="switchTab('gerar')">🎲 Gerar</button>
+            <button class="tab-button" onclick="switchTab('credenciais')">🔐 Credenciais</button>
+            <button class="tab-button" onclick="switchTab('buscar')">🔍 Buscar</button>
+            <button class="tab-button" onclick="switchTab('atualizar')">✏️ Atualizar</button>
+        </div>
+
+        <!-- TAB: Listar -->
+        <div id="listar" class="tab-content active">
+            <div class="form-section">
+                <h3 style="margin-bottom: 15px; color: #333;">Filtros</h3>
+                <div class="grid-2">
+                    <div class="form-group">
+                        <label>Título</label>
+                        <input type="text" id="filterTitulo" placeholder="Ex: Duna">
+                    </div>
+                    <div class="form-group">
+                        <label>Gênero</label>
+                        <input type="text" id="filterGenero" placeholder="Ex: ficção">
+                    </div>
+                    <div class="form-group">
+                        <label>Tipo</label>
+                        <select id="filterTipo">
+                            <option value="">Todos</option>
+                            <option value="filme">Filme</option>
+                            <option value="série">Série</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Limite</label>
+                        <input type="number" id="filterLimit" value="100" min="1" max="1000">
+                    </div>
+                </div>
+                <button onclick="listarMidias()">🔄 Buscar</button>
+            </div>
+
+            <div id="listResults" class="results" style="display:none;">
+                <div class="loading" id="listLoading">Carregando...</div>
+                <div id="listContainer"></div>
+                <div class="pagination" id="paginationControls"></div>
+            </div>
+        </div>
+
+        <!-- TAB: Criar -->
+        <div id="criar" class="tab-content">
+            <div class="form-section">
+                <h3 style="margin-bottom: 15px; color: #333;">Adicionar Nova Mídia</h3>
+                <div class="form-group">
+                    <label>Título *</label>
+                    <input type="text" id="createTitulo" required placeholder="Nome do filme ou série">
+                </div>
+                <div class="form-group">
+                    <label>Tipo *</label>
+                    <select id="createTipo" required>
+                        <option value="">Selecione...</option>
+                        <option value="filme">Filme</option>
+                        <option value="série">Série</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Gênero</label>
+                    <input type="text" id="createGenero" placeholder="Ex: Ficção Científica, Drama...">
+                </div>
+                <div class="form-group">
+                    <label>Ano</label>
+                    <input type="number" id="createAno" min="1900" max="2100" placeholder="Ex: 2021">
+                </div>
+                <div class="form-group">
+                    <label>Sinopse</label>
+                    <textarea id="createSinopse" placeholder="Descrição breve..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label>URL da Imagem</label>
+                    <input type="url" id="createImagem" placeholder="https://exemplo.com/imagem.jpg">
+                </div>
+                <button onclick="criarMidia()">✅ Criar</button>
+            </div>
+        </div>
+
+        <!-- TAB: Gerar -->
+        <div id="gerar" class="tab-content">
+            <div class="form-section">
+                <h3 style="margin-bottom: 15px; color: #333;">⚡ Gerador Automático de Mídias</h3>
+                <div class="info-box">
+                    Selecione algumas opções e deixe o gerador criar uma mídia completa automaticamente!
+                </div>
+
+                <div class="grid-2">
+                    <div class="form-group">
+                        <label>Tipo *</label>
+                        <select id="gerarTipo" required>
+                            <option value="">Selecione...</option>
+                            <option value="filme">Filme</option>
+                            <option value="série">Série</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Gênero *</label>
+                        <select id="gerarGenero" required>
+                            <option value="">Selecione...</option>
+                            <option value="Ficção Científica">Ficção Científica</option>
+                            <option value="Drama">Drama</option>
+                            <option value="Ação">Ação</option>
+                            <option value="Comédia">Comédia</option>
+                            <option value="Terror">Terror</option>
+                            <option value="Suspense">Suspense</option>
+                            <option value="Romance">Romance</option>
+                            <option value="Aventura">Aventura</option>
+                            <option value="Animação">Animação</option>
+                            <option value="Fantasia">Fantasia</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Período (Ano)</label>
+                        <select id="gerarPeriodo">
+                            <option value="">Qualquer era</option>
+                            <option value="1980-1990">Anos 80-90</option>
+                            <option value="1990-2000">Anos 90-2000</option>
+                            <option value="2000-2010">Anos 2000-2010</option>
+                            <option value="2010-2020">Anos 2010-2020</option>
+                            <option value="2020-2026">Recente (2020+)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button onclick="gerarMidia()">🎲 Gerar Mídia</button>
+            </div>
+
+            <div id="gerarResults" class="results" style="display:none; margin-top: 20px;">
+                <h3 style="margin-bottom: 15px; color: #333;">Preview da Mídia Gerada</h3>
+                <div id="gerarPreview" class="media-card"></div>
+                <div style="margin-top: 15px;">
+                    <button onclick="gerareMidiaSalvar()">✅ Salvar Mídia</button>
+                    <button class="btn-secondary" onclick="gerarMidia()">🎲 Gerar Outra</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB: Credenciais -->
+        <div id="credenciais" class="tab-content">
+            <div class="form-section">
+                <h3 style="margin-bottom: 15px; color: #333;">Gerar login e senha</h3>
+                <div class="info-box">
+                    Clique no botão para criar credenciais únicas automaticamente. A senha contém letras maiúsculas, minúsculas e números.
+                </div>
+                <button onclick="gerarCredenciais()">🔐 Gerar Credenciais</button>
+            </div>
+
+            <div id="credenciaisResult" class="results" style="display:none;">
+                <h3 style="margin-bottom: 15px; color: #333;">Credencial gerada</h3>
+                <div class="media-info">
+                    <div class="media-info-item"><span class="media-info-label">Usuário:</span> <strong id="novoUsername"></strong></div>
+                    <div class="media-info-item"><span class="media-info-label">Senha:</span> <strong id="novaSenha"></strong></div>
+                </div>
+                <p style="color:#721c24; font-size:13px; margin-bottom:15px;">Guarde esta senha agora. Por segurança, ela não será exibida novamente.</p>
+                <button class="btn-secondary" onclick="copiarCredenciais()">📋 Copiar Credenciais</button>
+            </div>
+
+            <div class="results" style="margin-top:20px;">
+                <h3 style="margin-bottom: 15px; color: #333;">Logins gerados</h3>
+                <div id="usuariosContainer">Nenhum login carregado.</div>
+            </div>
+        </div>
+
+        <!-- TAB: Buscar -->
+        <div id="buscar" class="tab-content">
+            <div class="form-section">
+                <h3 style="margin-bottom: 15px; color: #333;">Buscar por ID</h3>
+                <div class="form-group">
+                    <label>ID da Mídia *</label>
+                    <input type="number" id="searchId" min="1" placeholder="Ex: 1">
+                </div>
+                <button onclick="buscarMidia()">🔍 Buscar</button>
+            </div>
+
+            <div id="searchResults" class="results" style="display:none;">
+                <div class="loading" id="searchLoading">Carregando...</div>
+                <div id="searchContainer"></div>
+            </div>
+        </div>
+
+        <!-- TAB: Atualizar -->
+        <div id="atualizar" class="tab-content">
+            <div class="form-section">
+                <h3 style="margin-bottom: 15px; color: #333;">Atualizar Mídia</h3>
+                <div class="form-group">
+                    <label>ID da Mídia *</label>
+                    <input type="number" id="updateId" min="1" placeholder="Ex: 1">
+                </div>
+                <button onclick="carregarParaEditar()">📥 Carregar</button>
+            </div>
+
+            <div id="updateForm" style="display:none; margin-top: 20px;">
+                <div class="form-group">
+                    <label>Título</label>
+                    <input type="text" id="updateTitulo" placeholder="Deixe vazio para não alterar">
+                </div>
+                <div class="form-group">
+                    <label>Tipo</label>
+                    <select id="updateTipo">
+                        <option value="">Não alterar</option>
+                        <option value="filme">Filme</option>
+                        <option value="série">Série</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Gênero</label>
+                    <input type="text" id="updateGenero" placeholder="Deixe vazio para não alterar">
+                </div>
+                <div class="form-group">
+                    <label>Ano</label>
+                    <input type="number" id="updateAno" min="1900" max="2100" placeholder="Deixe vazio para não alterar">
+                </div>
+                <div class="form-group">
+                    <label>Sinopse</label>
+                    <textarea id="updateSinopse" placeholder="Deixe vazio para não alterar"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>URL da Imagem</label>
+                    <input type="url" id="updateImagem" placeholder="Deixe vazio para não alterar">
+                </div>
+                <button onclick="atualizarMidia()">💾 Salvar Alterações</button>
+                <button class="btn-danger" onclick="deletarMidia()">🗑️ Deletar</button>
+            </div>
+        </div>
+
+        <footer>
+            <p><strong>Projeto da Disciplina de Algoritmos e Programação</strong></p>
+            <p>Professor: <strong>Rondineli Seba Salomão</strong></p>
+            <p>Faculdade: <strong>UNDB</strong></p>
+            <p>Desenvolvido por: <strong>Pedro Lucas Pereira ROLIM</strong></p>
+            <p>curso: <strong>Sistemas de Informação</strong></p>
+        </footer>
+    </div>
+
+    <script>
+        const API_BASE = "http://127.0.0.1:8000";
+        let currentOffset = 0;
+        let currentLimit = 100;
+
+        function switchTab(tabName) {
+            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+            document.getElementById(tabName).classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        function showAlert(message, type = 'info') {
+            const alertId = `alert${type.charAt(0).toUpperCase() + type.slice(1)}`;
+            const alertEl = document.getElementById(alertId);
+            alertEl.textContent = message;
+            alertEl.classList.add('show');
+            setTimeout(() => alertEl.classList.remove('show'), 5000);
+        }
+
+        async function listarMidias() {
+            const titulo = document.getElementById('filterTitulo').value;
+            const genero = document.getElementById('filterGenero').value;
+            const tipo = document.getElementById('filterTipo').value;
+            currentLimit = parseInt(document.getElementById('filterLimit').value);
+            currentOffset = 0;
+
+            let url = `${API_BASE}/midias?limit=${currentLimit}&offset=${currentOffset}`;
+            if (titulo) url += `&titulo=${encodeURIComponent(titulo)}`;
+            if (genero) url += `&genero=${encodeURIComponent(genero)}`;
+            if (tipo) url += `&tipo=${encodeURIComponent(tipo)}`;
+
+            document.getElementById('listLoading').classList.add('show');
+            document.getElementById('listResults').style.display = 'block';
+
+            try {
+                const res = await fetch(url);
+                if (!res.ok) throw new Error('Erro ao carregar mídias');
+                const midias = await res.json();
+
+                const container = document.getElementById('listContainer');
+                if (midias.length === 0) {
+                    container.innerHTML = '<p style="text-align:center; color:#666;">Nenhuma mídia encontrada.</p>';
+                } else {
+                    container.innerHTML = midias.map(m => `
+                        <div class="media-card">
+                            ${m.imagem_url ? `<img src="${m.imagem_url}" alt="${m.titulo}" class="media-image" onerror="this.style.display='none'">` : `<div class="media-image-placeholder">🎬 Sem imagem</div>`}
+                            <div class="media-header">
+                                <span class="media-title">${m.titulo}</span>
+                                <span class="media-badge ${m.tipo === 'série' ? 'serie' : ''}">${m.tipo}</span>
+                            </div>
+                            <div class="media-info">
+                                ${m.genero ? `<div class="media-info-item"><span class="media-info-label">Gênero:</span> ${m.genero}</div>` : ''}
+                                ${m.ano ? `<div class="media-info-item"><span class="media-info-label">Ano:</span> ${m.ano}</div>` : ''}
+                                <div class="media-info-item"><span class="media-info-label">ID:</span> ${m.id}</div>
+                            </div>
+                            ${m.sinopse ? `<div class="media-sinopse">${m.sinopse}</div>` : ''}
+                            <div class="media-actions">
+                                <button class="btn-secondary" onclick="copiarId(${m.id})">📋 Copiar ID</button>
+                            </div>
+                        </div>
+                    `).join('');
+                }
+
+                // Pagination controls
+                const paginationHtml = `
+                    <button onclick="mudarPagina(-1)" ${currentOffset === 0 ? 'disabled' : ''}>← Anterior</button>
+                    <span style="padding: 12px 20px; color: #666;">Página: ${Math.floor(currentOffset / currentLimit) + 1}</span>
+                    <button onclick="mudarPagina(1)" ${midias.length < currentLimit ? 'disabled' : ''}>Próxima →</button>
+                `;
+                document.getElementById('paginationControls').innerHTML = paginationHtml;
+
+            } catch (err) {
+                document.getElementById('listContainer').innerHTML = `<p style="color:red;">${err.message}</p>`;
+            } finally {
+                document.getElementById('listLoading').classList.remove('show');
+            }
+        }
+
+        function mudarPagina(direcao) {
+            currentOffset += direcao * currentLimit;
+            if (currentOffset < 0) currentOffset = 0;
+            listarMidias();
+        }
+
+        function copiarId(id) {
+            navigator.clipboard.writeText(id.toString());
+            showAlert(`ID ${id} copiado!`, 'success');
+        }
+
+        async function gerarCredenciais() {
+            try {
+                const res = await fetch(`${API_BASE}/credenciais/gerar`, { method: 'POST' });
+                const data = await res.json();
+                if (!res.ok) throw new Error(data.detail || 'Erro ao gerar credenciais');
+
+                document.getElementById('novoUsername').textContent = data.username;
+                document.getElementById('novaSenha').textContent = data.senha;
+                document.getElementById('credenciaisResult').style.display = 'block';
+                showAlert('Credenciais geradas com sucesso!', 'success');
+                listarCredenciais();
+            } catch (err) {
+                showAlert(err.message, 'error');
+            }
+        }
+
+        async function listarCredenciais() {
+            try {
+                const res = await fetch(`${API_BASE}/credenciais`);
+                if (!res.ok) throw new Error('Erro ao carregar logins');
+                const usuarios = await res.json();
+                const container = document.getElementById('usuariosContainer');
+                container.innerHTML = usuarios.length
+                    ? usuarios.map(usuario => `<div class="media-card"><strong>${usuario.username}</strong><br><small>ID: ${usuario.id} | Criado em: ${usuario.criado_em}</small></div>`).join('')
+                    : 'Nenhum login gerado ainda.';
+            } catch (err) {
+                document.getElementById('usuariosContainer').textContent = err.message;
+            }
+        }
+
+        function copiarCredenciais() {
+            const username = document.getElementById('novoUsername').textContent;
+            const senha = document.getElementById('novaSenha').textContent;
+            navigator.clipboard.writeText(`Usuário: ${username}\nSenha: ${senha}`);
+            showAlert('Credenciais copiadas!', 'success');
+        }
+
+        async function criarMidia() {
+            const titulo = document.getElementById('createTitulo').value.trim();
+            const tipo = document.getElementById('createTipo').value.trim();
+            const genero = document.getElementById('createGenero').value.trim();
+            const ano = document.getElementById('createAno').value.trim();
+            const sinopse = document.getElementById('createSinopse').value.trim();
+            const imagem_url = document.getElementById('createImagem').value.trim();
+
+            if (!titulo || !tipo) {
+                showAlert('Título e Tipo são obrigatórios', 'error');
+                return;
+            }
+
+            const payload = { titulo, tipo, ...(genero && { genero }), ...(ano && { ano: parseInt(ano) }), ...(sinopse && { sinopse }), ...(imagem_url && { imagem_url }) };
+
+            try {
+                const res = await fetch(`${API_BASE}/midias`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                if (!res.ok) throw new Error('Erro ao criar mídia');
+                const data = await res.json();
+                showAlert(`✅ Mídia criada com sucesso! (ID: ${data.id})`, 'success');
+
+                document.getElementById('createTitulo').value = '';
+                document.getElementById('createTipo').value = '';
+                document.getElementById('createGenero').value = '';
+                document.getElementById('createAno').value = '';
+                document.getElementById('createSinopse').value = '';
+                document.getElementById('createImagem').value = '';
+
+            } catch (err) {
+                showAlert(err.message, 'error');
+            }
+        }
+
+        async function buscarMidia() {
+            const id = document.getElementById('searchId').value;
+            if (!id) {
+                showAlert('Digite um ID válido', 'error');
+                return;
+            }
+
+            document.getElementById('searchLoading').classList.add('show');
+            document.getElementById('searchResults').style.display = 'block';
+
+            try {
+                const res = await fetch(`${API_BASE}/midias/${id}`);
+                if (!res.ok) throw new Error('Mídia não encontrada');
+                const midia = await res.json();
+
+                document.getElementById('searchContainer').innerHTML = `
+                    <div class="media-card">
+                        ${midia.imagem_url ? `<img src="${midia.imagem_url}" alt="${midia.titulo}" class="media-image" onerror="this.style.display='none'">` : `<div class="media-image-placeholder">🎬 Sem imagem</div>`}
+                        <div class="media-header">
+                            <span class="media-title">${midia.titulo}</span>
+                            <span class="media-badge ${midia.tipo === 'série' ? 'serie' : ''}">${midia.tipo}</span>
+                        </div>
+                        <div class="media-info">
+                            ${midia.genero ? `<div class="media-info-item"><span class="media-info-label">Gênero:</span> ${midia.genero}</div>` : ''}
+                            ${midia.ano ? `<div class="media-info-item"><span class="media-info-label">Ano:</span> ${midia.ano}</div>` : ''}
+                            <div class="media-info-item"><span class="media-info-label">ID:</span> ${midia.id}</div>
+                        </div>
+                        ${midia.sinopse ? `<div class="media-sinopse">${midia.sinopse}</div>` : ''}
+                    </div>
+                `;
+
+            } catch (err) {
+                document.getElementById('searchContainer').innerHTML = `<p style="color:red;">${err.message}</p>`;
+            } finally {
+                document.getElementById('searchLoading').classList.remove('show');
+            }
+        }
+
+        async function carregarParaEditar() {
+            const id = document.getElementById('updateId').value;
+            if (!id) {
+                showAlert('Digite um ID válido', 'error');
+                return;
+            }
+
+            try {
+                const res = await fetch(`${API_BASE}/midias/${id}`);
+                if (!res.ok) throw new Error('Mídia não encontrada');
+                const midia = await res.json();
+
+                document.getElementById('updateTitulo').value = midia.titulo || '';
+                document.getElementById('updateTipo').value = midia.tipo || '';
+                document.getElementById('updateGenero').value = midia.genero || '';
+                document.getElementById('updateAno').value = midia.ano || '';
+                document.getElementById('updateSinopse').value = midia.sinopse || '';
+                document.getElementById('updateImagem').value = midia.imagem_url || '';
+                document.getElementById('updateForm').style.display = 'block';
+
+            } catch (err) {
+                showAlert(err.message, 'error');
+            }
+        }
+
+        async function atualizarMidia() {
+            const id = document.getElementById('updateId').value;
+            const titulo = document.getElementById('updateTitulo').value.trim();
+            const tipo = document.getElementById('updateTipo').value.trim();
+            const genero = document.getElementById('updateGenero').value.trim();
+            const ano = document.getElementById('updateAno').value.trim();
+            const sinopse = document.getElementById('updateSinopse').value.trim();
+            const imagem_url = document.getElementById('updateImagem').value.trim();
+
+            const payload = {};
+            if (titulo) payload.titulo = titulo;
+            if (tipo) payload.tipo = tipo;
+            if (genero) payload.genero = genero;
+            if (ano) payload.ano = parseInt(ano);
+            if (sinopse) payload.sinopse = sinopse;
+            if (imagem_url) payload.imagem_url = imagem_url;
+
+            if (Object.keys(payload).length === 0) {
+                showAlert('Altere ao menos um campo', 'error');
+                return;
+            }
+
+            try {
+                const res = await fetch(`${API_BASE}/midias/${id}`, {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                if (!res.ok) throw new Error('Erro ao atualizar');
+                showAlert('✅ Mídia atualizada com sucesso!', 'success');
+
+            } catch (err) {
+                showAlert(err.message, 'error');
+            }
+        }
+
+        async function deletarMidia() {
+            const id = document.getElementById('updateId').value;
+            if (!confirm(`Tem certeza que deseja deletar a mídia #${id}?`)) return;
+
+            try {
+                const res = await fetch(`${API_BASE}/midias/${id}`, { method: 'DELETE' });
+                if (!res.ok) throw new Error('Erro ao deletar');
+                showAlert('✅ Mídia deletada com sucesso!', 'success');
+                document.getElementById('updateForm').style.display = 'none';
+                document.getElementById('updateId').value = '';
+
+            } catch (err) {
+                showAlert(err.message, 'error');
+            }
+        }
+
+        // ===== FUNÇÕES DO GERADOR =====
+        const gerador = {
+            // Banco de nomes por gênero
+            nomes: {
+                "Ficção Científica": ["Convergência", "Horizonte Perdido", "Nexus", "Singularidade", "Ecos do Tempo", "Dimensão X", "Hiper Espaço"],
+                "Drama": ["Coração Dividido", "Sombras da Verdade", "Destinos", "Lágrimas Silenciosas", "Renascimento"],
+                "Ação": ["Operação Relâmpago", "Confronto Final", "Missão Impossível", "Fogo Cruzado", "Explosão"],
+                "Comédia": ["Caos Organizado", "Risos e Lágrimas", "A Turma", "Acidental", "Mistério Cômico"],
+                "Terror": ["A Maldição", "Pesadelo Real", "Sombras Eternas", "Grito Silencioso", "Abismo Escuro"],
+                "Suspense": ["Tempo Escasso", "Perseguição", "Segredos Enterrados", "Desconfiança", "A Verdade Oculta"],
+                "Romance": ["Encontro do Destino", "Coração em Chamas", "Promessa Eterna", "Dois Mundos", "Eternidade"],
+                "Aventura": ["Tesouro Perdido", "Expedição Extrema", "Caminho Desconhecido", "Jornada Épica", "Fronteira"],
+                "Animação": ["Mundo Mágico", "Aventura Fantástica", "Sonho Animado", "Reino Encantado", "Histórias Vivas"],
+                "Fantasia": ["Reino Mágico", "A Profecia", "Portal Encantado", "Guardiões do Além", "Magia Ancestral"]
+            },
+
+            // Sinopses por gênero
+            sinopses: {
+                "Ficção Científica": [
+                    "Uma aventura através dos confins do universo desafia tudo que conhecemos.",
+                    "Humanos e máquinas se unem em uma batalha pela sobrevivência.",
+                    "Um viajante do tempo descobre um segredo que pode mudar o destino da humanidade."
+                ],
+                "Drama": [
+                    "A história de pessoas que enfrentam seus maiores medos e desafios pessoais.",
+                    "Uma família luta para se manter unida diante de grandes adversidades.",
+                    "Um viagem emocional sobre redenção, perdão e esperança."
+                ],
+                "Ação": [
+                    "Uma missão perigosa que teste os limites da coragem e lealdade.",
+                    "Heróis se levantam para salvar o mundo do caos total.",
+                    "Uma perseguição épica cheeia de adrenalina e reviravoltas inesperadas."
+                ],
+                "Comédia": [
+                    "Uma série de situações absurdas que levam a momentos hilariantes.",
+                    "Personagens peculiares navegam pela vida com humor e graça.",
+                    "Risos garantidos em cada cena com twist inesperados."
+                ],
+                "Terror": [
+                    "Uma força maligna desperta e traz horror e desespero.",
+                    "Personagens enfrentam seus piores pesadelos tornados realidade.",
+                    "Uma atmosfera de puro terror e suspense sufocante."
+                ],
+                "Suspense": [
+                    "Um mistério profundo que mantém você na beira do assento.",
+                    "Segredos perigosos são revelados lentamente, construindo tensão.",
+                    "Uma trama repleta de reviravoltas que ninguém consegue prever."
+                ],
+                "Romance": [
+                    "Dois corações descobrem que o amor é mais forte que qualquer obstáculo.",
+                    "Uma história de paixão, compromisso e promessas eternas.",
+                    "Encontros inesperados levam a conexões profundas e duradouras."
+                ],
+                "Aventura": [
+                    "Uma jornada épica que leva aos confins da Terra e além.",
+                    "Aventureiros destemidos buscam glória e descoberta.",
+                    "Cada momento é uma nova oportunidade para explorar o desconhecido."
+                ],
+                "Animação": [
+                    "Um mundo colorido onde criaturas fantásticas vivem incríveis aventuras.",
+                    "Magia e imaginação ganham vida em cada quadro.",
+                    "Uma história que encanta tanto crianças quanto adultos."
+                ],
+                "Fantasia": [
+                    "Um reino mágico onde deuses e heróis escrevem seu destino.",
+                    "Magia antiga desperta e muda o curso da história.",
+                    "Uma jornada através de mundos encantados cheios de mistério."
+                ]
+            },
+
+            gerarTitulo: function(genero) {
+                const nomes = this.nomes[genero] || ["Obra Desconhecida"];
+                return nomes[Math.floor(Math.random() * nomes.length)];
+            },
+
+            gerarAno: function(periodo) {
+                const periodos = {
+                    "": [1980, 2026],
+                    "1980-1990": [1980, 1990],
+                    "1990-2000": [1990, 2000],
+                    "2000-2010": [2000, 2010],
+                    "2010-2020": [2010, 2020],
+                    "2020-2026": [2020, 2026]
+                };
+                const [min, max] = periodos[periodo] || [1980, 2026];
+                return Math.floor(Math.random() * (max - min + 1)) + min;
+            },
+
+            gerarSinopse: function(genero) {
+                const sinopses = this.sinopses[genero] || ["Uma história incrível te aguarda."];
+                return sinopses[Math.floor(Math.random() * sinopses.length)];
+            },
+
+            gerarImagem: function(titulo, genero) {
+                // Gera uma URL de imagem usando a API placeholder.com
+                // Usa cores por gênero para criar posters visualmente interessantes
+                const cores = {
+                    "Ficção Científica": "667eea",
+                    "Drama": "e74c3c",
+                    "Ação": "f39c12",
+                    "Comédia": "f1c40f",
+                    "Terror": "2c3e50",
+                    "Suspense": "8e44ad",
+                    "Romance": "e91e63",
+                    "Aventura": "27ae60",
+                    "Animação": "3498db",
+                    "Fantasia": "9b59b6"
+                };
+                
+                const cor = cores[genero] || "667eea";
+                const tituloEnc = encodeURIComponent(titulo.substring(0, 30));
+                
+                // Usando placeholder.com para gerar posters
+                return `https://via.placeholder.com/300x450/${cor}/ffffff?text=${tituloEnc}`;
+            }
+        };
+
+        let midiaGerada = null;
+
+        function gerarMidia() {
+            const tipo = document.getElementById('gerarTipo').value.trim();
+            const genero = document.getElementById('gerarGenero').value.trim();
+            const periodo = document.getElementById('gerarPeriodo').value.trim();
+
+            if (!tipo || !genero) {
+                showAlert('Tipo e Gênero são obrigatórios', 'error');
+                return;
+            }
+
+            const titulo = gerador.gerarTitulo(genero);
+            const ano = gerador.gerarAno(periodo);
+            const sinopse = gerador.gerarSinopse(genero);
+            const imagem_url = gerador.gerarImagem(titulo, genero);
+
+            midiaGerada = {
+                titulo,
+                tipo,
+                genero,
+                ano,
+                sinopse,
+                imagem_url
+            };
+
+            // Mostrar preview
+            document.getElementById('gerarResults').style.display = 'block';
+            document.getElementById('gerarPreview').innerHTML = `
+                <img src="${midiaGerada.imagem_url}" alt="${midiaGerada.titulo}" class="media-image" onerror="this.style.display='none'">
+                <div class="media-header">
+                    <span class="media-title">${midiaGerada.titulo}</span>
+                    <span class="media-badge ${midiaGerada.tipo === 'série' ? 'serie' : ''}">${midiaGerada.tipo}</span>
+                </div>
+                <div class="media-info">
+                    <div class="media-info-item"><span class="media-info-label">Gênero:</span> ${midiaGerada.genero}</div>
+                    <div class="media-info-item"><span class="media-info-label">Ano:</span> ${midiaGerada.ano}</div>
+                </div>
+                <div class="media-sinopse">${midiaGerada.sinopse}</div>
+            `;
+
+            showAlert('✅ Mídia gerada com sucesso! Revise e salve.', 'info');
+        }
+
+        async function gerareMidiaSalvar() {
+            if (!midiaGerada) {
+                showAlert('Gere uma mídia primeiro', 'error');
+                return;
+            }
+
+            try {
+                const res = await fetch(`${API_BASE}/midias`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(midiaGerada)
+                });
+
+                if (!res.ok) throw new Error('Erro ao salvar mídia gerada');
+                const data = await res.json();
+                showAlert(`✅ Mídia salva com sucesso! (ID: ${data.id})`, 'success');
+
+                // Limpar
+                document.getElementById('gerarTipo').value = '';
+                document.getElementById('gerarGenero').value = '';
+                document.getElementById('gerarPeriodo').value = '';
+                document.getElementById('gerarResults').style.display = 'none';
+                midiaGerada = null;
+
+            } catch (err) {
+                showAlert(err.message, 'error');
+            }
+        }
+
+        // Load data on page load
+        window.addEventListener('load', listarMidias);
+    </script>
 </body>
 </html>
