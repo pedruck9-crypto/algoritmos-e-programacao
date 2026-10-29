@@ -1,11 +1,20 @@
 from typing import Optional
 from enum import Enum
-from fastapi import FastAPI, HTTPException, Query, Path
+import hashlib
+import secrets
+import string
+from fastapi import Body, FastAPI, HTTPException, Query, Path
 from fastapi.responses import HTMLResponse
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
 
-from db import init_db, list_midias, get_midia, create_midia as db_create_midia, update_midia as db_update_midia, delete_midia as db_delete_midia, create_credential as db_create_credential, list_credentials as db_list_credentials
+from db import (
+    init_db, list_midias, get_midia,
+    create_midia as db_create_midia,
+    update_midia as db_update_midia,
+    delete_midia as db_delete_midia,
+    create_usuario, list_usuarios, username_exists, ensure_filme_ultimato,
+)
 
 
 app = FastAPI(
@@ -45,6 +54,7 @@ class MidiaCreate(BaseModel):
     genero: Optional[str] = Field(None, description="Gênero (ex: ficção, drama, ação)")
     ano: Optional[int] = Field(None, ge=1900, le=2100, description="Ano de lançamento")
     sinopse: Optional[str] = Field(None, description="Descrição breve do conteúdo")
+    imagem_url: Optional[str] = Field(None, description="URL da imagem/poster do filme ou série")
 
     class Config:
         json_schema_extra = {
@@ -53,7 +63,8 @@ class MidiaCreate(BaseModel):
                 "tipo": "filme",
                 "genero": "ficção científica",
                 "ano": 2021,
-                "sinopse": "Um jovem herdeiro luta pelo controle do planeta Arrakis."
+                "sinopse": "Em um futuro distante, o jovem Paul Atreides deve viajar para o planeta mais perigoso do universo para garantir o futuro de sua família e de seu povo.",
+                "imagem_url": "https://example.com/duna-poster.jpg"
             }
         }
 
@@ -64,6 +75,51 @@ class MidiaUpdate(BaseModel):
     genero: Optional[str] = Field(None, description="Gênero (ex: ficção, drama, ação)")
     ano: Optional[int] = Field(None, ge=1900, le=2100, description="Ano de lançamento")
     sinopse: Optional[str] = Field(None, description="Descrição breve do conteúdo")
+    imagem_url: Optional[str] = Field(None, description="URL da imagem/poster do filme ou série")
+
+
+def gerar_username() -> str:
+    while True:
+        username = f"cineuser{secrets.randbelow(900000) + 100000}"
+        if not username_exists(username):
+            return username
+
+
+def gerar_senha(tamanho: int = 12) -> str:
+    caracteres = string.ascii_letters + string.digits
+    while True:
+        senha = "".join(secrets.choice(caracteres) for _ in range(tamanho))
+        if (any(c.islower() for c in senha)
+                and any(c.isupper() for c in senha)
+                and any(c.isdigit() for c in senha)):
+            return senha
+
+
+def hash_senha(senha: str) -> str:
+    salt = secrets.token_bytes(16)
+    digest = hashlib.scrypt(
+        senha.encode("utf-8"), salt=salt, n=2**14, r=8, p=1
+    )
+    return f"scrypt${salt.hex()}${digest.hex()}"
+
+
+@app.post("/credenciais/gerar", status_code=201, tags=["Credenciais"])
+def gerar_credenciais():
+    username = gerar_username()
+    senha = gerar_senha()
+    usuario_id = create_usuario(username, hash_senha(senha))
+    ensure_filme_ultimato()
+    return {
+        "id": usuario_id,
+        "username": username,
+        "senha": senha,
+        "aviso": "Guarde a senha: ela não será exibida novamente.",
+    }
+
+
+@app.get("/credenciais", tags=["Credenciais"])
+def listar_credenciais():
+    return list_usuarios()
 
 @app.get("/midias", tags=["Mídias"])
 def listar_midias(
@@ -93,10 +149,11 @@ def buscar_midia(midia_id: int = Path(..., ge=1, description="ID da mídia")):
 def criar_midia(midia: MidiaCreate):
     """Criar uma nova mídia (filme ou série) no banco."""
     midia_id = db_create_midia(midia.dict())
+    ensure_filme_ultimato()
     return {"id": midia_id, **midia.dict()}
 
 @app.put("/midias/{midia_id}", tags=["Mídias"])
-def atualizar_midia(midia_id: int = Path(..., ge=1, description="ID da mídia"), dados: MidiaUpdate = None):
+def atualizar_midia(midia_id: int = Path(..., ge=1, description="ID da mídia"), dados: MidiaUpdate = Body(...)):
     """Atualizar campos de uma mídia existente.
     
     Envie apenas os campos que deseja alterar.
@@ -121,15 +178,3 @@ def deletar_midia(midia_id: int = Path(..., ge=1, description="ID da mídia")):
 
     db_delete_midia(midia_id)
     return {"mensagem": f"Mídia com ID {midia_id} removida com sucesso"}
-
-
-@app.post("/credenciais/gerar", status_code=201, tags=["Credenciais"])
-def gerar_credencial():
-    """Gerar uma credencial de demonstração; isso não cria uma conta autenticável."""
-    return db_create_credential()
-
-
-@app.get("/credenciais", tags=["Credenciais"])
-def listar_credenciais():
-    """Listar nomes de usuário gerados, sem expor hashes ou senhas."""
-    return db_list_credentials()

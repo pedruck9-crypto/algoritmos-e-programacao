@@ -514,7 +514,7 @@
             <div class="form-section">
                 <h3 style="margin-bottom: 15px; color: #333;">Gerar login e senha</h3>
                 <div class="info-box">
-                    Credenciais de demonstração, sem autenticação real. Não use senhas pessoais. A senha gerada é exibida uma vez; no banco fica apenas o hash.
+                    Clique no botão para criar credenciais únicas automaticamente. A senha contém letras maiúsculas, minúsculas e números.
                 </div>
                 <button onclick="gerarCredenciais()">🔐 Gerar Credenciais</button>
             </div>
@@ -607,7 +607,7 @@
     </div>
 
     <script>
-        const API_BASE = "";
+        const API_BASE = "http://127.0.0.1:8000";
         let currentOffset = 0;
         let currentLimit = 100;
 

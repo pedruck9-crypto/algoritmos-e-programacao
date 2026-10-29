@@ -1,0 +1,11 @@
+services:
+  api:
+    build: .
+    container_name: crud-filmes-series
+    ports:
+      - "8000:8000"
+    environment:
+      DB_PATH: /app/data/midias.db
+    volumes:
+      - ./data:/app/data
+    restart: unless-stopped
