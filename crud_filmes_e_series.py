@@ -5,7 +5,7 @@ from fastapi.responses import HTMLResponse
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
 
-from db import init_db, list_midias, get_midia, create_midia as db_create_midia, update_midia as db_update_midia, delete_midia as db_delete_midia
+from db import init_db, list_midias, get_midia, create_midia as db_create_midia, update_midia as db_update_midia, delete_midia as db_delete_midia, create_credential as db_create_credential, list_credentials as db_list_credentials
 
 
 app = FastAPI(
@@ -121,3 +121,15 @@ def deletar_midia(midia_id: int = Path(..., ge=1, description="ID da mídia")):
 
     db_delete_midia(midia_id)
     return {"mensagem": f"Mídia com ID {midia_id} removida com sucesso"}
+
+
+@app.post("/credenciais/gerar", status_code=201, tags=["Credenciais"])
+def gerar_credencial():
+    """Gerar uma credencial de demonstração; isso não cria uma conta autenticável."""
+    return db_create_credential()
+
+
+@app.get("/credenciais", tags=["Credenciais"])
+def listar_credenciais():
+    """Listar nomes de usuário gerados, sem expor hashes ou senhas."""
+    return db_list_credentials()
