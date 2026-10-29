@@ -1,2 +1,13 @@
+[project]
+name = "algoritmos-e-programacao-crud"
+version = "1.0.0"
+requires-python = ">=3.12"
+dependencies = [
+  "fastapi",
+  "uvicorn[standard]",
+  "pydantic",
+  "sqlmodel",
+]
+
 [tool.vercel]
 entrypoint = "crud_filmes_e_series:app"
