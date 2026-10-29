@@ -1,4 +1,8 @@
+import hashlib
 import os
+import secrets
+import string
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Optional
 
@@ -12,6 +16,16 @@ class Midia(SQLModel, table=True):
     genero: Optional[str] = None
     ano: Optional[int] = None
     sinopse: Optional[str] = None
+
+
+class Credencial(SQLModel, table=True):
+    id: Optional[int] = Field(default=None, primary_key=True)
+    username: str = Field(index=True, unique=True)
+    password_hash: str
+    salt: str
+    criado_em: str = Field(
+        default_factory=lambda: datetime.now(timezone.utc).isoformat()
+    )
 
 
 def _database_url() -> str:
@@ -95,3 +109,50 @@ def delete_midia(midia_id: int) -> None:
         if item is not None:
             session.delete(item)
             session.commit()
+
+
+def create_credential() -> dict[str, Any]:
+    """Generate a demo credential; only a salted password hash is stored."""
+    username = f"usuario_{secrets.token_hex(4)}"
+    senha = "".join(
+        [
+            secrets.choice(string.ascii_uppercase),
+            secrets.choice(string.ascii_lowercase),
+            secrets.choice(string.digits),
+            *(secrets.choice(string.ascii_letters + string.digits) for _ in range(13)),
+        ]
+    )
+    salt = secrets.token_bytes(16)
+    password_hash = hashlib.pbkdf2_hmac(
+        "sha256", senha.encode("utf-8"), salt, 310_000
+    ).hex()
+    credencial = Credencial(
+        username=username,
+        password_hash=password_hash,
+        salt=salt.hex(),
+    )
+    with Session(engine) as session:
+        session.add(credencial)
+        session.commit()
+        session.refresh(credencial)
+        return {
+            "id": credencial.id,
+            "username": credencial.username,
+            "senha": senha,
+            "criado_em": credencial.criado_em,
+        }
+
+
+def list_credentials() -> list[dict[str, Any]]:
+    with Session(engine) as session:
+        credenciais = session.exec(
+            select(Credencial).order_by(Credencial.id.desc())
+        ).all()
+        return [
+            {
+                "id": item.id,
+                "username": item.username,
+                "criado_em": item.criado_em,
+            }
+            for item in credenciais
+        ]
