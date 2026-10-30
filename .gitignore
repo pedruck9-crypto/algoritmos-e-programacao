@@ -11,3 +11,6 @@ data/
 .env.*
 !.env.example
 *.log
+
+# Configuração pessoal de pastas do VS Code.
+*.code-workspace

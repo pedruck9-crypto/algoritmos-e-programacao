@@ -5,7 +5,13 @@ Projeto de estudo em Python desenvolvido a partir da disciplina de **Algoritmos 
 A versão ampliada utiliza FastAPI, HTML/CSS/JavaScript e SQLite com SQLModel. Inclui filtros, geração de mídias fictícias, credenciais demonstrativas, a regra de “Vingadores: Ultimato”, testes e configuração Docker.
 
 - [Demonstração publicada](https://algoritmos-e-programa-o.vercel.app/): acompanha a `main`; alterações desta branch dependem de integração e implantação.
-- [Documentação da versão de portfólio](DOCUMENTACAO-PORTFOLIO.md): instalação, execução, API, testes, Docker e limitações.
+- [Documentação da versão de portfólio](docs/DOCUMENTACAO-PORTFOLIO.md): instalação, execução, API, testes, Docker e limitações.
+
+## Organização do repositório
+
+- **CRUD de portfólio:** a aplicação, a interface e as configurações de execução ficam na raiz; os testes ficam em `tests/`.
+- **[AULAS/](AULAS/README.md):** exercícios independentes da disciplina, com os conceitos estudados e instruções para executar.
+- **[docs/](docs/DOCUMENTACAO-PORTFOLIO.md):** documentação detalhada do CRUD; materiais antigos ficam em `docs/historico/`.
 
 ## Versões didáticas da disciplina
 

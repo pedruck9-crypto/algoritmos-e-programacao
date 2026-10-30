@@ -1,6 +1,6 @@
 # Documentação histórica da API
 
-> Este documento descreve uma versão antiga e não deve ser usado para instalar ou executar a versão atual. Consulte [DOCUMENTACAO-PORTFOLIO.md](DOCUMENTACAO-PORTFOLIO.md).
+> Este documento descreve uma versão antiga e não deve ser usado para instalar ou executar a versão atual. Consulte [DOCUMENTACAO-PORTFOLIO.md](../DOCUMENTACAO-PORTFOLIO.md).
 
 Projeto simples em FastAPI para administrar um catálogo de filmes e séries (SQLite).
 

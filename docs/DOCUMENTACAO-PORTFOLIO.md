@@ -1,6 +1,6 @@
 # CRUD de Filmes e Séries — documentação de portfólio
 
-Aplicação de estudo para gerenciar um catálogo de filmes e séries. O projeto nasceu na disciplina de Algoritmos e Programação e foi ampliado com uma API, interface web e banco de dados. Consulte o [README principal](README.md) para acessar os três ciclos didáticos.
+Aplicação de estudo para gerenciar um catálogo de filmes e séries. O projeto nasceu na disciplina de Algoritmos e Programação e foi ampliado com uma API, interface web e banco de dados. Consulte o [README principal](../README.md) para acessar os três ciclos didáticos.
 
 ## Funcionalidades
 
@@ -24,6 +24,8 @@ Python 3.12 ou superior, FastAPI, Pydantic, SQLModel/SQLAlchemy, SQLite, HTML, C
 | `index.html` | Interface e gerador de sugestões fictícias. |
 | `seed_midias.py` | Inserção de cinco mídias de exemplo. |
 | `tests/` | Testes da API e da escolha do caminho do banco. |
+| `AULAS/` | Exercícios independentes da disciplina, descritos em seu próprio README. |
+| `docs/` | Documentação atual e histórico de documentação em `historico/`. |
 | `requirements.txt` | Dependências para execução e testes locais. |
 | `pyproject.toml` | Requisito de Python, dependências de execução e entrada da Vercel. |
 | `run.ps1` / `run.sh` | Inicialização local a partir da pasta do projeto. |
