@@ -1,8 +1,57 @@
 # CRUD de Filmes e Séries — documentação de portfólio
 
-Aplicação de estudo para gerenciar um catálogo de filmes e séries. O projeto nasceu na disciplina de Algoritmos e Programação e foi ampliado com uma API, interface web e banco de dados. Consulte o [README principal](../README.md) para acessar os três ciclos didáticos.
+Aplicação de estudo para gerenciar um catálogo de filmes e séries, desenvolvida a partir da disciplina de **Algoritmos e Programação**, ministrada por **Rondineli Seba Salomão**, na UNDB. A versão de portfólio reúne uma API em Python, uma interface web e persistência local com SQLite.
 
-## Funcionalidades
+Desenvolvido por **Pedro Lucas Pereira Rolim**, estudante de Sistemas de Informação, com interesse em atuar e aprofundar seus conhecimentos em **desenvolvimento front-end**.
+
+## Veja a aplicação
+
+- [Abrir demonstração](https://algoritmos-e-programa-o.vercel.app/).
+- [Explorar a documentação interativa da API](https://algoritmos-e-programa-o.vercel.app/docs).
+- [README principal](../README.md): organização do repositório e acesso aos três ciclos acadêmicos.
+
+![Tela do CRUD com navegação por abas, filtros de mídias e início de uma capa SVG de ficção científica](images/crud-interface.png)
+
+*Captura da interface de listagem fornecida pelo autor. Os dados do catálogo podem mudar; a demonstração hospedada usa armazenamento temporário.*
+
+## Objetivo e contribuição para meu aprendizado
+
+Meu objetivo foi transformar os conceitos de lógica de programação em um catálogo no qual fosse possível cadastrar, consultar, atualizar e excluir informações. Ao ampliar o projeto, também tive contato com a comunicação entre uma interface web, uma API e um banco de dados.
+
+| Aprendizado | Como aparece no projeto |
+|---|---|
+| Variáveis e operadores | Representação dos dados de uma mídia, comparações e cálculos usados nas operações. |
+| Condicionais | Validação de entradas, verificação de registros e decisões durante o cadastro. |
+| Laços de repetição | Percorrer coleções, apresentar resultados e repetir operações nas versões de terminal. |
+| Estruturas dinâmicas | Organização de coleções e dados com listas e dicionários, conforme a etapa estudada. |
+| Funções e refatoração | Divisão das tarefas em partes menores e organização das operações do CRUD. |
+| Integração de uma aplicação web | Contato com requisições HTTP, respostas da API e atualização da interface. |
+| Qualidade e tratamento de falhas | Testes com bancos temporários, validações e capas alternativas quando uma imagem não carrega. |
+| Organização e escopo | Uso de branches para apresentar os ciclos e distinguir os requisitos acadêmicos das ampliações pessoais. |
+
+Esses pontos representam conteúdos praticados e conhecimentos em desenvolvimento. A presença de uma tecnologia no projeto não significa domínio completo dela; o repositório também registra o que ainda preciso aprofundar.
+
+## Minha decisão de criar o front-end
+
+O professor não havia solicitado uma interface web. Decidi adicioná-la para visualizar o catálogo, interagir com os dados por formulários e experimentar a apresentação da aplicação. Essa escolha ampliou o projeto além do escopo da disciplina.
+
+Depois de compreender melhor os limites de cada ciclo, organizei branches didáticas alinhadas ao conteúdo pedido. Elas apresentam versões para avaliação acadêmica; a aplicação ampliada foi mantida como uma evolução de estudo e portfólio.
+
+Ao trabalhar com o visual, as abas, os formulários e as capas, descobri afinidade com o desenvolvimento front-end. Essa experiência ajudou a direcionar meu objetivo profissional: pretendo trabalhar nessa área e aprofundar meus conhecimentos em HTML, CSS, JavaScript, acessibilidade, responsividade e experiência de uso.
+
+Também aprendi que explorar uma ideia pessoal e cumprir os requisitos de uma entrega são responsabilidades que precisam ser organizadas. O front-end passou a ter um lugar próprio na evolução do projeto, enquanto as branches dos ciclos documentam o recorte solicitado.
+
+## Escopo acadêmico e versão atual
+
+| Etapa | Recorte da disciplina | Onde consultar |
+|---|---|---|
+| Ciclo 1 | Variáveis, operadores, condicionais e laços. | [ciclo-1--terminal](https://github.com/pedruck9-crypto/algoritmos-e-programacao/tree/ciclo-1--terminal) |
+| Ciclo 2 | Refatoração e estruturas dinâmicas, como listas, matrizes, mapas e dicionários, conforme o conteúdo estudado. | [ciclo-2-estruturas-dinâmicas](https://github.com/pedruck9-crypto/algoritmos-e-programacao/tree/ciclo-2-estruturas-din%C3%A2micas) |
+| Ciclo 3 | Organização do código em funções e aplicação final dentro do escopo combinado. | [ciclo-3-funções](https://github.com/pedruck9-crypto/algoritmos-e-programacao/tree/ciclo-3-fun%C3%A7%C3%B5es) |
+
+A interface web, o FastAPI, o ORM, o banco SQLite, as capas SVG, os testes e a configuração Docker pertencem à **versão ampliada de portfólio**. Eles não são apresentados como exigências da disciplina. As branches didáticas foram organizadas após a ampliação e não representam necessariamente a ordem histórica em que o código foi escrito.
+
+## Funcionalidades centrais
 
 - Criar, listar, buscar por ID, atualizar e excluir mídias.
 - Filtrar por título, gênero e tipo, com `limit` e `offset` na API.
@@ -10,6 +59,11 @@ Aplicação de estudo para gerenciar um catálogo de filmes e séries. O projeto
 - Registrar URL de imagem/poster para cada mídia.
 - Gerar capas SVG por código, com título, gênero, ano, paleta e ilustração geométrica. A mesma mídia mantém uma composição consistente.
 - Exibir uma capa SVG alternativa quando faltar imagem ou houver falha no carregamento, na listagem, busca por ID e prévia do gerador.
+
+## Exercícios adicionais de regras de negócio
+
+As funcionalidades abaixo foram acrescentadas como exercícios de condições, geração de valores e armazenamento. O objetivo central do projeto continua sendo o gerenciamento do catálogo.
+
 - Usar o [pôster indicado de Vingadores: Ultimato](https://ovicio.com.br/wp-content/uploads/2019/03/20190326-avengers-endgame-cast-poster-730x365.jpg) no cadastro automático. Registros antigos desse título sem imagem recebem esse endereço na inicialização; imagens personalizadas existentes são preservadas.
 - Gerar credenciais demonstrativas: username único, senha aleatória de 12 caracteres e hash `scrypt` com salt. A senha é retornada uma única vez; a listagem não expõe senha nem hash.
 - Criar “Vingadores: Ultimato” após cadastrar uma mídia ou gerar uma credencial, quando houver pelo menos uma mídia e um usuário. A regra consulta se o título já existe antes de inserir.
@@ -18,7 +72,7 @@ As credenciais são um exercício de geração e armazenamento de valores. Não 
 
 ## Tecnologias e estrutura
 
-Python 3.12 ou superior, FastAPI, Pydantic, SQLModel/SQLAlchemy, SQLite, HTML, CSS, JavaScript, Uvicorn, Pytest e HTTPX2. Há configuração para Docker e Docker Compose.
+Python 3.12 ou superior, FastAPI, Pydantic, SQLModel/SQLAlchemy, SQLite, HTML, CSS, JavaScript, Uvicorn, Pytest e HTTPX2. **Docker e Docker Compose estão configurados, mas sua execução ainda não foi realizada nem validada.**
 
 | Arquivo/pasta | Responsabilidade |
 |---|---|
@@ -36,11 +90,11 @@ Python 3.12 ou superior, FastAPI, Pydantic, SQLModel/SQLAlchemy, SQLite, HTML, C
 
 ## Instalação e execução local
 
-Clone o repositório e entre na pasta correspondente à versão que deseja executar. Para esta branch:
+Para executar a versão principal documentada nesta página, clone a branch `main`:
 
 ```text
-git clone --branch "Crud_portfólio" https://github.com/pedruck9-crypto/algoritmos-e-programa-o-.git
-cd algoritmos-e-programa-o-
+git clone --branch main https://github.com/pedruck9-crypto/algoritmos-e-programacao.git
+cd algoritmos-e-programacao
 python -m venv .venv
 ```
 
@@ -89,15 +143,17 @@ A demonstração está em [algoritmos-e-programa-o.vercel.app](https://algoritmo
 
 Esta versão usa as tabelas `midias` e `usuarios`. Versões anteriores da `main` usavam `midia` e `credencial`; os dados dessas tabelas não são migrados automaticamente. Caso mantenha um banco antigo com dados importantes, faça uma cópia e planeje a migração antes de trocar de versão. A inicialização cria as tabelas atuais e acrescenta `imagem_url` a uma tabela `midias` antiga, se necessário.
 
-## Docker
+## Docker — configuração ainda não executada
 
-Com Docker e Docker Compose disponíveis, execute na pasta do projeto:
+**Situação: os arquivos `Dockerfile` e `docker-compose.yml` estão presentes, mas o build e a execução em container ainda não foram realizados.** Portanto, essa forma de execução está pendente de validação e não deve ser apresentada como um resultado já testado.
+
+O procedimento previsto, a conferir em um ambiente com Docker e Docker Compose disponíveis, é executar na pasta do projeto:
 
 ```text
 docker compose up --build
 ```
 
-A interface fica em `http://127.0.0.1:8000`. O Compose configura `DB_PATH=/app/data/midias.db` e monta `./data` para preservar o banco local entre recriações do container.
+A configuração prevê a interface em `http://127.0.0.1:8000`. O Compose configura `DB_PATH=/app/data/midias.db` e monta `./data` para preservar o banco local entre recriações do container.
 
 Para parar:
 
@@ -131,7 +187,11 @@ Exemplo de corpo para `POST /midias`:
 
 O cadastro e a atualização validam `tipo` como `filme` ou `série`. O gênero aceita texto livre. O ano, quando informado, deve estar entre 1900 e 2100. `imagem_url` é opcional e armazenada como texto.
 
-## Testes
+## Testes e evidências de validação
+
+Na validação registrada da [versão `bdb876b`](https://github.com/pedruck9-crypto/algoritmos-e-programacao/commit/bdb876b714a686ed163109d02e173715591026b3), **11 testes Python e 7 testes JavaScript passaram** em ambiente local, com Python 3.14 e Node.js 24. Também foi conferido no navegador o carregamento de uma capa SVG, a troca de uma imagem quebrada pela alternativa e a exibição do pôster de “Vingadores: Ultimato”. Esse registro não substitui uma nova execução após mudanças futuras.
+
+A configuração exige Python 3.12 ou superior; a execução com Python 3.12 e com Docker ainda precisa ser validada separadamente. Os comandos abaixo permitem reproduzir as verificações.
 
 Com as dependências instaladas, execute na raiz do projeto:
 
@@ -149,13 +209,31 @@ node --test tests/test_covers.cjs
 
 Essas verificações cobrem consistência das capas, caracteres especiais, imagens ausentes, preservação de URLs externas e troca para a alternativa sem repetição de erro.
 
-## Limitações e próximos passos
+## Limitações atuais
 
-- Persistência durável para a demonstração hospedada.
-- Migrações versionadas para preservar dados entre alterações de esquema.
-- Autenticação e permissões, caso se tornem requisitos.
-- Proteção contra inserções simultâneas da regra de “Vingadores: Ultimato”; a consulta atual não é uma garantia de unicidade em concorrência.
-- Melhorias na paginação da interface, no tratamento de erros e na exibição de conteúdo fornecido pelo usuário.
+- A demonstração hospedada ainda não possui persistência durável.
+- Não há migrações versionadas para preservar dados entre alterações de esquema.
+- Autenticação e controle de permissões ainda não estão implementados.
+- A regra de “Vingadores: Ultimato” ainda precisa de proteção contra inserções simultâneas; a consulta atual não garante unicidade em concorrência.
+- A paginação da interface, o tratamento de erros e a exibição de conteúdo fornecido pelo usuário ainda precisam de melhorias.
 - As capas SVG são composições gráficas geradas por código, não ilustrações de IA. Imagens externas, incluindo o pôster de Vingadores, podem ficar indisponíveis; nesse caso a interface usa a alternativa SVG.
+
+## Como pretendo evoluir durante o curso
+
+A evolução será feita por etapas, conforme eu consolidar os fundamentos e estudar novos conteúdos. Os itens abaixo são planos; não representam funcionalidades já implementadas.
+
+| Etapa de aprendizado | Evolução pretendida | Resultado a verificar |
+|---|---|---|
+| Fundamentos de front-end | Melhorar HTML semântico, formulários, navegação por teclado, contraste, responsividade e feedback de carregamento/erro. | Uma interface mais acessível e utilizável em diferentes tamanhos de tela. |
+| JavaScript e organização | Separar responsabilidades da interface, corrigir a navegação entre páginas e aprofundar a integração com a API. | Código mais fácil de entender e comportamento consistente durante o uso. |
+| Banco de dados | Estudar PostgreSQL e migrações versionadas, além do SQLite usado atualmente. | Dados preservados entre implantações e mudanças de esquema. |
+| Segurança e aplicações web | Implementar autenticação e autorização por proprietário. | Cada pessoa acessar somente seu catálogo e suas operações. |
+| Testes e implantação | Automatizar os testes no GitHub, validar Python 3.12 e executar o Docker. | Verificações reproduzíveis para alterações futuras. |
+| Ferramentas de front-end | Avaliar TypeScript e um framework de componentes depois de fortalecer HTML, CSS e JavaScript. | Componentes organizados com uma escolha técnica que eu consiga explicar. |
+| Integrações externas e IA | Estudar geração opcional de capas, armazenamento persistente de imagens, filas de tarefas e controle de custos. | Uma integração protegida e recuperável, mantendo a capa SVG alternativa. |
+
+O plano mais detalhado de IA, autenticação e PostgreSQL está na [branch de evolução futura](https://github.com/pedruck9-crypto/algoritmos-e-programacao/blob/Crud_com_imagens_geradas_por_ia_e_autenticacao/README.md). A versão atual não usa IA para gerar capas nem possui login real.
+
+Meu foco profissional é o **front-end**. Quero usar este projeto para acompanhar meu aprendizado e demonstrar, em oportunidades de estágio ou início de carreira, a evolução da interface e minha capacidade de compreender sua integração com o restante da aplicação.
 
 O projeto é uma aplicação de estudo e demonstração de portfólio, em evolução.
