@@ -1,10 +1,21 @@
 import os
 from datetime import datetime
+from pathlib import Path
 from typing import Any, Dict, List, Optional
 
 from sqlmodel import Field, Session, SQLModel, create_engine, select
 
-DB_PATH = os.getenv("DB_PATH", "midias.db")
+def _default_db_path() -> str:
+    configured_path = os.getenv("DB_PATH")
+    if configured_path:
+        return configured_path
+    if os.getenv("VERCEL"):
+        # O disco da implantação é somente leitura; /tmp é temporário e gravável.
+        return "/tmp/midias.db"
+    return Path(__file__).with_name("midias.db").as_posix()
+
+
+DB_PATH = _default_db_path()
 
 
 class Midia(SQLModel, table=True):
@@ -32,7 +43,7 @@ class Usuario(SQLModel, table=True):
 
 def get_engine():
     return create_engine(
-        f"sqlite:///{DB_PATH}",
+        f"sqlite:///{Path(DB_PATH).as_posix()}",
         connect_args={"check_same_thread": False},
     )
 

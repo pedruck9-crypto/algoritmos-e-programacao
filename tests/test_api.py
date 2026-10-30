@@ -4,12 +4,13 @@ import pytest
 from fastapi.testclient import TestClient
 
 import db
-from crud_filmes_e_series import app
 
 
 @pytest.fixture()
 def client(tmp_path, monkeypatch):
     monkeypatch.setattr(db, "DB_PATH", str(tmp_path / "teste.db"))
+    from crud_filmes_e_series import app
+
     db.init_db()
     with TestClient(app) as test_client:
         yield test_client
@@ -92,3 +93,9 @@ def test_ultimato_nao_e_duplicado(client):
 
     filmes = client.get("/midias?titulo=Vingadores").json()
     assert len(filmes) == 1
+
+def test_interface_independe_da_pasta_de_trabalho(client, monkeypatch, tmp_path):
+    monkeypatch.chdir(tmp_path)
+    resposta = client.get("/")
+    assert resposta.status_code == 200
+    assert "CRUD de Filmes e Séries" in resposta.text

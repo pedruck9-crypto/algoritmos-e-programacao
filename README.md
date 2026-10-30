@@ -1,26 +1,26 @@
 # CRUD de Filmes e Séries
 
-Projeto desenvolvido para praticar conteúdos da disciplina de Algoritmos e Programação. O repositório reúne versões didáticas organizadas por ciclo e uma versão ampliada da aplicação para portfólio.
+Projeto de estudo em Python desenvolvido a partir da disciplina de **Algoritmos e Programação**, ministrada por **Rondineli Seba Salomão**, na UNDB. O catálogo permite cadastrar, consultar, atualizar e excluir filmes e séries.
 
-## Versões por ciclo
+A versão ampliada utiliza FastAPI, HTML/CSS/JavaScript e SQLite com SQLModel. Inclui filtros, geração de mídias fictícias, credenciais demonstrativas, a regra de “Vingadores: Ultimato”, testes e configuração Docker.
 
-A organização proposta separa as etapas em branches. Os nomes abaixo são a convenção planejada; só estarão disponíveis depois que as respectivas branches forem criadas e enviadas ao GitHub.
+- [Demonstração publicada](https://algoritmos-e-programa-o.vercel.app/): acompanha a `main`; alterações desta branch dependem de integração e implantação.
+- [Documentação da versão de portfólio](DOCUMENTACAO-PORTFOLIO.md): instalação, execução, API, testes, Docker e limitações.
 
-| Ciclo | Branch planejada | Conteúdo principal |
+## Versões didáticas da disciplina
+
+| Etapa | Branch | Conteúdos |
 |---|---|---|
-| 1 | `ciclo-1-terminal` | Versão introdutória em terminal, com variáveis, operadores, condicionais e laços, conforme as restrições definidas pelo professor. |
-| 2 | `ciclo-2-estruturas-dinamicas` | Refatoração da etapa anterior com estruturas dinâmicas estudadas, como listas, matrizes, mapas ou dicionários. |
-| 3 | `ciclo-3-funcoes` | Organização da solução em funções e finalização da aplicação dentro do escopo combinado com o professor. |
-| Portfólio | `main` | Versão ampliada da CRUD, com interface web, API e persistência em banco de dados. |
+| Ciclo 1 | [ciclo-1--terminal](https://github.com/pedruck9-crypto/algoritmos-e-programa-o-/tree/ciclo-1--terminal) | Variáveis, operadores, condicionais e laços. |
+| Ciclo 2 | [ciclo-2-estruturas-dinâmicas](https://github.com/pedruck9-crypto/algoritmos-e-programa-o-/tree/ciclo-2-estruturas-din%C3%A2micas) | Refatoração e estruturas dinâmicas. |
+| Ciclo 3 | [ciclo-3-funções](https://github.com/pedruck9-crypto/algoritmos-e-programa-o-/tree/ciclo-3-fun%C3%A7%C3%B5es) | Organização em funções e aplicação final. |
 
-As branches dos ciclos devem representar versões didáticas do projeto. Se forem criadas depois da versão completa, serão apresentadas como versões organizadas para cada ciclo, e não como registros históricos de quando o trabalho foi originalmente desenvolvido.
+Cada branch didática possui seu próprio README com instruções para o terminal. Elas foram organizadas por ciclo após o desenvolvimento da versão ampliada; não representam necessariamente a sequência histórica das implementações.
 
-## Como executar
+## Contexto e escopo
 
-Cada versão deve trazer instruções de execução compatíveis com seus arquivos e dependências. As versões didáticas devem indicar o arquivo Python e o comando para executá-lo no terminal. Consulte o README da branch correspondente.
+Na primeira etapa, o escopo ainda não estava claramente delimitado para mim. Desenvolvi recursos além dos conteúdos previstos e, assim que o escopo foi esclarecido pelo professor, reorganizei o projeto nas três branches didáticas.
 
-Para detalhes sobre tecnologias, funcionalidades, instalação e execução da versão ampliada, consulte [`README-PORTFOLIO.md`](README-PORTFOLIO.md).
+A API web, a interface gráfica, o ORM, o banco de dados, as credenciais demonstrativas, os testes e o Docker pertencem à evolução para portfólio. As branches dos ciclos apresentam o recorte da disciplina para avaliação.
 
-## Observação sobre o escopo
-
-A versão ampliada inclui recursos que podem ultrapassar o escopo dos ciclos da disciplina. Por isso, as versões didáticas são mantidas separadas para facilitar a avaliação dos conceitos de cada etapa. Os critérios finais devem seguir as orientações do professor.
+Desenvolvido por **Pedro Lucas Pereira Rolim**, estudante de Sistemas de Informação.

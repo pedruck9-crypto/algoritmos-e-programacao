@@ -1,5 +1,6 @@
 from typing import Optional
 from enum import Enum
+from pathlib import Path as FilePath
 import hashlib
 import secrets
 import string
@@ -36,7 +37,7 @@ app.add_middleware(
 @app.get("/", response_class=HTMLResponse, tags=["Home"])
 def read_root():
     """Retorna a página inicial com interface de usuário."""
-    with open("index.html", "r", encoding="utf-8") as f:
+    with FilePath(__file__).with_name("index.html").open("r", encoding="utf-8") as f:
         return f.read()
 
 
