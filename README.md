@@ -1,32 +1,32 @@
 # CRUD de Filmes e Séries
 
-Projeto acadêmico da disciplina de Algoritmos e Programação. Esta página orienta a avaliação das versões organizadas por ciclo.
+Projeto de estudo em Python desenvolvido a partir da disciplina de **Algoritmos e Programação**, ministrada por **Rondineli Seba Salomão**, na UNDB. O catálogo permite cadastrar, consultar, atualizar e excluir filmes e séries.
 
-## Versões didáticas
+A versão ampliada utiliza FastAPI, HTML/CSS/JavaScript e SQLite com SQLModel. Inclui filtros, geração de mídias fictícias, credenciais demonstrativas, a regra de “Vingadores: Ultimato”, testes e configuração Docker.
 
-- [Ciclo 1 — variáveis, condicionais e laços](https://github.com/pedruck9-crypto/algoritmos-e-programa-o-/tree/ciclo-1--terminal)
-- [Ciclo 2 — estruturas dinâmicas](https://github.com/pedruck9-crypto/algoritmos-e-programa-o-/tree/ciclo-2-estruturas-din%C3%A2micas)
-- [Ciclo 3 — funções](https://github.com/pedruck9-crypto/algoritmos-e-programa-o-/tree/ciclo-3-fun%C3%A7%C3%B5es)
+- [Demonstração publicada](https://algoritmos-e-programa-o.vercel.app/): acompanha a `main`; alterações desta branch dependem de integração e implantação.
+- [Documentação da versão de portfólio](docs/DOCUMENTACAO-PORTFOLIO.md): instalação, execução, API, testes, Docker e limitações.
 
-Cada branch contém seu próprio README com escopo, funcionalidades e instruções para executar no terminal.
+## Organização do repositório
 
-## Versão ampliada de portfólio
+- **CRUD de portfólio:** a aplicação, a interface e as configurações de execução ficam na raiz; os testes ficam em `tests/`.
+- **[AULAS/](AULAS/README.md):** exercícios independentes da disciplina, com os conceitos estudados e instruções para executar.
+- **[docs/](docs/DOCUMENTACAO-PORTFOLIO.md):** documentação detalhada do CRUD; materiais antigos ficam em `docs/historico/`.
 
-A branch `main` também contém uma versão ampliada do projeto. Sua documentação completa está em [DOCUMENTACAO-PORTFOLIO.md](DOCUMENTACAO-PORTFOLIO.md). Ela não substitui as versões didáticas dos ciclos.
+## Versões didáticas da disciplina
 
-### Funcionalidades além do escopo da disciplina
+| Etapa | Branch | Conteúdos |
+|---|---|---|
+| Ciclo 1 | [ciclo-1--terminal](https://github.com/pedruck9-crypto/algoritmos-e-programa-o-/tree/ciclo-1--terminal) | Variáveis, operadores, condicionais e laços. |
+| Ciclo 2 | [ciclo-2-estruturas-dinâmicas](https://github.com/pedruck9-crypto/algoritmos-e-programa-o-/tree/ciclo-2-estruturas-din%C3%A2micas) | Refatoração e estruturas dinâmicas. |
+| Ciclo 3 | [ciclo-3-funções](https://github.com/pedruck9-crypto/algoritmos-e-programa-o-/tree/ciclo-3-fun%C3%A7%C3%B5es) | Organização em funções e aplicação final. |
 
-A versão ampliada foi além dos conteúdos previstos para os três ciclos ao incorporar recursos e tecnologias de uma aplicação web completa, incluindo:
+Cada branch didática possui seu próprio README com instruções para o terminal. Elas foram organizadas por ciclo após o desenvolvimento da versão ampliada; não representam necessariamente a sequência histórica das implementações.
 
-- API web com FastAPI e endpoints HTTP para criar, consultar, atualizar e excluir mídias;
-- interface web em HTML, CSS e JavaScript, com abas, filtros, busca e paginação;
-- persistência em banco SQLite com SQLModel/ORM;
-- validação de dados, tratamento de erros e regras de negócio adicionais;
-- geração de mídias fictícias e credenciais demonstrativas;
-- testes automatizados com Pytest e execução por Docker.
+## Contexto e escopo
 
-Esses recursos envolvem ferramentas e conceitos que não fazem parte do recorte delimitado para a atividade: no ciclo 1, variáveis, operadores, condicionais e laços; no ciclo 2, refatoração e estruturas dinâmicas; e no ciclo 3, organização do código em funções e aplicação final. Por isso, a versão ampliada deve ser entendida como uma evolução independente para portfólio, e não como representação fiel do escopo exigido em cada ciclo.
+Na primeira etapa, o escopo ainda não estava claramente delimitado para mim. Desenvolvi recursos além dos conteúdos previstos e, assim que o escopo foi esclarecido pelo professor, reorganizei o projeto nas três branches didáticas.
 
-### Contexto da ampliação e reorganização
+A API web, a interface gráfica, o ORM, o banco de dados, as credenciais demonstrativas, os testes e o Docker pertencem à evolução para portfólio. As branches dos ciclos apresentam o recorte da disciplina para avaliação.
 
-Na primeira etapa da atividade, o escopo ainda não estava claramente delimitado para mim, e desenvolvi funcionalidades além dos conteúdos previstos. Assim que o escopo foi esclarecido pelo professor, reorganizei o repositório em três branches didáticas, cada uma alinhada ao ciclo correspondente. A versão ampliada foi mantida na `main` como registro da evolução do projeto e material de portfólio; as branches dos ciclos apresentam separadamente o trabalho dentro do escopo da disciplina.
+Desenvolvido por **Pedro Lucas Pereira Rolim**, estudante de Sistemas de Informação.
