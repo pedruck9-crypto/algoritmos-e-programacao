@@ -8,6 +8,9 @@ Aplicação de estudo para gerenciar um catálogo de filmes e séries. O projeto
 - Filtrar por título, gênero e tipo, com `limit` e `offset` na API.
 - Gerar sugestões fictícias de mídias na interface e salvá-las no catálogo.
 - Registrar URL de imagem/poster para cada mídia.
+- Gerar capas SVG por código, com título, gênero, ano, paleta e ilustração geométrica. A mesma mídia mantém uma composição consistente.
+- Exibir uma capa SVG alternativa quando faltar imagem ou houver falha no carregamento, na listagem, busca por ID e prévia do gerador.
+- Usar o [pôster indicado de Vingadores: Ultimato](https://ovicio.com.br/wp-content/uploads/2019/03/20190326-avengers-endgame-cast-poster-730x365.jpg) no cadastro automático. Registros antigos desse título sem imagem recebem esse endereço na inicialização; imagens personalizadas existentes são preservadas.
 - Gerar credenciais demonstrativas: username único, senha aleatória de 12 caracteres e hash `scrypt` com salt. A senha é retornada uma única vez; a listagem não expõe senha nem hash.
 - Criar “Vingadores: Ultimato” após cadastrar uma mídia ou gerar uma credencial, quando houver pelo menos uma mídia e um usuário. A regra consulta se o título já existe antes de inserir.
 
@@ -138,6 +141,14 @@ python -m pytest tests -q
 
 Os testes da API usam um banco temporário por teste, incluindo durante a primeira importação da aplicação. Cobrem a interface servida a partir de outra pasta de trabalho, CRUD, rejeição de tipo inválido, geração/listagem de credenciais e criação de “Vingadores: Ultimato” sem duplicação em chamadas sequenciais. Os testes de configuração verificam o caminho local, a Vercel e a prioridade de `DB_PATH`.
 
+As verificações do gerador e da troca de imagens podem ser executadas com Node.js instalado (necessário apenas para estes testes, não para executar o CRUD):
+
+```text
+node --test tests/test_covers.cjs
+```
+
+Essas verificações cobrem consistência das capas, caracteres especiais, imagens ausentes, preservação de URLs externas e troca para a alternativa sem repetição de erro.
+
 ## Limitações e próximos passos
 
 - Persistência durável para a demonstração hospedada.
@@ -145,6 +156,6 @@ Os testes da API usam um banco temporário por teste, incluindo durante a primei
 - Autenticação e permissões, caso se tornem requisitos.
 - Proteção contra inserções simultâneas da regra de “Vingadores: Ultimato”; a consulta atual não é uma garantia de unicidade em concorrência.
 - Melhorias na paginação da interface, no tratamento de erros e na exibição de conteúdo fornecido pelo usuário.
-- Imagens do gerador dependem de um serviço externo e podem ficar indisponíveis.
+- As capas SVG são composições gráficas geradas por código, não ilustrações de IA. Imagens externas, incluindo o pôster de Vingadores, podem ficar indisponíveis; nesse caso a interface usa a alternativa SVG.
 
 O projeto é uma aplicação de estudo e demonstração de portfólio, em evolução.

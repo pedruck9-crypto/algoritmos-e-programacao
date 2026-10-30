@@ -84,6 +84,7 @@ def test_cria_ultimato_depois_de_credencial_e_midia(client):
     assert len(filmes) == 1
     assert filmes[0]["titulo"] == "Vingadores: Ultimato"
     assert filmes[0]["tipo"] == "filme"
+    assert filmes[0]["imagem_url"] == db.ULTIMATO_IMAGE_URL
 
 
 def test_ultimato_nao_e_duplicado(client):
@@ -99,3 +100,20 @@ def test_interface_independe_da_pasta_de_trabalho(client, monkeypatch, tmp_path)
     resposta = client.get("/")
     assert resposta.status_code == 200
     assert "CRUD de Filmes e Séries" in resposta.text
+
+
+def test_imagem_ultimato_antigo_e_preenchida_sem_duplicar(client):
+    midia_id = db.create_midia({"titulo": "Vingadores: Ultimato", "tipo": "filme"})
+    db.init_db()
+    db.init_db()
+    filmes = client.get("/midias?titulo=Vingadores").json()
+    assert len(filmes) == 1
+    assert filmes[0]["id"] == midia_id
+    assert filmes[0]["imagem_url"] == db.ULTIMATO_IMAGE_URL
+
+
+def test_imagem_personalizada_ultimato_e_preservada(client):
+    url = "https://example.com/capa-escolhida.jpg"
+    midia_id = db.create_midia({"titulo": "Vingadores: Ultimato", "tipo": "filme", "imagem_url": url})
+    db.init_db()
+    assert db.get_midia(midia_id)["imagem_url"] == url

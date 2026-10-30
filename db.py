@@ -16,6 +16,7 @@ def _default_db_path() -> str:
 
 
 DB_PATH = _default_db_path()
+ULTIMATO_IMAGE_URL = "https://ovicio.com.br/wp-content/uploads/2019/03/20190326-avengers-endgame-cast-poster-730x365.jpg"
 
 
 class Midia(SQLModel, table=True):
@@ -56,6 +57,15 @@ def init_db() -> None:
         columns = connection.exec_driver_sql("PRAGMA table_info(midias)").fetchall()
         if not any(column[1] == "imagem_url" for column in columns):
             connection.exec_driver_sql("ALTER TABLE midias ADD COLUMN imagem_url TEXT")
+
+    # Completa a imagem de registros antigos sem substituir uma capa escolhida.
+    with Session(engine) as session:
+        filmes = session.exec(select(Midia).where(Midia.titulo == "Vingadores: Ultimato")).all()
+        for filme in filmes:
+            if not filme.imagem_url:
+                filme.imagem_url = ULTIMATO_IMAGE_URL
+                session.add(filme)
+        session.commit()
 
 
 def username_exists(username: str) -> bool:
@@ -104,6 +114,7 @@ def ensure_filme_ultimato() -> Optional[int]:
             tipo="filme",
             genero="Ação",
             ano=2019,
+            imagem_url=ULTIMATO_IMAGE_URL,
             sinopse="Os heróis restantes enfrentam uma última batalha para reverter o impacto do estalo.",
         )
         session.add(filme)

@@ -209,7 +209,8 @@
 
         .media-image {
             width: 100%;
-            height: 200px;
+            height: auto;
+            aspect-ratio: 2 / 1;
             object-fit: cover;
             border-radius: 5px;
             margin-bottom: 15px;
@@ -217,20 +218,6 @@
             border: 1px solid #ddd;
         }
 
-        .media-image-placeholder {
-            width: 100%;
-            height: 200px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 5px;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 14px;
-            text-align: center;
-            padding: 20px;
-        }
 
         .media-info {
             display: grid;
@@ -608,6 +595,104 @@
 
     <script>
         const API_BASE = "";
+
+        function escaparHTML(valor) {
+            return String(valor ?? '').replace(/[&<>"']/g, c => ({
+                '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+            }[c]));
+        }
+
+        function gerarCapaSVG(midia) {
+            const titulo = String(midia.titulo || 'Sem título').slice(0, 180);
+            const genero = String(midia.genero || 'Cinema').slice(0, 60);
+            const chave = genero.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+            const temas = {
+                'ficcao cientifica': ['#071a37', '#4b38a8', '#8eeaff', 'orbita'],
+                'ficcao': ['#071a37', '#4b38a8', '#8eeaff', 'orbita'],
+                'drama': ['#281830', '#8c4565', '#ffd1a9', 'arcos'],
+                'acao': ['#201322', '#a33127', '#ffc46b', 'raios'],
+                'comedia': ['#20354c', '#b44b39', '#ffda78', 'bolhas'],
+                'terror': ['#101c21', '#243e3c', '#c4e3bc', 'floresta'],
+                'suspense': ['#101d32', '#384a71', '#b1c5f5', 'arcos'],
+                'romance': ['#382143', '#a94b77', '#ffcfdd', 'coracao'],
+                'aventura': ['#0c353c', '#287e72', '#ffe7a4', 'montanhas'],
+                'animacao': ['#252967', '#6658cc', '#ffe78b', 'bolhas'],
+                'fantasia': ['#171739', '#69438b', '#d5b4ff', 'orbita']
+            };
+            const [escuro, claro, destaque, estilo] = temas[chave] || ['#142c43', '#5069a8', '#c9e8ff', 'montanhas'];
+            let hash = 2166136261;
+            for (const c of `${titulo}|${chave}`) hash = Math.imul(hash ^ c.codePointAt(0), 16777619) >>> 0;
+            const rotacao = hash % 31 - 15;
+            const estrelas = Array.from({length: 30}, (_, i) => {
+                const x = 650 + ((hash + i * 83) % 520);
+                const y = 45 + ((hash + i * 47) % 480);
+                return `<circle cx="${x}" cy="${y}" r="${i % 3 + 1}" fill="${destaque}" opacity=".65"/>`;
+            }).join('');
+            const desenhos = {
+                orbita: `<circle cx="920" cy="275" r="145" fill="none" stroke="${destaque}" stroke-width="3"/>
+                    <ellipse cx="920" cy="275" rx="220" ry="65" transform="rotate(-35 920 275)" fill="none" stroke="${destaque}" stroke-width="8"/>
+                    <circle cx="920" cy="275" r="92" fill="url(#planeta)"/><circle cx="1090" cy="120" r="18" fill="${destaque}"/>`,
+                arcos: `<g fill="none" stroke="${destaque}">${[80, 125, 170, 215].map(r => `<circle cx="965" cy="280" r="${r}" stroke-width="${r === 125 ? 18 : 2}" opacity=".5"/>`).join('')}</g>
+                    <rect x="855" y="90" width="52" height="380" fill="${destaque}" opacity=".22" transform="rotate(20 880 280)"/>`,
+                raios: `<g fill="${destaque}" transform="rotate(${rotacao} 920 280)">
+                    <path d="M920 60 L810 295 H915 L850 510 L1080 220 H960 L1040 60 Z" opacity=".9"/>
+                    <path d="M760 40 L620 420 M1150 110 L1010 490" fill="none" stroke="${destaque}" stroke-width="18" opacity=".3"/></g>`,
+                bolhas: `<g fill="${destaque}"><circle cx="870" cy="220" r="145" opacity=".8"/>
+                    <circle cx="1060" cy="360" r="105" opacity=".35"/><circle cx="1090" cy="105" r="42" opacity=".8"/></g>
+                    <path d="M800 245 Q870 320 940 245" fill="none" stroke="${escuro}" stroke-width="12" stroke-linecap="round"/>
+                    <circle cx="825" cy="190" r="10" fill="${escuro}"/><circle cx="915" cy="190" r="10" fill="${escuro}"/>`,
+                floresta: `<circle cx="1000" cy="150" r="92" fill="${destaque}" opacity=".5"/>
+                    <g stroke="${escuro}" stroke-width="24">${[740, 860, 1020, 1140].map((x, i) => `<path d="M${x} 530 V${85 + i * 32} m0 150 l-65 -80 m65 130 l65 -100"/>`).join('')}</g>
+                    <path d="M640 450 Q900 350 1200 440 V600 H640 Z" fill="${escuro}" opacity=".7"/>`,
+                coracao: `<path d="M920 440 L745 255 C640 135 830 30 920 175 C1010 30 1200 135 1095 255 Z" fill="${destaque}" opacity=".8"/>
+                    <path d="M730 450 Q920 330 1140 470" stroke="${destaque}" stroke-width="3" fill="none" opacity=".4"/>`,
+                montanhas: `<circle cx="1020" cy="145" r="80" fill="${destaque}" opacity=".8"/>
+                    <path d="M640 490 L850 130 L1100 490 Z" fill="${escuro}"/><path d="M830 490 L1050 230 L1240 490 Z" fill="${destaque}" opacity=".35"/>
+                    <path d="M800 215 L850 130 L910 220 L855 190 Z" fill="${destaque}" opacity=".85"/>`
+            };
+            const linhas = [];
+            let linha = '';
+            for (const palavra of titulo.split(/\s+/)) {
+                if ((linha + ' ' + palavra).trim().length > 25 && linha) {
+                    linhas.push(linha);
+                    linha = palavra;
+                } else linha = (linha + ' ' + palavra).trim();
+            }
+            if (linha) linhas.push(linha);
+            const texto = linhas.slice(0, 3).map((l, i) => {
+                const fim = i === 2 && linhas.length > 3 ? '…' : '';
+                return `<tspan x="70" dy="${i ? 78 : 0}">${escaparHTML(l.slice(0, 30) + fim)}</tspan>`;
+            }).join('');
+            const tipo = String(midia.tipo || 'filme').toUpperCase();
+            const ano = midia.ano ? ` · ${midia.ano}` : '';
+            const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="600" viewBox="0 0 1200 600">
+                <title>${escaparHTML(titulo)}</title><desc>Capa gráfica de ${escaparHTML(genero)}</desc>
+                <defs><linearGradient id="fundo" x2="1" y2="1"><stop stop-color="${escuro}"/><stop offset="1" stop-color="${claro}"/></linearGradient>
+                <linearGradient id="planeta"><stop stop-color="${destaque}"/><stop offset="1" stop-color="${claro}"/></linearGradient></defs>
+                <rect width="1200" height="600" fill="url(#fundo)"/>${estrelas}${desenhos[estilo]}
+                <rect x="50" y="70" width="8" height="48" rx="4" fill="${destaque}"/>
+                <text x="80" y="104" fill="${destaque}" font-family="Arial, sans-serif" font-size="23" letter-spacing="4">${escaparHTML(genero.toUpperCase())}</text>
+                <text x="70" y="235" fill="#fff" font-family="Arial, sans-serif" font-size="64" font-weight="700">${texto}</text>
+                <path d="M70 485 H570" stroke="${destaque}" opacity=".5"/>
+                <text x="70" y="535" fill="${destaque}" font-family="Arial, sans-serif" font-size="22" letter-spacing="3">${escaparHTML(tipo + ano)}</text>
+                <text x="1130" y="550" text-anchor="end" fill="#fff" opacity=".5" font-family="Arial, sans-serif" font-size="14" letter-spacing="3">CATÁLOGO</text>
+            </svg>`;
+            return `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
+        }
+
+        function aplicarCapaAlternativa(imagem) {
+            imagem.onerror = null; // Evita repetição se o navegador rejeitar a alternativa.
+            imagem.src = imagem.dataset.capaAlternativa;
+        }
+
+        function renderizarCapa(midia) {
+            const alternativa = gerarCapaSVG(midia);
+            const original = String(midia.imagem_url || '').trim();
+            const permitida = /^(https?:\/\/|data:image\/(?:svg\+xml|png|jpeg|webp|gif)[;,])/i.test(original);
+            const src = permitida ? original : alternativa;
+            return `<img src="${escaparHTML(src)}" alt="Capa de ${escaparHTML(midia.titulo || 'mídia')}" class="media-image" data-capa-alternativa="${escaparHTML(alternativa)}" onerror="aplicarCapaAlternativa(this)">`;
+        }
+
         let currentOffset = 0;
         let currentLimit = 100;
 
@@ -652,7 +737,7 @@
                 } else {
                     container.innerHTML = midias.map(m => `
                         <div class="media-card">
-                            ${m.imagem_url ? `<img src="${m.imagem_url}" alt="${m.titulo}" class="media-image" onerror="this.style.display='none'">` : `<div class="media-image-placeholder">🎬 Sem imagem</div>`}
+                            ${renderizarCapa(m)}
                             <div class="media-header">
                                 <span class="media-title">${m.titulo}</span>
                                 <span class="media-badge ${m.tipo === 'série' ? 'serie' : ''}">${m.tipo}</span>
@@ -788,7 +873,7 @@
 
                 document.getElementById('searchContainer').innerHTML = `
                     <div class="media-card">
-                        ${midia.imagem_url ? `<img src="${midia.imagem_url}" alt="${midia.titulo}" class="media-image" onerror="this.style.display='none'">` : `<div class="media-image-placeholder">🎬 Sem imagem</div>`}
+                        ${renderizarCapa(midia)}
                         <div class="media-header">
                             <span class="media-title">${midia.titulo}</span>
                             <span class="media-badge ${midia.tipo === 'série' ? 'serie' : ''}">${midia.tipo}</span>
@@ -980,27 +1065,8 @@
                 return sinopses[Math.floor(Math.random() * sinopses.length)];
             },
 
-            gerarImagem: function(titulo, genero) {
-                // Gera uma URL de imagem usando a API placeholder.com
-                // Usa cores por gênero para criar posters visualmente interessantes
-                const cores = {
-                    "Ficção Científica": "667eea",
-                    "Drama": "e74c3c",
-                    "Ação": "f39c12",
-                    "Comédia": "f1c40f",
-                    "Terror": "2c3e50",
-                    "Suspense": "8e44ad",
-                    "Romance": "e91e63",
-                    "Aventura": "27ae60",
-                    "Animação": "3498db",
-                    "Fantasia": "9b59b6"
-                };
-                
-                const cor = cores[genero] || "667eea";
-                const tituloEnc = encodeURIComponent(titulo.substring(0, 30));
-                
-                // Usando placeholder.com para gerar posters
-                return `https://via.placeholder.com/300x450/${cor}/ffffff?text=${tituloEnc}`;
+            gerarImagem: function(titulo, genero, ano, tipo) {
+                return gerarCapaSVG({titulo, genero, ano, tipo});
             }
         };
 
@@ -1019,7 +1085,7 @@
             const titulo = gerador.gerarTitulo(genero);
             const ano = gerador.gerarAno(periodo);
             const sinopse = gerador.gerarSinopse(genero);
-            const imagem_url = gerador.gerarImagem(titulo, genero);
+            const imagem_url = gerador.gerarImagem(titulo, genero, ano, tipo);
 
             midiaGerada = {
                 titulo,
@@ -1033,7 +1099,7 @@
             // Mostrar preview
             document.getElementById('gerarResults').style.display = 'block';
             document.getElementById('gerarPreview').innerHTML = `
-                <img src="${midiaGerada.imagem_url}" alt="${midiaGerada.titulo}" class="media-image" onerror="this.style.display='none'">
+                ${renderizarCapa(midiaGerada)}
                 <div class="media-header">
                     <span class="media-title">${midiaGerada.titulo}</span>
                     <span class="media-badge ${midiaGerada.tipo === 'série' ? 'serie' : ''}">${midiaGerada.tipo}</span>
