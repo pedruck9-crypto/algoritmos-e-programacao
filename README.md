@@ -33,4 +33,12 @@ Na primeira etapa, o escopo ainda não estava claramente delimitado para mim. De
 
 A API web, a interface gráfica, o ORM, o banco de dados, as credenciais demonstrativas, os testes e o Docker pertencem à evolução para portfólio. As branches dos ciclos apresentam o recorte da disciplina para avaliação.
 
-Desenvolvido por **Pedro Lucas Pereira Rolim**, estudante de Sistemas de Informação com interesse profissional em desenvolvimento front-end.
+Desenvolvido por **Desenvolvido por **Pedro Lucas Pereira Rolim**, estudante de Sistemas de Informação com interesse profissional em desenvolvimento front-end.**, estudante de Sistemas de Informação.
+
+## Licença
+
+O código original deste projeto é disponibilizado sob a [licença MIT](LICENSE), com copyright de 2026 de Pedro Lucas Pereira Rolim. A licença permite uso, cópia, modificação e distribuição, inclusive comercial, desde que sejam preservados os avisos de copyright e licença.
+
+Imagens, pôsteres, marcas e outros materiais de terceiros não estão abrangidos por essa concessão e permanecem sujeitos aos direitos e permissões dos respectivos titulares. Isso inclui o pôster de “Vingadores: Ultimato”: a licença do código não concede autorização para reutilizá-lo. As dependências também mantêm suas próprias licenças.
+
+A tag `v1.0.0` identifica a versão de portfólio com a licença e o link no rodapé adicionados.
