@@ -23,14 +23,14 @@
 
 | Campo | Preencha |
 |---|---|
-| **Nome do estudante** | _escreva aqui_ |
-| **Curso / Módulo** | _ex.: ADS · 2º período_ |
+| **Nome do estudante** | Pedro Lucas Pereira Rolim |
+| **Curso / Módulo** | Sistemas de Informação, 2º período |
 | **Unidade curricular** | Algoritmos e Programação — UnDB 2026.2 |
 | **Professor** | Rondineli Seba Salomão |
-| **App-base do meu CRUD** | _ex.: um app de delivery, um app de músicas…_ |
-| **Link do meu repositório** | _https://github.com/…_ |
-| **Dupla de revisão (Campo 05)** | _nome do colega cujo CRUD vou revisar / que revisa o meu_ |
-| **Função neste ciclo** | _Autor do meu CRUD · Revisor do CRUD de um colega_ |
+| **App-base do meu CRUD** | Catálogo de filmes e séries |
+| **Link do meu repositório** | https://github.com/pedruck9-crypto/algoritmos-e-programacao |
+| **Dupla de revisão (Campo 05)** | Venancio Sampaio (nome anotado no GitHub, a confirmar) |
+| **Função neste ciclo** | Autor do meu CRUD e revisor do CRUD de um colega |
 
 ---
 
@@ -107,9 +107,9 @@ Atualize a cada commit (troque ⬜ por ✅).
 | Grupo | Item | Prazo | Preenchido | Commit |
 |:--:|---|---|:--:|:--:|
 | 1 | Identificação | 16/11 | ⬜ | ⬜ |
-| 1 | Registros dos Ciclos 01, 02, 03 e 04 | 16/11 | ⬜ | ⬜ |
-| 1 | Campo 01 — Instrumento de entrada | 16/11 | ⬜ | ⬜ |
-| 1 | Campo 02 — Aprofundamento | 16/11 | ⬜ | ⬜ |
+| 1 | Registros dos Ciclos 01, 02, 03 e 04 | 16/11 | ✅ | [Histórico](https://github.com/pedruck9-crypto/algoritmos-e-programacao/commits/main/LOGBOOK_AFP_Algoritmos_Programacao_2026-2.md) |
+| 1 | Campo 01 — Instrumento de entrada | 16/11 | ✅ | [Histórico](https://github.com/pedruck9-crypto/algoritmos-e-programacao/commits/main/LOGBOOK_AFP_Algoritmos_Programacao_2026-2.md) |
+| 1 | Campo 02 — Aprofundamento | 16/11 | ✅ | [Histórico](https://github.com/pedruck9-crypto/algoritmos-e-programacao/commits/main/LOGBOOK_AFP_Algoritmos_Programacao_2026-2.md) |
 | 2 | Registros dos Ciclos 05, 06, 07 e 08 | 21/11 | ⬜ | ⬜ |
 | 2 | Checkpoint Conceitual | 21/11 | ⬜ | ⬜ |
 | 2 | Campo 03 — Execução e desvios | 21/11 | ⬜ | ⬜ |
@@ -182,13 +182,14 @@ Cada ciclo tem sua própria seção abaixo, já com o modelo. Se precisar de esp
 </details>
 
 #### Registro do Ciclo 01 — 12/08
-1. **Desafio do ciclo (em 1 frase):** _…_
-2. **O que implementei (commits / arquivos / links):** _…_
-3. **Objeto(s) de conhecimento mobilizado(s):** _…_
-4. **Desvio ou erro encontrado + causa técnica:** _…_
-5. **Decisão de ajuste + fonte:** _…_
-6. **Feedback recebido e o que mudei:** _…_
-7. **Próximo passo:** _…_
+
+1. **Desafio do ciclo (em 1 frase):** Escolher um tema para o meu CRUD e preparar o ambiente para começar a desenvolvê-lo.
+2. **O que implementei (commits / arquivos / links):** Escolhi criar um catálogo de filmes e séries. Usei o GitHub para versionar o código. A primeira versão de terminal ficou registrada no arquivo [`crud_filmes_e_series.py` na branch `ciclo-1--terminal`](https://github.com/pedruck9-crypto/algoritmos-e-programacao/blob/ciclo-1--terminal/crud_filmes_e_series.py).
+3. **Objeto(s) de conhecimento mobilizado(s):** Organização do projeto, definição dos dados do catálogo e uso de ferramentas de desenvolvimento. Antes da disciplina, meu conhecimento de Python era básico. Fui aprendendo sobre Python, GitHub e VS Code ao longo do semestre.
+4. **Desvio ou erro encontrado + causa técnica:** Minha dificuldade inicial foi transformar o tema em algo que eu pudesse implementar. Eu ainda precisava definir quais informações representariam cada mídia. Durante a preparação do ambiente, não encontrei problemas de instalação ou configuração.
+5. **Decisão de ajuste + fonte:** Escolhi filmes e séries porque já gostava do assunto. Na versão de terminal, organizei cada mídia em título, tipo, gênero, ano e sinopse. A escolha levou em conta a orientação oral do professor Rondineli Seba Salomão de evitar o tema de cadastro de biblioteca.
+6. **Feedback recebido e o que mudei:** Considerei a orientação do professor sobre a escolha do tema e optei por um catálogo de filmes e séries.
+7. **Próximo passo:** Definir quais dados o usuário vai digitar e experimentar como recebê-los e exibi-los em Python.
 
 ## 🟢 CICLO 02 — 19/08 — Variáveis, tipos de dados e entrada/saída
 
@@ -213,19 +214,20 @@ Cada ciclo tem sua própria seção abaixo, já com o modelo. Se precisar de esp
 *Grupo 1 | Prazo segunda 16/11, 23h59 | SEM CONSULTA*
 
 **1a. Objetos de conhecimento identificados (mínimo 3, com vocabulário técnico):**
-1. _…_
-2. _…_
-3. _…_
-4. _…_ *(opcional)*
+
+1. Estruturas condicionais (`if`, `elif` e `else`) para decidir o que fazer com a opção digitada.
+2. Laço `while` para permitir ao usuário executar as operações pelo terminal.
+3. Listas para guardar os registros do catálogo.
 
 **1b. Lacunas — o que não sei e preciso descobrir (mínimo 3, com precisão técnica):**
-1. _…_
-2. _…_
-3. _…_
+
+1. Como usar `else` para exibir uma mensagem quando a opção digitada não existe no menu?
+2. Por que os dados guardados em uma lista se perdem ao fechar o programa?
+3. Como evitar mídias duplicadas no catálogo?
 
 **1c. Hipótese inicial em até 5 linhas — com lógica da área de formação:**
 
-> _…_
+> Minha suspeita inicial era que uma opção fora do menu pudesse exibir uma mensagem de erro e encerrar o menu indevidamente. Suspeitava que a lógica das condições pudesse encaminhar essa entrada para o mesmo bloco da opção `0`, acionando o `break`.
 
 ### 🧩 CAMPO 02 — Aprofundamento pós-aula
 *AV Qualis — Grupo 1 | Segunda 16/11, 23h59*
@@ -234,30 +236,30 @@ Cada ciclo tem sua própria seção abaixo, já com o modelo. Se precisar de esp
 
 **2a. Aprofundamento dos objetos de conhecimento (mínimo 2 referências com síntese da contribuição para a solução):**
 
-- **Referência 1:** _…_ — **Contribuição:** _…_
-- **Referência 2:** _…_ — **Contribuição:** _…_
+- **Referência 1:** [Mais sobre listas](https://docs.python.org/pt-br/3/tutorial/datastructures.html#more-on-lists). **Contribuição:** A seção sobre `append()` me ajudou a entender como `midias.append(midia)` acrescenta uma mídia ao catálogo e mantém os registros anteriores. Pratiquei essa operação no exercício com ingredientes de um sanduíche com apoio do GitHub Copilot.
+- **Referência 2:** [Salvando dados estruturados com JSON](https://docs.python.org/pt-br/3/tutorial/inputoutput.html#saving-structured-data-with-json). **Contribuição:** Os exemplos de `json.dump()` e `json.load()` me mostraram como gravar uma lista em um arquivo e recuperá-la em outra execução.
 
 **2b. Hipótese revisada — o que mudou em relação ao Campo 01 e por quê:**
 
-> _…_
+> No Campo 01, eu tinha dúvida sobre por que os registros do catálogo desapareciam ao fechar o programa. A pesquisa me ajudou a entender que a versão acadêmica de terminal guarda as mídias em uma lista na memória e inicia uma lista vazia a cada execução. Estudei como salvar e carregar os registros em um arquivo JSON, mas mantive os dados em memória para respeitar o escopo dessa versão.
 
 **2c. Dimensionamento inicial de recursos (recurso, quantidade estimada, justificativa técnica — mínimo 3 itens):**
 
 | RECURSO / MATERIAL / INSUMO | QUANTIDADE ESTIMADA | JUSTIFICATIVA TÉCNICA |
 |---|---|---|
-| _…_ | _…_ | _…_ |
-| _…_ | _…_ | _…_ |
-| _…_ | _…_ | _…_ |
-| _…_ | _…_ | _…_ |
+| Registros de exemplo | 2 mídias (1 filme e 1 série) | Verificar se o segundo cadastro é acrescentado à lista e se o primeiro continua aparecendo na listagem. |
+| Casos de teste no terminal | 3 casos | Conferir a listagem de duas mídias, a rejeição de um título com apenas espaços e o que acontece com os registros ao fechar e reabrir o programa. |
+| Tempo para executar e registrar os testes | 30 minutos | Estimei cerca de 10 minutos por caso para preparar a entrada, executar o teste e anotar o comportamento observado. |
 
 #### Registro do Ciclo 02 — 19/08
-1. **Desafio do ciclo (em 1 frase):** _…_
-2. **O que implementei (commits / arquivos / links):** _…_
-3. **Objeto(s) de conhecimento mobilizado(s):** _…_
-4. **Desvio ou erro encontrado + causa técnica:** _…_
-5. **Decisão de ajuste + fonte:** _…_
-6. **Feedback recebido e o que mudei:** _…_
-7. **Próximo passo:** _…_
+
+1. **Desafio do ciclo (em 1 frase):** Ler os dados de um filme ou série pelo terminal e guardá-los em variáveis.
+2. **O que implementei (commits / arquivos / links):** Usei `input()` para receber título, tipo, gênero, ano e sinopse e `print()` para exibir mensagens. A evidência está no arquivo [`crud_filmes_e_series.py` na branch `ciclo-1--terminal`](https://github.com/pedruck9-crypto/algoritmos-e-programacao/blob/ciclo-1--terminal/crud_filmes_e_series.py).
+3. **Objeto(s) de conhecimento mobilizado(s):** Variáveis, entrada e saída pelo terminal, tipo `str` para os dados digitados e tipo `bool` para a variável `cadastrada`, que indica se já existe uma mídia cadastrada.
+4. **Desvio ou erro encontrado + causa técnica:** Mesmo quando digito um ano como `2024`, o valor fica como texto porque `input()` devolve uma `str`. O programa consegue exibir o valor, mas precisaria convertê-lo antes de fazer uma comparação numérica.
+5. **Decisão de ajuste + fonte:** Mantive o ano como texto nessa versão porque o programa apenas armazena e exibe o valor. Consultei a [documentação do Python sobre `input()`](https://docs.python.org/pt-br/3/builtins/functions.html#input) para confirmar o tipo devolvido pela função.
+6. **Feedback recebido e o que mudei:** Não recebi feedback específico sobre este ciclo.
+7. **Próximo passo:** Testar o cadastro com um ano válido e outro preenchido com letras para verificar se o campo precisa de validação.
 
 ## 🟢 CICLO 03 — 26/08 — Operadores, fluxogramas e paradigmas
 
@@ -270,13 +272,14 @@ Cada ciclo tem sua própria seção abaixo, já com o modelo. Se precisar de esp
 </details>
 
 #### Registro do Ciclo 03 — 26/08
-1. **Desafio do ciclo (em 1 frase):** _…_
-2. **O que implementei (commits / arquivos / links):** _…_
-3. **Objeto(s) de conhecimento mobilizado(s):** _…_
-4. **Desvio ou erro encontrado + causa técnica:** _…_
-5. **Decisão de ajuste + fonte:** _…_
-6. **Feedback recebido e o que mudei:** _…_
-7. **Próximo passo:** _…_
+
+1. **Desafio do ciclo (em 1 frase):** Usar operadores para interpretar a opção digitada no menu e encaminhar o usuário à operação correspondente.
+2. **O que implementei (commits / arquivos / links):** Guardei a entrada na variável `opcao`. A expressão `opcao == "1"` verifica se a pessoa escolheu cadastrar uma mídia. Após um cadastro válido, `cadastrada = True` atualiza o estado do catálogo. Antes de escrever o menu, imaginei mentalmente a ordem dessas decisões. O código está em [`crud_filmes_e_series.py` na branch `ciclo-1--terminal`](https://github.com/pedruck9-crypto/algoritmos-e-programacao/blob/ciclo-1--terminal/crud_filmes_e_series.py).
+3. **Objeto(s) de conhecimento mobilizado(s):** Comparação de igualdade (`==`), atribuição (`=`), tipo `str` para a opção digitada e tipo `bool` para o estado do cadastro.
+4. **Desvio ou erro encontrado + causa técnica:** Não identifiquei um erro específico nesta etapa. Um cuidado foi comparar a opção com `"1"`, pois `input()` devolve texto. Se eu comparasse com o inteiro `1`, a condição seria falsa mesmo que o usuário tivesse digitado 1.
+5. **Decisão de ajuste + fonte:** Usei `opcao == "1"` porque o valor digitado chega como texto. Quando a comparação dá `True`, o programa segue para o bloco de cadastro. Consultei [Comparações de valor](https://docs.python.org/pt-br/3/reference/expressions.html#value-comparisons) e a [documentação do Python sobre `input()`](https://docs.python.org/pt-br/3/builtins/functions.html#input).
+6. **Feedback recebido e o que mudei:** Não recebi feedback específico para esta etapa.
+7. **Próximo passo:** Testar uma opção válida e uma opção fora do menu para conferir o caminho seguido em cada caso.
 
 ## 🟢 CICLO 04 — 02/09 — Estruturas condicionais: `if`, `elif`, `else`
 
@@ -291,13 +294,16 @@ Cada ciclo tem sua própria seção abaixo, já com o modelo. Se precisar de esp
 </details>
 
 #### Registro do Ciclo 04 — 02/09
-1. **Desafio do ciclo (em 1 frase):** _…_
-2. **O que implementei (commits / arquivos / links):** _…_
-3. **Objeto(s) de conhecimento mobilizado(s):** _…_
-4. **Desvio ou erro encontrado + causa técnica:** _…_
-5. **Decisão de ajuste + fonte:** _…_
-6. **Feedback recebido e o que mudei:** _…_
-7. **Próximo passo:** _…_
+
+*Registro retrospectivo em 15/11/2026.*
+
+1. **Desafio do ciclo (em 1 frase):** Usar condicionais para escolher uma operação no menu e aplicar a regra de que toda mídia cadastrada precisa ter título.
+2. **O que implementei (commits / arquivos / links):** Usei `if` e `elif` para encaminhar a opção digitada à operação correspondente. No cadastro, o `if` bloqueia o título vazio e o `else` permite guardar a mídia quando o título passa nessa validação. A evidência está em [`crud_filmes_e_series.py` na branch `ciclo-1--terminal`](https://github.com/pedruck9-crypto/algoritmos-e-programacao/blob/ciclo-1--terminal/crud_filmes_e_series.py).
+3. **Objeto(s) de conhecimento mobilizado(s):** Estruturas condicionais (`if`, `elif`, `else`), comparação de igualdade (`==`) e validação de entrada.
+4. **Desvio ou erro encontrado + causa técnica:** Um título com apenas espaços é diferente de uma string vazia até que os espaços sejam removidos. Ao testar essa entrada, o programa exibiu “O título não pode ficar vazio.” e impediu o cadastro. Esse caso estava previsto no item 2c.
+5. **Decisão de ajuste + fonte:** Usei `.strip()` antes de comparar o título com `""`. Assim, uma entrada formada só por espaços se torna vazia e aciona a validação. A [documentação do Python sobre `str.strip()`](https://docs.python.org/pt-br/3/builtins/stdtypes.html#str.strip) explica como a remoção de espaços funciona.
+6. **Feedback recebido e o que mudei:** Não recebi feedback específico sobre as condicionais do meu CRUD nesta etapa.
+7. **Próximo passo:** Testar uma opção fora do menu e verificar se o programa informa que a opção é inválida e mantém o menu aberto.
 
 ---
 
