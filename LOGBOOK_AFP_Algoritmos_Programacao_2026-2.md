@@ -29,7 +29,7 @@
 | **Professor** | Rondineli Seba Salomão |
 | **App-base do meu CRUD** | Catálogo de filmes e séries |
 | **Link do meu repositório** | https://github.com/pedruck9-crypto/algoritmos-e-programacao |
-| **Dupla de revisão (Campo 05)** | Venancio Sampaio (nome anotado no GitHub, a confirmar) |
+| **Dupla de revisão (Campo 05)** | Pedro Henrique (nome no GitHub: Venancio Sampaio) |
 | **Função neste ciclo** | Autor do meu CRUD e revisor do CRUD de um colega |
 
 ---
@@ -106,7 +106,7 @@ Atualize a cada commit (troque ⬜ por ✅).
 
 | Grupo | Item | Prazo | Preenchido | Commit |
 |:--:|---|---|:--:|:--:|
-| 1 | Identificação | 16/11 | ⬜ | ⬜ |
+| 1 | Identificação | 16/11 | ✅ | [Histórico](https://github.com/pedruck9-crypto/algoritmos-e-programacao/commits/main/LOGBOOK_AFP_Algoritmos_Programacao_2026-2.md) |
 | 1 | Registros dos Ciclos 01, 02, 03 e 04 | 16/11 | ✅ | [Histórico](https://github.com/pedruck9-crypto/algoritmos-e-programacao/commits/main/LOGBOOK_AFP_Algoritmos_Programacao_2026-2.md) |
 | 1 | Campo 01 — Instrumento de entrada | 16/11 | ✅ | [Histórico](https://github.com/pedruck9-crypto/algoritmos-e-programacao/commits/main/LOGBOOK_AFP_Algoritmos_Programacao_2026-2.md) |
 | 1 | Campo 02 — Aprofundamento | 16/11 | ✅ | [Histórico](https://github.com/pedruck9-crypto/algoritmos-e-programacao/commits/main/LOGBOOK_AFP_Algoritmos_Programacao_2026-2.md) |
