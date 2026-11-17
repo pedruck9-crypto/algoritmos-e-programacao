@@ -396,19 +396,25 @@ Cada ciclo tem sua própria seção abaixo, já com o modelo. Se precisar de esp
 *AV Qualis — Grupo 2 | Sábado 21/11, 23h59*
 
 **3a. O que descobri que mudou minha compreensão do problema (mínimo 2 achados, com objeto de conhecimento associado):**
-1. _…_ — *Objeto de conhecimento:* _…_
-2. _…_ — *Objeto de conhecimento:* _…_
-3. _…_ *(opcional)*
+
+*Rascunho para a defesa, registrado em 17/11/2026.*
+
+1. **Validação de entrada e condicionais.** Testei o cadastro com um título formado apenas por espaços. O método .strip() transformou a entrada em uma string vazia, e a condição bloqueou o cadastro. Entendi que preciso verificar o texto depois de remover os espaços das pontas.
+2. **Listas e persistência de dados.** Ao fechar e reabrir a versão de terminal, observei que o catálogo estava vazio. Entendi que append() acrescenta mídias à lista durante a execução. Ao reiniciar, o programa cria uma lista vazia porque essa versão guarda os registros apenas em memória.
 
 **3b. Desvio em relação ao Campo 02 (ao menos 1 — causa técnica):**
-- **Desvio:** _…_
-- **Causa técnica:** _…_
+
+- **Execução do planejamento:** executei os três testes previstos no Campo 02. Conferi a listagem de duas mídias, a rejeição de um título formado apenas por espaços e o catálogo após fechar e reabrir o programa. Os testes seguiram o planejamento.
+- **Desvio anterior de escopo:** o professor havia permitido front-end, e criei uma interface web para o catálogo. Acrescentei FastAPI para disponibilizar operações por uma API, SQLite para persistir os cadastros e um ORM para acessar o banco. Esses recursos ampliaram o projeto além dos conteúdos previstos para a versão acadêmica.
+- **Causa e ajuste:** minha interpretação inicial do escopo levou à adoção dessas tecnologias. Quando compreendi a delimitação, reorganizei o código em branches com versões de terminal para demonstrar variáveis, condicionais, laços, estruturas dinâmicas e funções. Mantive a versão web ampliada como evolução para o portfólio.
+- **Pendência:** confirmar com o professor se esse desvio anterior pode atender ao item 3b, que pede um desvio em relação ao Campo 02.
 
 **3c. Decisão de ajuste (ao menos 1) com justificativa e fonte:**
-- **Decisão:** _…_
-- **Fonte:** _…_
 
-**Objeto de conhecimento mobilizado nesta decisão:** _…_
+- **Decisão:** mantive .strip() antes da comparação do título com "". Assim, a entrada vazia ou formada apenas por espaços aciona a condição que bloqueia o cadastro. No teste, observei a mensagem de título obrigatório e a rejeição do cadastro.
+- **Fonte:** [Documentação do Python sobre str.strip()](https://docs.python.org/pt-br/3/builtins/stdtypes.html#str.strip).
+
+**Objeto de conhecimento mobilizado nesta decisão:** tratamento de strings, validação de entrada e estruturas condicionais.
 
 ### 🧩 CAMPO 04 — Interação com IA
 *AV Qualis — Grupo 2 | Sábado 21/11, 23h59 | OBRIGATÓRIO*
@@ -417,21 +423,27 @@ Cada ciclo tem sua própria seção abaixo, já com o modelo. Se precisar de esp
 
 **4a. Ferramenta:** _…_  **Data:** _DD/MM/AAAA_
 
+*Rascunho para a defesa, registrado em 17/11/2026.*
+
+**Ferramenta:** Codex. **Data da interação original:** a confirmar no histórico da conversa. **Data do registro:** 17/11/2026.
+
 **4b. Pergunta formulada (transcrita integralmente):**
 
-> _…_
+> no item 4 do ciclo 04 como poderia ficar o texto
 
 **4c. Resposta da IA (resumida em parágrafo):**
 
-> _…_
+> O Codex sugeriu registrar o teste com um título formado apenas por espaços. Explicou que .strip() transforma essa entrada em uma string vazia e que a condição do cadastro detecta esse valor e impede o registro. Também orientou a apresentar o resultado como observado depois de executar o teste.
 
 **4d. O que aceitei — com referência ao objeto de conhecimento do componente:**
 
-> _…_
+> Aceitei a sugestão de explicar a causa técnica junto com o resultado. Conferi que .strip() trata a entrada e que a estrutura condicional bloqueia o cadastro. Os conceitos envolvidos são tratamento de strings, validação de entrada e condicionais.
 
 **4e. O que questionei ou descartei — com argumento técnico ou fonte:**
 
-> _…_
+> Questionei se a explicação do Codex correspondia ao comportamento do meu CRUD. Conferi o código e testei um título formado apenas por espaços. O programa exibiu “O título não pode ficar vazio.” e impediu o cadastro. Por isso, aceitei a explicação após verificá-la. Nessa interação, não descartei nenhuma sugestão.
+
+**Referência para a verificação:** [Documentação do Python sobre str.strip()](https://docs.python.org/pt-br/3/builtins/stdtypes.html#str.strip).
 
 ## 🟠 CICLO 05 — 09/09 — Condicionais aninhadas e operadores lógicos
 
