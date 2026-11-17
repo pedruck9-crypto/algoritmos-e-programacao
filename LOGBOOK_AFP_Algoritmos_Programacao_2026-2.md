@@ -681,13 +681,26 @@ Cada ciclo tem sua própria seção abaixo, já com o modelo. Se precisar de esp
 
 **6c. Pergunta que a banca pode fazer — com resposta fundamentada (mínimo 5 linhas):**
 
-- **Pergunta:** _…_
+*Rascunho para a defesa, registrado em 17/11/2026.*
+
+- **Pergunta:** por que os filmes e séries somem ao fechar o CRUD de terminal e como você adaptaria essa versão para recuperar os cadastros na próxima execução?
 - **Resposta:**
 
-> _…_
+> Na versão de terminal que testei, os cadastros ficam na lista midias, que começa vazia quando o programa é iniciado.
+>
+> Cada cadastro usa midias.append(midia) para acrescentar um registro à lista em memória.
+>
+> Ao fechar e reabrir o programa, observei que o catálogo estava vazio, pois essa versão não grava os registros em um arquivo.
+>
+> Se a persistência fizesse parte do escopo, eu usaria json.dump() para gravar a lista após cadastrar, atualizar ou excluir e json.load() para recuperá-la ao iniciar.
+>
+> Na primeira execução, se o arquivo ainda não existisse, o catálogo começaria vazio.
+>
+> Para verificar a solução, eu cadastraria duas mídias, fecharia o programa e conferiria se os dois registros aparecem depois de reabri-lo.
 
-**Objeto de conhecimento mobilizado:** _…_
-**Fonte:** _…_
+**Objeto de conhecimento mobilizado:** listas, armazenamento em memória, leitura e escrita de arquivos e persistência de dados.
+
+**Fonte:** [Tutorial do Python sobre JSON](https://docs.python.org/pt-br/3/tutorial/inputoutput.html#saving-structured-data-with-json).
 
 ## 🔵 CICLO 12 — 11/11 — Refatoração e qualidade de código
 
@@ -765,15 +778,17 @@ Cada ciclo tem sua própria seção abaixo, já com o modelo. Se precisar de esp
 
 **7a. O que eu pensava no início do ciclo (com base no Campo 01 — registrar a hipótese inicial e os objetos de conhecimento que achava conhecer):**
 
-> _…_
+*Rascunho para a defesa, registrado em 17/11/2026.*
+
+> No início, meu conhecimento de Python era básico. Eu tinha dúvidas sobre como usar condicionais para tratar uma opção inválida no menu, por que os dados da lista desapareciam ao fechar o programa e como evitar mídias duplicadas. Minha hipótese inicial era que uma opção inválida pudesse seguir o mesmo caminho da opção 0 e acionar o break, encerrando o menu antes da hora.
 
 **7b. O que aprendi — conceitos, princípios ou relações técnicas que não dominava no início e que agora consigo explicar com precisão (mínimo 3 objetos de conhecimento):**
 
 | OBJETO DE CONHECIMENTO | O QUE EU NÃO DOMINAVA | O QUE APRENDI E CONSIGO DEMONSTRAR | EVIDÊNCIA (campo do Logbook onde aparece) |
 |---|---|---|---|
-| _…_ | _…_ | _…_ | _…_ |
-| _…_ | _…_ | _…_ | _…_ |
-| _…_ | _…_ | _…_ | _…_ |
+| Condicionais e comparação de igualdade | Como o menu decide qual operação executar a partir da entrada. | Consigo explicar que input() devolve texto e que opcao == "1" verifica se o usuário escolheu o cadastro. | Registro do Ciclo 03, trecho do menu da versão de terminal. |
+| Validação de entrada | Como uma condição aplica a regra de título obrigatório. | Consigo mostrar que .strip() transforma uma entrada só com espaços em "" e que a condição impede o cadastro. | Registro do Ciclo 04 e Campo 03a, teste do título com espaços. |
+| Listas e persistência de dados | Por que as mídias desaparecem quando fecho o programa. | Consigo explicar que append() acrescenta registros à lista em memória e que a versão de terminal testada inicia um catálogo vazio ao reabrir. Estudei JSON como possibilidade de persistência. | Campo 02, itens 2a e 2b, e teste de reabertura no Campo 03a. |
 
 **7c. Conceitos que precisei corrigir ao longo do ciclo — onde eu estava equivocado e o que o corrigiu (Fechamento Teórico, pesquisa, Peer Review, arguição):**
 
