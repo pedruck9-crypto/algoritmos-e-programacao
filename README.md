@@ -11,6 +11,10 @@ A versão ampliada utiliza FastAPI, HTML/CSS/JavaScript e SQLite com SQLModel. I
 
 Conheça os [aprendizados, decisões de escopo e meu interesse em front-end](docs/DOCUMENTACAO-PORTFOLIO.md#minha-decisão-de-criar-o-front-end).
 
+## Defesa técnica
+
+[Baixar a apresentação em PowerPoint](docs/apresentacoes/defesa-crud-2026-11-18.pptx), com seis slides para a defesa de 18/11/2026.
+
 ## Organização do repositório
 
 - **CRUD de portfólio:** a aplicação, a interface e as configurações de execução ficam na raiz; os testes ficam em `tests/`.
