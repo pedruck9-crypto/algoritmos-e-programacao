@@ -1,5 +1,28 @@
+import json
+
+
+ARQUIVO_DADOS = "midias.json"
 midias = []
 proximo_id = 1
+
+
+def salvar_midias():
+    with open(ARQUIVO_DADOS, "w", encoding="utf-8") as arquivo:
+        json.dump(midias, arquivo, ensure_ascii=False, indent=4)
+
+
+def carregar_midias():
+    global midias, proximo_id
+    try:
+        with open(ARQUIVO_DADOS, "r", encoding="utf-8") as arquivo:
+            midias = json.load(arquivo)
+    except FileNotFoundError:
+        midias = []
+
+    if midias:
+        proximo_id = max(midia["id"] for midia in midias) + 1
+    else:
+        proximo_id = 1
 
 
 def cadastrar_midia():
@@ -17,6 +40,7 @@ def cadastrar_midia():
         "sinopse": input("Sinopse: ").strip(),
     }
     midias.append(midia)
+    salvar_midias()
     print("Mídia cadastrada com identificador", proximo_id)
     proximo_id += 1
 
@@ -58,6 +82,7 @@ def atualizar_midia():
         if novo_valor != "":
             midia[campos[indice]] = novo_valor
         indice += 1
+    salvar_midias()
     print("Mídia atualizada.")
 
 
@@ -71,12 +96,14 @@ def excluir_midia():
         print("Mídia não encontrada.")
         return
     midias.remove(midia)
+    salvar_midias()
     print("Mídia excluída.")
 
 
 def executar_menu():
+    carregar_midias()
     while True:
-        print("\n=== CRUD de Filmes e Séries — Ciclo 3 ===")
+        print("\n=== CRUD de Filmes e Séries — Ciclo 3.1 ===")
         print("1 - Cadastrar mídia")
         print("2 - Listar mídias")
         print("3 - Buscar mídia")
