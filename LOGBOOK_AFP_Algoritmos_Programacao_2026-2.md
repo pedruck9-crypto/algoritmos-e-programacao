@@ -110,10 +110,10 @@ Atualize a cada commit (troque ⬜ por ✅).
 | 1 | Registros dos Ciclos 01, 02, 03 e 04 | 16/11 | ✅ | [Histórico](https://github.com/pedruck9-crypto/algoritmos-e-programacao/commits/main/LOGBOOK_AFP_Algoritmos_Programacao_2026-2.md) |
 | 1 | Campo 01 — Instrumento de entrada | 16/11 | ✅ | [Histórico](https://github.com/pedruck9-crypto/algoritmos-e-programacao/commits/main/LOGBOOK_AFP_Algoritmos_Programacao_2026-2.md) |
 | 1 | Campo 02 — Aprofundamento | 16/11 | ✅ | [Histórico](https://github.com/pedruck9-crypto/algoritmos-e-programacao/commits/main/LOGBOOK_AFP_Algoritmos_Programacao_2026-2.md) |
-| 2 | Registros dos Ciclos 05, 06, 07 e 08 | 21/11 | ⬜ | ⬜ |
-| 2 | Checkpoint Conceitual | 21/11 | ⬜ | ⬜ |
-| 2 | Campo 03 — Execução e desvios | 21/11 | ⬜ | ⬜ |
-| 2 | Campo 04 — Interação com IA | 21/11 | ⬜ | ⬜ |
+| 2 | Registros dos Ciclos 05, 06, 07 e 08 | 21/11 | ✅ | Registrados em 21/11/2026; devolutiva da P1 pendente |
+| 2 | Checkpoint Conceitual | 21/11 | Pendente de orientação | Pendência registrada em 21/11/2026 |
+| 2 | Campo 03 — Execução e desvios | 21/11 | Rascunho | Confirmar adequação do item 3b |
+| 2 | Campo 04 — Interação com IA | 21/11 | ✅ | Interação em 16/11/2026, registro em 17/11/2026 |
 | 3 | Registros dos Ciclos 09, 10, 11 e 12 | 26/11 | ⬜ | ⬜ |
 | 3 | Campo 05 — Revisão por pares nº 1 e nº 2 | 26/11 | ⬜ | ⬜ |
 | 3 | Campo 06 — Próximos passos | 26/11 | ⬜ | ⬜ |
@@ -349,6 +349,8 @@ Cada ciclo tem sua própria seção abaixo, já com o modelo. Se precisar de esp
 ### 🧩 CHECKPOINT CONCEITUAL INDIVIDUAL
 *20 minutos · sem consulta a qualquer fonte, material ou colega · conforme orientação do professor.*
 
+**Pendência registrada em 21/11/2026:** recebi no grupo da turma o esclarecimento de que “3a = questão 1” se refere ao Campo 03. Ainda não recebi o enunciado das três questões nem a confirmação sobre a aplicação do checkpoint. Solicitei esclarecimento ao professor e aguardo orientação para realizá-lo em 20 minutos, sem consulta.
+
 | | |
 |---|---|
 | **Nome do estudante** | _…_ |
@@ -421,11 +423,11 @@ Cada ciclo tem sua própria seção abaixo, já com o modelo. Se precisar de esp
 
 > **Obrigatório e avaliado. Print sem análise crítica = devolução imediata. Reproduzir a IA sem questionamento = reprovado.**
 
-**4a. Ferramenta:** _…_  **Data:** _DD/MM/AAAA_
+**4a. Ferramenta:** Codex. **Data da interação original:** 16/11/2026.
 
 *Rascunho para a defesa, registrado em 17/11/2026.*
 
-**Ferramenta:** Codex. **Data da interação original:** a confirmar no histórico da conversa. **Data do registro:** 17/11/2026.
+**Ferramenta:** Codex. **Data da interação original:** 16/11/2026. **Data do registro:** 17/11/2026.
 
 **4b. Pergunta formulada (transcrita integralmente):**
 
@@ -458,13 +460,16 @@ Cada ciclo tem sua própria seção abaixo, já com o modelo. Se precisar de esp
 </details>
 
 #### Registro do Ciclo 05 — 09/09
-1. **Desafio do ciclo (em 1 frase):** _…_
-2. **O que implementei (commits / arquivos / links):** _…_
-3. **Objeto(s) de conhecimento mobilizado(s):** _…_
-4. **Desvio ou erro encontrado + causa técnica:** _…_
-5. **Decisão de ajuste + fonte:** _…_
-6. **Feedback recebido e o que mudei:** _…_
-7. **Próximo passo:** _…_
+
+*Registro retrospectivo em 21/11/2026.*
+
+1. **Desafio do ciclo (em 1 frase):** Organizar as verificações do cadastro para impedir que uma nova mídia sobrescreva a existente ou seja cadastrada sem título.
+2. **O que implementei (commits / arquivos / links):** Na primeira versão de terminal, coloquei verificações dentro da opção de cadastro. O programa verifica a variável cadastrada. Se já existe uma mídia, informa que é necessário excluí-la antes de cadastrar outra. Caso contrário, recebe o título e verifica se ele ficou vazio após .strip(). Evidência: [código da primeira versão](https://github.com/pedruck9-crypto/algoritmos-e-programacao/blob/ciclo-1--terminal/crud_filmes_e_series.py).
+3. **Objeto(s) de conhecimento mobilizado(s):** Condicionais aninhadas, valores booleanos, comparação de igualdade e validação de entrada. Usei o aninhamento porque a verificação do título só precisa acontecer quando o usuário escolhe cadastrar e ainda não existe uma mídia.
+4. **Desvio ou erro encontrado + causa técnica:** Testei cadastrar uma segunda mídia sem excluir a primeira. **Entrada:** opção 1 com cadastrada igual a True. **Resultado esperado:** bloquear o segundo cadastro e preservar o primeiro. **Resultado obtido:** o programa exibiu “Já existe uma mídia cadastrada. Exclua-a antes de cadastrar outra.” A verificação do estado do cadastro impediu a substituição dos dados.
+5. **Decisão de ajuste + fonte:** Organizei as verificações em condicionais aninhadas para bloquear um novo cadastro antes de receber dados que substituiriam os existentes. Consultei [Instruções if](https://docs.python.org/pt-br/3/tutorial/controlflow.html#if-statements) para compreender o controle de execução.
+6. **Feedback recebido e o que mudei:** Não recebi feedback específico nesta etapa.
+7. **Próximo passo:** Testar o cadastro com o catálogo vazio e após excluir uma mídia.
 
 ## 🟠 CICLO 06 — 30/09 — Devolutiva da P1 + repetição: `for`, `while`, `break`, `continue`
 
@@ -478,13 +483,16 @@ Cada ciclo tem sua própria seção abaixo, já com o modelo. Se precisar de esp
 </details>
 
 #### Registro do Ciclo 06 — 30/09
-1. **Desafio do ciclo (em 1 frase):** _…_
-2. **O que implementei (commits / arquivos / links):** _…_
-3. **Objeto(s) de conhecimento mobilizado(s):** _…_
-4. **Desvio ou erro encontrado + causa técnica:** _…_
-5. **Decisão de ajuste + fonte:** _…_
-6. **Feedback recebido (inclui devolutiva da P1) e o que mudei:** _…_
-7. **Próximo passo:** _…_
+
+*Registro retrospectivo em 21/11/2026.*
+
+1. **Desafio do ciclo (em 1 frase):** Manter o menu disponível para várias operações e encerrar o laço quando o usuário escolher sair.
+2. **O que implementei (commits / arquivos / links):** Usei while True para repetir a exibição do menu e a leitura da opção. Depois de uma operação, o programa volta ao início do laço. Na opção de saída, usei break. Evidência: [código da primeira versão](https://github.com/pedruck9-crypto/algoritmos-e-programacao/blob/ciclo-1--terminal/crud_filmes_e_series.py).
+3. **Objeto(s) de conhecimento mobilizado(s):** Laço while, condição booleana, interrupção com break e controle do fluxo de execução.
+4. **Desvio ou erro encontrado + causa técnica:** **Entrada:** uma opção fora do menu. **Resultado esperado:** mensagem de opção inválida e reapresentação do menu. **Resultado obtido:** o programa exibiu “Opção inválida. Tente novamente.” e voltou a mostrar o menu. Não identifiquei erro nesse teste.
+5. **Decisão de ajuste + fonte:** Mantive o menu e a leitura da opção dentro de while True para permitir novas operações. Usei break na opção de sair para encerrar esse laço. Fontes: [A instrução while](https://docs.python.org/pt-br/3/reference/compound_stmts.html#the-while-statement) e [break e continue](https://docs.python.org/pt-br/3/tutorial/controlflow.html#break-and-continue-statements).
+6. **Feedback recebido (inclui devolutiva da P1) e o que mudei:** Até 21/11/2026, consultei o Classroom e o sistema acadêmico e encontrei apenas a nota da P1. Ainda não localizei a prova corrigida ou comentários que permitam identificar meus erros. Solicitei orientação ao professor e aguardo resposta para registrar a devolutiva e o que preciso revisar.
+7. **Próximo passo:** Testar uma sequência de cadastro, consulta e saída na mesma execução para conferir a repetição e o encerramento do menu.
 
 ## 🟠 CICLO 07 — 07/10 — Listas: armazenamento e iteração
 
@@ -498,13 +506,16 @@ Cada ciclo tem sua própria seção abaixo, já com o modelo. Se precisar de esp
 </details>
 
 #### Registro do Ciclo 07 — 07/10
-1. **Desafio do ciclo (em 1 frase):** _…_
-2. **O que implementei (commits / arquivos / links):** _…_
-3. **Objeto(s) de conhecimento mobilizado(s):** _…_
-4. **Desvio ou erro encontrado + causa técnica:** _…_
-5. **Decisão de ajuste + fonte:** _…_
-6. **Feedback recebido e o que mudei:** _…_
-7. **Próximo passo:** _…_
+
+*Registro retrospectivo em 21/11/2026.*
+
+1. **Desafio do ciclo (em 1 frase):** Armazenar vários elementos em uma lista e percorrê-los para exibir seus valores no terminal.
+2. **O que implementei (commits / arquivos / links):** No laboratório, trabalhei com lista_jogos. Usei for com enumerate() para obter o índice e o nome de cada jogo, fatiamento para selecionar parte da lista e append() para adicionar um item. No CRUD, midias.append(midia) acrescenta um cadastro ao catálogo. Evidência: [exercício da lista de jogos](AULAS/lista_jogos.py).
+3. **Objeto(s) de conhecimento mobilizado(s):** Listas, índices, iteração com for, enumerate(), fatiamento e inclusão com append(). A lista reúne os elementos e o laço percorre os itens.
+4. **Desvio ou erro encontrado + causa técnica:** Na primeira versão do exercício, print() mostrava apenas o nome do jogo. O índice era obtido por enumerate(), mas não era passado à função de saída. Ajustei para print(indice, jogo) e observei os dois valores na mesma linha ao executar a versão corrigida.
+5. **Decisão de ajuste + fonte:** Usei enumerate() para obter a posição e o valor de cada elemento durante a repetição. Isso facilitou a identificação dos itens na saída. A fonte foi a orientação recebida na aula prática do laboratório.
+6. **Feedback recebido e o que mudei:** No laboratório, recebi orientação para usar # ao escrever comentários e para exibir o índice junto com o nome do jogo. Acrescentei comentários e ajustei o comando para print(indice, jogo).
+7. **Próximo passo:** Cadastrar duas mídias, listar os registros e excluir a primeira. Depois, conferir a posição da segunda na lista e seu ID.
 
 ## 🟠 CICLO 08 — 14/10 — Busca/consulta e introdução a dicionários e matrizes
 
@@ -519,13 +530,16 @@ Cada ciclo tem sua própria seção abaixo, já com o modelo. Se precisar de esp
 </details>
 
 #### Registro do Ciclo 08 — 14/10
-1. **Desafio do ciclo (em 1 frase):** _…_
-2. **O que implementei (commits / arquivos / links):** _…_
-3. **Objeto(s) de conhecimento mobilizado(s):** _…_
-4. **Desvio ou erro encontrado + causa técnica:** _…_
-5. **Decisão de ajuste + fonte:** _…_
-6. **Feedback recebido e o que mudei:** _…_
-7. **Próximo passo:** _…_
+
+*Registro retrospectivo em 21/11/2026.*
+
+1. **Desafio do ciclo (em 1 frase):** Localizar uma mídia pelo identificador e consultar os dados desse cadastro.
+2. **O que implementei (commits / arquivos / links):** Organizei cada mídia em um dicionário com as chaves id, titulo, tipo, genero, ano e sinopse. Os dicionários ficam na lista midias. A consulta percorre a lista e compara o ID de cada mídia com o identificador informado. Evidência: [versão com estruturas dinâmicas](https://github.com/pedruck9-crypto/algoritmos-e-programacao/tree/ciclo-2-estruturas-din%C3%A2micas).
+3. **Objeto(s) de conhecimento mobilizado(s):** Dicionários, pares de chave e valor, lista de dicionários, iteração com for, comparação de igualdade e busca sequencial.
+4. **Desvio ou erro encontrado + causa técnica:** Não identifiquei erro nos testes de busca realizados. **Teste 1:** informei ID 2, correspondente ao filme Interestelar. Esperava seus dados e o terminal exibiu título, tipo, gênero, ano e sinopse. **Teste 2:** informei ID 99, que não estava cadastrado. Esperava a indicação de ausência e o terminal exibiu “Mídia não encontrada.”
+5. **Decisão de ajuste + fonte:** Usei dicionários para acessar os campos pelos nomes das chaves, como midia["id"] e midia["titulo"]. Na busca, comparo o identificador informado com a chave id de cada registro. Consultei [Dicionários](https://docs.python.org/pt-br/3/tutorial/datastructures.html#dictionaries) para compreender pares de chave e valor e acesso aos campos.
+6. **Feedback recebido e o que mudei:** Não recebi feedback específico nesta etapa.
+7. **Próximo passo:** Testar a busca com o catálogo vazio.
 
 ---
 
