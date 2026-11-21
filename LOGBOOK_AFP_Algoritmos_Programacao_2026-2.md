@@ -862,8 +862,8 @@ Pretendo aprofundar meus conhecimentos em front-end, área pela qual descobri af
 
 | | |
 |---|---|
-| **Nome** | _…_ |
-| **Curso / Time / Função** | _…_ |
+| **Nome** | Pedro Lucas Pereira Rolim |
+| **Curso / Time / Função** | Sistemas de Informação, 2º período / Projeto individual / Autor do CRUD de filmes e séries |
 
 <details>
 <summary>🔒 Uso do professor — rubrica completa</summary>
