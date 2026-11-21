@@ -492,6 +492,9 @@ Cada ciclo tem sua própria seção abaixo, já com o modelo. Se precisar de esp
 4. **Desvio ou erro encontrado + causa técnica:** **Entrada:** uma opção fora do menu. **Resultado esperado:** mensagem de opção inválida e reapresentação do menu. **Resultado obtido:** o programa exibiu “Opção inválida. Tente novamente.” e voltou a mostrar o menu. Não identifiquei erro nesse teste.
 5. **Decisão de ajuste + fonte:** Mantive o menu e a leitura da opção dentro de while True para permitir novas operações. Usei break na opção de sair para encerrar esse laço. Fontes: [A instrução while](https://docs.python.org/pt-br/3/reference/compound_stmts.html#the-while-statement) e [break e continue](https://docs.python.org/pt-br/3/tutorial/controlflow.html#break-and-continue-statements).
 6. **Feedback recebido (inclui devolutiva da P1) e o que mudei:** Até 21/11/2026, consultei o Classroom e o sistema acadêmico e encontrei apenas a nota da P1. Ainda não localizei a prova corrigida ou comentários que permitam identificar meus erros. Solicitei orientação ao professor e aguardo resposta para registrar a devolutiva e o que preciso revisar.
+
+
+   **Atualização em 21/11/2026.** Em nova consulta ao aplicativo da faculdade, a tela de Algoritmos e Programação exibiu “Não há notas lançadas”. Continuo aguardando orientação do professor sobre a correção da P1 para identificar os erros e os conceitos que preciso revisar.
 7. **Próximo passo:** Testar uma sequência de cadastro, consulta e saída na mesma execução para conferir a repetição e o encerramento do menu.
 
 ## 🟠 CICLO 07 — 07/10 — Listas: armazenamento e iteração
