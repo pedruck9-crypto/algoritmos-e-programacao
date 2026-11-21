@@ -806,18 +806,24 @@ Cada ciclo tem sua própria seção abaixo, já com o modelo. Se precisar de esp
 
 **7c. Conceitos que precisei corrigir ao longo do ciclo — onde eu estava equivocado e o que o corrigiu (Fechamento Teórico, pesquisa, Peer Review, arguição):**
 
-1. **Equívoco:** _…_ — **Correção:** _…_
-   **O que corrigiu:** _…_
-2. **Equívoco:** _…_ — **Correção:** _…_
-   **O que corrigiu:** _…_
+*Registro em 21/11/2026.*
+
+1. **Equívoco:** eu confundia estruturas condicionais com laços de repetição e usava a expressão “laços de condicionais”.
+   **Correção:** entendi que if, elif e else escolhem qual bloco executar, enquanto for e while repetem instruções.
+   **O que corrigiu:** a revisão dos termos durante a elaboração do Logbook com apoio da IA e a análise do menu do meu CRUD.
+2. **Equívoco:** eu dizia que a ausência de # impedia o programa de funcionar.
+   **Correção:** entendi que o programa pode funcionar sem comentários. O # é necessário quando quero escrever uma observação no código para que o Python a ignore.
+   **O que corrigiu:** a orientação recebida no laboratório sobre comentários e o esclarecimento dessa diferença durante a revisão do Logbook com apoio da IA.
 
 **7d. Transferência — como este aprendizado se aplica a um contexto diferente do problema trabalhado (ao menos 1 exemplo concreto da área de formação):**
 
-> _…_
+Eu poderia aplicar esses conceitos a um sistema de controle de estoque. Cada produto poderia ser representado por um dicionário com identificador, nome e quantidade, e uma lista reuniria os produtos. Usaria uma condição para impedir o cadastro de um produto com nome vazio e um laço para consultar os registros. Assim como no catálogo de mídias, precisaria distinguir a posição do produto na lista do identificador do cadastro.
 
 **7e. Avaliação honesta do próprio percurso — o que ainda não domino e preciso aprofundar após este ciclo:**
 
-> _…_
+Hoje consigo explicar melhor o funcionamento do menu, a validação de títulos e o armazenamento dos registros em uma lista. Ainda preciso aprofundar como salvar e recuperar dados entre execuções e como validar o conteúdo carregado de um arquivo. Também quero estudar uma regra para evitar mídias duplicadas, definindo quais dados devem ser comparados para identificar um cadastro repetido.
+
+Pretendo aprofundar meus conhecimentos em front-end, área pela qual descobri afinidade durante o projeto. Após a defesa, também reconheci a necessidade de praticar a sintaxe de Python, incluindo dois-pontos, aspas, indentação e a distinção entre maiúsculas e minúsculas.
 
 ---
 
