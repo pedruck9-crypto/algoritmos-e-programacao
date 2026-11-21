@@ -883,10 +883,17 @@ Cada ciclo tem sua própria seção abaixo, já com o modelo. Se precisar de esp
 </details>
 
 ### Registro do Encerramento — 18/11
-1. **O que apresentei/defendi (em 1 frase):** _…_
-2. **Objeto(s) de conhecimento que a banca mais explorou:** _…_
-3. **Pergunta que mais me desafiou e como respondi:** _…_
-4. **O que levo deste semestre para o próximo módulo:** _…_
+
+*Registro retrospectivo em 21/11/2026, referente à defesa de 18/11/2026.*
+
+1. **O que apresentei/defendi (em 1 frase):** Apresentei os seis slides sobre meu CRUD de filmes e séries, explicando a evolução das versões acadêmicas, os testes realizados, o uso da IA e uma proposta de persistência com JSON.
+2. **Objeto(s) de conhecimento que a banca mais explorou:** O professor perguntou sobre FastAPI, SQLite e ORM, que mencionei como recursos além do escopo acadêmico, e se essas tecnologias estavam presentes no meu repositório do GitHub. A pergunta abordou a relação entre a arquitetura apresentada, o código disponível e a delimitação do projeto.
+3. **Pergunta que mais me desafiou e como respondi:** O professor perguntou se FastAPI, SQLite e o ORM realmente estavam no meu GitHub. Respondi que sim, essas tecnologias estavam no repositório. Após a defesa, identifiquei que preciso aprofundar meu domínio da sintaxe de Python, especialmente o uso de dois-pontos, aspas, indentação e a distinção entre letras maiúsculas e minúsculas.
+4. **O que levo deste semestre para o próximo módulo:** Aprendi a revisar o código com atenção à sintaxe e a registrar minhas ideias e decisões. Também compreendi a importância de documentar o projeto durante seu desenvolvimento, escolher uma licença para o código e apresentar a documentação de forma acessível a quem consulta meu portfólio.
+
+   A experiência de adequar o CRUD ao escopo acadêmico me ensinou a avaliar quais partes do código podem ser reaproveitadas quando os requisitos são esclarecidos ou alterados. Percebi que orientações claras, objetivas e disponíveis nos canais adequados ajudam a evitar dúvidas e retrabalho.
+
+   Descobri interesse pelo front-end e quero aprofundar meus conhecimentos nessa área. Pretendo continuar estudando Python, praticar a leitura das mensagens de erro e melhorar minha capacidade de explicar as decisões do código.
 
 ---
 
