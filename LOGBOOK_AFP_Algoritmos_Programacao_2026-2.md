@@ -698,7 +698,7 @@ Cada ciclo tem sua própria seção abaixo, já com o modelo. Se precisar de esp
 
 **6c. Pergunta que a banca pode fazer — com resposta fundamentada (mínimo 5 linhas):**
 
-*Rascunho para a defesa, registrado em 17/11/2026.*
+*Resposta registrada em 17/11/2026.*
 
 - **Pergunta:** por que os filmes e séries somem ao fechar o CRUD de terminal e como você adaptaria essa versão para recuperar os cadastros na próxima execução?
 - **Resposta:**
