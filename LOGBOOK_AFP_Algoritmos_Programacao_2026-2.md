@@ -112,7 +112,7 @@ Atualize a cada commit (troque ⬜ por ✅).
 | 1 | Campo 02 — Aprofundamento | 16/11 | ✅ | [Histórico](https://github.com/pedruck9-crypto/algoritmos-e-programacao/commits/main/LOGBOOK_AFP_Algoritmos_Programacao_2026-2.md) |
 | 2 | Registros dos Ciclos 05, 06, 07 e 08 | 21/11 | ✅ | Registrados em 21/11/2026; devolutiva da P1 pendente |
 | 2 | Checkpoint Conceitual | 21/11 | Pendente de orientação | Pendência registrada em 21/11/2026 |
-| 2 | Campo 03 — Execução e desvios | 21/11 | Rascunho | Confirmar adequação do item 3b |
+| 2 | Campo 03 — Execução e desvios | 21/11 | Preenchido — 3b aguardando orientação | Confirmar adequação do item 3b |
 | 2 | Campo 04 — Interação com IA | 21/11 | ✅ | Interação em 16/11/2026, registro em 17/11/2026 |
 | 3 | Registros dos Ciclos 09, 10, 11 e 12 | 26/11 | ⬜ | ⬜ |
 | 3 | Campo 05 — Revisão por pares nº 1 e nº 2 | 26/11 | ⬜ | ⬜ |
