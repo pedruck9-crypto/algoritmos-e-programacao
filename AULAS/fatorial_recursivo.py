@@ -1,6 +1,8 @@
 # Exercício complementar: comparação entre recursividade e repetição.
 # Use números inteiros não negativos pequenos, como os exemplos abaixo.
 def fatorial_recursivo(n):
+    if type(n) is not int or n < 0:
+        raise ValueError("Informe um número inteiro não negativo.")
     # Caso base: interrompe as chamadas recursivas.
     if n == 0:
         return 1
@@ -8,6 +10,8 @@ def fatorial_recursivo(n):
 
 
 def fatorial_com_laco(n):
+    if type(n) is not int or n < 0:
+        raise ValueError("Informe um número inteiro não negativo.")
     resultado = 1
     while n > 0:
         resultado *= n
