@@ -115,7 +115,7 @@ Atualize a cada commit (troque ⬜ por ✅).
 | 2 | Campo 03 — Execução e desvios | 21/11 | Preenchido — 3b aguardando orientação | Confirmar adequação do item 3b |
 | 2 | Campo 04 — Interação com IA | 21/11 | ✅ | Interação em 16/11/2026, registro em 17/11/2026 |
 | 3 | Registros dos Ciclos 09, 10, 11 e 12 | 26/11 | ⬜ | ⬜ |
-| 3 | Campo 05 — Revisão por pares nº 1 e nº 2 | 26/11 | ⬜ | ⬜ |
+| 3 | Campo 05 — Revisão por pares nº 1 e nº 2 | 26/11 | Em andamento — revisão nº 1 registrada; nº 2 pendente | Registro de 23/11/2026; comunicação com o colega pendente |
 | 3 | Campo 06 — Próximos passos | 26/11 | ⬜ | ⬜ |
 | 3 | Campo 07 — Evolução conceitual | 26/11 | ⬜ | ⬜ |
 | 🏁 | Defesa Técnica | 18/11 | ⬜ | — |
@@ -596,49 +596,83 @@ Cada ciclo tem sua própria seção abaixo, já com o modelo. Se precisar de esp
 
 #### Revisão nº 1
 
-| | |
+*Revisão realizada e registrada em 23/11/2026, posteriormente ao Ciclo 09 previsto para 21/10/2026.*
+
+Tive acesso ao modelo do logbook em novembro e realizei esta revisão utilizando a versão do projeto disponível na data da análise. A primeira revisão teve foco no funcionamento das operações do CRUD. A segunda revisão ainda será realizada, com foco na qualidade e organização do código. Este registro não representa uma revisão realizada na data original da aula.
+
+Ao consultar o repositório do colega em 23/11/2026, não encontrei um arquivo README.md. Identifiquei como oportunidade de melhoria incluir uma apresentação do CRUD, suas funcionalidades e instruções para execução. Essa documentação facilitaria a compreensão e a reprodução dos testes por outras pessoas. A sugestão ainda precisa ser apresentada ao autor.
+
+| Campo | Identificação |
 |---|---|
-| **Autor do CRUD revisado** | _nome_ |
-| **Repositório revisado** | _link_ |
-| **Revisor** | _seu nome_ |
+| **Autor do CRUD revisado** | Pedro Henrique (nome no GitHub: Venancio Sampaio) |
+| **Repositório revisado** | [Projeto MyLife CRUD](https://github.com/venanciosampaioph-boop/Projeto-My-Life-CRUD) — arquivo [CRUD.py](https://github.com/venanciosampaioph-boop/Projeto-My-Life-CRUD/blob/main/CRUD.py) |
+| **Revisor** | Pedro Lucas Pereira Rolim |
 | **Unidade curricular / Semestre** | Algoritmos e Programação · 2026.2 |
-| **Ciclo / data** | _Ciclo 09 · 21/10_ |
+| **Ciclo / data** | Ciclo 09 — data prevista: 21/10/2026; revisão realizada em 23/11/2026 |
 
 **5a. AVANÇO DO PROCESSO DE REVISÃO — análise técnica de cada etapa:**
 
+As etapas de análise e execução foram realizadas em 23/11/2026. Não registrei previamente prazos individuais para as etapas 2 a 4.
+
 | ETAPA DO PROCESSO | RESPONSÁVEL | PRAZO | STATUS | DESVIO / JUSTIFICATIVA |
 |---|---|---|---|---|
-| 1. _…_ | Revisor / Autor | _DD/MM_ | ☐ Concluída ☐ Em andamento ☐ Com desvio | _…_ |
-| 2. _…_ | Revisor / Autor | _DD/MM_ | ☐ Concluída ☐ Em andamento ☐ Com desvio | _…_ |
-| 3. _…_ | Revisor / Autor | _DD/MM_ | ☐ Concluída ☐ Em andamento ☐ Com desvio | _…_ |
-| 4. _…_ | Revisor / Autor | _DD/MM_ | ☐ Concluída ☐ Em andamento ☐ Com desvio | _…_ |
-| 5. _…_ | Revisor / Autor | _DD/MM_ | ☐ Concluída ☐ Em andamento ☐ Com desvio | _…_ |
+| 1. Consultar o repositório e verificar as instruções de execução. | Revisor: Pedro Lucas | 23/11/2026 | Concluída | Consultei o repositório e o arquivo CRUD.py. Não encontrei README com apresentação e instruções de execução. Registrei a ausência como oportunidade de melhoria; a comunicação da sugestão ao autor permanece na etapa 5. |
+| 2. Analisar o menu e o armazenamento das tarefas. | Revisor: Pedro Lucas | Não registrado previamente | Concluída | Identifiquei um menu controlado por while e condicionais. As tarefas são armazenadas em uma lista de dicionários, com descrição e status. Os registros permanecem apenas na memória durante a execução. |
+| 3. Executar as operações de adicionar, visualizar, concluir e excluir tarefas. | Revisor: Pedro Lucas | Não registrado previamente | Concluída | Verifiquei que o cadastro com descrição válida adiciona a tarefa, a visualização apresenta os registros, a conclusão altera o status e a exclusão remove a tarefa selecionada. A opção 5 encerrou o programa. |
+| 4. Testar entradas vazias, inválidas e números fora do intervalo. | Revisor: Pedro Lucas | Não registrado previamente | Concluída | A entrada vazia no cadastro foi recusada, mas uma descrição somente com espaços foi aceita. Opções inválidas no menu e números fora do intervalo foram tratados com mensagem. A entrada abc ao concluir ou excluir provocou ValueError e interrompeu a execução. Evidências detalhadas no item 5c. |
+| 5. Compartilhar os achados e registrar a resposta do colega. | Pedro Lucas e Pedro Henrique | A definir | Pendente | Os achados e as recomendações foram registrados nos itens 5c, 5d e 5e. Ainda preciso apresentá-los ao autor e registrar sua resposta. |
 
 **5b. ANÁLISE DE INSUMOS E CRITÉRIOS DE QUALIDADE:**
 
 | RECURSO | QTDE PLANEJADA | QTDE UTILIZADA | VARIAÇÃO | JUSTIFICATIVA TÉCNICA |
 |---|---|---|---|---|
-| _…_ | _…_ | _…_ | _…_ | _…_ |
-| _…_ | _…_ | _…_ | _…_ | _…_ |
-| _…_ | _…_ | _…_ | _…_ | _…_ |
+| Código do colega — CRUD.py | Não registrada previamente | 1 arquivo | Não calculável | Análise do menu, das operações sobre tarefas e das validações de entrada. |
+| Ambiente de execução Python | Não registrada previamente | 1 ambiente: VS Code, terminal integrado e Python 3.14.7 | Não calculável | Executei o programa localmente e comparei os resultados esperados com os observados no terminal. |
+| Casos de teste | Não registrada previamente | 16 casos, organizados conforme a tabela 5c | Não calculável | Verificar as operações do CRUD e o tratamento de entradas válidas, inválidas e vazias. |
+
+Utilizei o GitHub Copilot como apoio à análise do código e à preparação dos testes. Depois executei pessoalmente o programa no terminal do VS Code para verificar os comportamentos. Os resultados abaixo correspondem a essa execução prática, e não somente às previsões da IA.
 
 **5c. CONTROLE DE QUALIDADE:**
-- **Critério ou norma técnica:** _…_
-- **A solução atende?** ☐ Sim ☐ Parcialmente ☐ Não
+
+- **Critério ou norma técnica:** As operações do CRUD devem apresentar resultados coerentes, impedir o cadastro de tarefas sem conteúdo e tratar entradas inválidas sem encerrar inesperadamente o programa.
+- **A solução atende?** ☐ Sim ☑ Parcialmente ☐ Não
+
+| Nº | TESTE | RESULTADO ESPERADO | RESULTADO OBSERVADO | AVALIAÇÃO |
+|---|---|---|---|---|
+| 1 | Cadastrar tarefa com descrição válida | Adicionar com status Pendente. | A tarefa foi cadastrada e apareceu na listagem. | Atende |
+| 2 | Visualizar tarefas cadastradas | Mostrar numeração, descrição e status. | Os dados foram exibidos na listagem. | Atende |
+| 3 | Cadastrar descrição vazia | Recusar o cadastro. | Exibiu “A tarefa não pode estar vazia.” e não cadastrou. | Atende |
+| 4 | Cadastrar somente espaços | Recusar o cadastro. | Aceitou a tarefa sem conteúdo significativo. | Não atende |
+| 5 | Informar opção inexistente no menu, como 0 ou 6 | Informar opção inválida e continuar. | Exibiu “Opção inválida!” e manteve o menu. | Atende |
+| 6 | Concluir tarefa pendente existente | Alterar seu status para Concluída. | Exibiu “Tarefa concluída com sucesso!”; o status concluído apareceu na listagem. | Atende |
+| 7 | Selecionar tarefa já concluída, havendo outra pendente | Informar que a tarefa já foi concluída. | Exibiu “Essa tarefa já foi concluída.”. | Atende |
+| 8 | Informar número fora do intervalo ao concluir | Recusar a seleção e continuar. | Exibiu “Opção inválida!” e continuou. | Atende |
+| 9 | Informar número fora do intervalo ao excluir | Recusar a seleção e continuar. | Exibiu “Opção inválida!” e continuou. | Atende |
+| 10 | Informar abc como número da tarefa a concluir | Avisar sobre entrada inválida e continuar. | Ocorreu ValueError na linha 55 e o programa encerrou. | Não atende |
+| 11 | Informar abc como número da tarefa a excluir | Avisar sobre entrada inválida e continuar. | Ocorreu ValueError na linha 73 e o programa encerrou. | Não atende |
+| 12 | Excluir tarefa existente | Remover a tarefa selecionada. | Exibiu “Tarefa excluída com sucesso!” e removeu o registro. | Atende |
+| 13 | Visualizar com lista vazia | Informar ausência de tarefas. | Exibiu “Nenhuma tarefa cadastrada.”. | Atende |
+| 14 | Concluir com lista vazia | Informar ausência de tarefas e continuar. | Exibiu “Nenhuma tarefa cadastrada.” e retornou ao menu. | Atende |
+| 15 | Excluir com lista vazia | Informar ausência de tarefas e continuar. | Exibiu “Nenhuma tarefa para excluir.” e retornou ao menu. | Atende |
+| 16 | Selecionar opção 5 | Encerrar normalmente. | Exibiu “Encerrando o MyLife...” e retornou ao PowerShell. | Atende |
+
+Os 16 casos são contados conforme as linhas da tabela; variações da mesma entrada ou repetições da execução não foram contadas como casos adicionais. As linhas 55 e 73 referem-se à cópia do arquivo executada nesta revisão.
 
 **5d. GESTÃO DE RISCOS:**
-- **Risco:** _…_
-- **Estratégia de mitigação:** _…_
+
+- **Risco:** O cadastro de tarefas formadas somente por espaços pode gerar registros sem conteúdo significativo, dificultando sua identificação. Além disso, informar letras ao concluir ou excluir uma tarefa provoca ValueError e interrompe o programa. Como as tarefas ficam apenas na memória, esse encerramento também causa a perda dos registros daquela execução.
+- **Estratégia de mitigação:** Recomendar ao autor aplicar `.strip()` à descrição antes de verificar se ela está vazia e tratar a conversão da seleção para inteiro com `try/except ValueError`, exibindo uma mensagem e permitindo nova tentativa. Após os ajustes, repetir os testes com espaços, letras, números fora do intervalo e entradas válidas para verificar se as falhas foram corrigidas e as operações continuam funcionando.
+- **Situação:** Riscos identificados durante a revisão. As medidas propostas ainda dependem de implementação pelo autor e de novos testes.
 
 **5e. RASTREABILIDADE DAS DECISÕES TÉCNICAS — COM VÍNCULO AO CONTEÚDO:**
 
 | DATA | DECISÃO TÉCNICA | RESP. | OBJETO DE CONHECIMENTO MOBILIZADO | FUNDAMENTAÇÃO / REFERÊNCIA |
 |---|---|---|---|---|
-| _DD/MM/AA_ | _…_ | _…_ | _…_ | _…_ |
-| _DD/MM/AA_ | _…_ | _…_ | _…_ | _…_ |
-| _DD/MM/AA_ | _…_ | _…_ | _…_ | _…_ |
-| _DD/MM/AA_ | _…_ | _…_ | _…_ | _…_ |
-| _DD/MM/AA_ | _…_ | _…_ | _…_ | _…_ |
+| 23/11/2026 | Recomendar aplicar `.strip()` à descrição antes de verificar se está vazia, impedindo tarefas formadas somente por espaços. | Pedro Lucas — recomendação; Pedro Henrique — implementação pendente | Strings, métodos e validação com condicionais | O teste com espaços permitiu um cadastro sem conteúdo significativo. Referência: [Python — str.strip()](https://docs.python.org/pt-br/3/library/stdtypes.html#str.strip). |
+| 23/11/2026 | Recomendar tratar a conversão da seleção com `try/except ValueError`, informando o problema e permitindo nova tentativa. | Pedro Lucas — recomendação; Pedro Henrique — implementação pendente | Conversão de tipos, exceções e controle de fluxo | A entrada abc provocou ValueError ao concluir ou excluir tarefas. Referência: [Python — Tratamento de exceções](https://docs.python.org/pt-br/3/tutorial/errors.html#handling-exceptions). |
+| 23/11/2026 | Recomendar repetir os testes após os ajustes, incluindo entradas válidas, espaços, letras e números fora do intervalo. | Pedro Lucas — proposta de nova verificação | Testes, validação de entrada e comparação entre resultado esperado e observado | Casos de teste registrados no item 5c desta revisão, que servirão para comparar o comportamento antes e depois das alterações. |
+
+**Pendências:** apresentar os achados ao colega, registrar sua resposta e realizar a segunda revisão. O Grupo 3 permanece em andamento.
 
 > **IMPORTANTE:** Decisão registrada sem objeto de conhecimento associado e sem referência é considerada **não rastreável** e não conta para a avaliação formativa. O vínculo entre processo e conteúdo é obrigatório em todas as decisões relevantes.
 
