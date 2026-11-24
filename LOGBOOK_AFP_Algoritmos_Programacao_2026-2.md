@@ -45,6 +45,14 @@
 7. **Campo 01 e Checkpoint são "sem consulta".** Preencha em um bloco contínuo, sem internet, sem material e sem colegas, no tempo indicado (Campo 01: durante o laboratório; Checkpoint: 20 min). Depois **não edite** esses campos — se perceber um erro, corrija em um campo posterior (Campo 03 ou 07), explicando.
 8. **Os prazos dos grupos (16/11, 21/11 e 26/11, às 23h59)** valem para o commit no GitHub. O horário do commit é o registro oficial.
 
+### Observações sobre o preenchimento e as pendências — 24/11/2026
+
+Tive acesso ao modelo deste logbook em novembro de 2026, por meio do documento compartilhado no grupo de WhatsApp da turma. O preenchimento dos registros foi realizado a partir desse mês. As datas nos títulos dos ciclos correspondem às datas previstas no modelo, não às datas em que escrevi os relatos. Os registros anteriores foram reconstruídos com base nas lembranças e nas evidências disponíveis, como arquivos e histórico de commits. Atividades realizadas em novembro são identificadas por suas datas reais.
+
+O Campo 02 foi preenchido após a conclusão da programação da versão acadêmica. As estimativas de recursos foram elaboradas nesse momento, não estavam registradas antes da implementação e não representam um planejamento inicial documentado do desenvolvimento. Elas constituem uma organização posterior dos recursos necessários para analisar e verificar a solução. O planejamento dos testes da segunda revisão, por sua vez, refere-se a essa etapa de verificação.
+
+Em 24/11/2026, ainda não havia recebido a devolutiva da P1 com indicação dos erros e orientações de revisão, nem o enunciado ou esclarecimento necessário para realizar o Checkpoint Conceitual. Os registros que dependem dessas informações permanecem pendentes. Não atribuí ao professor feedback que não recebi nem formulei perguntas para substituir o checkpoint. Quando houver orientação, farei a complementação e registrarei a data real.
+
 ### ✅ Padrão de commit do Logbook
 
 ```text
@@ -114,10 +122,10 @@ Atualize a cada commit (troque ⬜ por ✅).
 | 2 | Checkpoint Conceitual | 21/11 | Pendente de orientação | Pendência registrada em 21/11/2026 |
 | 2 | Campo 03 — Execução e desvios | 21/11 | Preenchido — 3b aguardando orientação | Confirmar adequação do item 3b |
 | 2 | Campo 04 — Interação com IA | 21/11 | ✅ | Interação em 16/11/2026, registro em 17/11/2026 |
-| 3 | Registros dos Ciclos 09, 10, 11 e 12 | 26/11 | ⬜ | ⬜ |
-| 3 | Campo 05 — Revisão por pares nº 1 e nº 2 | 26/11 | Em andamento — revisão nº 1 registrada; nº 2 pendente | Registro de 23/11/2026; comunicação com o colega pendente |
-| 3 | Campo 06 — Próximos passos | 26/11 | ⬜ | ⬜ |
-| 3 | Campo 07 — Evolução conceitual | 26/11 | ⬜ | ⬜ |
+| 3 | Registros dos Ciclos 09, 10, 11 e 12 | 26/11 | ✅ | Registros retrospectivos organizados em 24/11/2026 |
+| 3 | Campo 05 — Revisão por pares nº 1 e nº 2 | 26/11 | Revisões registradas; comunicação final pendente | Revisão nº 1 em 23/11; nº 2 em 24/11/2026 |
+| 3 | Campo 06 — Próximos passos | 26/11 | ✅ | 6a e 6b registrados em 24/11/2026; 6c preservado |
+| 3 | Campo 07 — Evolução conceitual | 26/11 | ✅ | Conteúdo anterior preservado; observação retrospectiva em 24/11/2026 |
 | 🏁 | Defesa Técnica | 18/11 | ⬜ | — |
 
 ---
@@ -401,6 +409,8 @@ Cada ciclo tem sua própria seção abaixo, já com o modelo. Se precisar de esp
 
 *Rascunho para a defesa, registrado em 17/11/2026.*
 
+**Observação acrescentada em 24/11/2026:** tive acesso ao modelo em novembro, quando a programação da versão acadêmica já estava concluída. Preenchi o Campo 01 retrospectivamente, reconstruindo minhas lembranças sobre os conhecimentos, dúvidas e expectativas iniciais. O aprendizado posterior pode ter influenciado essa reconstrução; ela não equivale a um diagnóstico registrado antes da implementação.
+
 1. **Validação de entrada e condicionais.** Testei o cadastro com um título formado apenas por espaços. O método .strip() transformou a entrada em uma string vazia, e a condição bloqueou o cadastro. Entendi que preciso verificar o texto depois de remover os espaços das pontas.
 2. **Listas e persistência de dados.** Ao fechar e reabrir a versão de terminal, observei que o catálogo estava vazio. Entendi que append() acrescenta mídias à lista durante a execução. Ao reiniciar, o programa cria uma lista vazia porque essa versão guarda os registros apenas em memória.
 
@@ -579,13 +589,16 @@ Cada ciclo tem sua própria seção abaixo, já com o modelo. Se precisar de esp
 </details>
 
 #### Registro do Ciclo 09 — 21/10
-1. **Desafio do ciclo (em 1 frase):** _…_
-2. **O que implementei (commits / arquivos / links):** _…_
-3. **Objeto(s) de conhecimento mobilizado(s):** _…_
-4. **Desvio ou erro encontrado + causa técnica:** _…_
-5. **Decisão de ajuste + fonte:** _…_
-6. **Feedback recebido e o que mudei:** _…_
-7. **Próximo passo:** _…_
+
+*Registro retrospectivo elaborado em 24/11/2026.*
+
+1. **Desafio do ciclo (em 1 frase):** Permitir a atualização e a exclusão de uma mídia cadastrada, selecionando o registro pelo identificador.
+2. **O que implementei (commits / arquivos / links):** Na versão acadêmica com estruturas dinâmicas, acrescentei operações para atualizar os dados de uma mídia e excluir um registro do catálogo. O identificador informado pelo usuário é utilizado para localizar a mídia na lista. Evidência: [crud_filmes_e_series.py da branch ciclo-2-estruturas-dinâmicas](https://github.com/pedruck9-crypto/algoritmos-e-programacao/blob/ciclo-2-estruturas-din%C3%A2micas/crud_filmes_e_series.py).
+3. **Objeto(s) de conhecimento mobilizado(s):** Listas, dicionários, laços de repetição, estruturas condicionais, comparação de identificadores e alteração ou remoção de registros.
+4. **Desvio ou erro encontrado + causa técnica:** Um cuidado necessário nesta etapa é distinguir o identificador da mídia de sua posição na lista. Após uma exclusão, as posições dos registros podem mudar. Por isso, a seleção deve considerar o identificador armazenado no registro, evitando atualizar ou excluir outra mídia por engano. Esse registro descreve um cuidado técnico, não um erro observado em execução.
+5. **Decisão de ajuste + fonte:** Utilizei o identificador para localizar a mídia antes de alterar seus dados ou removê-la. Essa decisão permite selecionar o registro mesmo quando sua posição na lista muda. Como apoio, consultei a documentação oficial do Python sobre [listas](https://docs.python.org/pt-br/3/tutorial/datastructures.html#more-on-lists) e [dicionários](https://docs.python.org/pt-br/3/tutorial/datastructures.html#dictionaries).
+6. **Feedback recebido e o que mudei:** Na [revisão registrada em 23/11/2026](https://github.com/venanciosampaioph-boop/Projeto-My-Life-CRUD/blob/main/LOGBOOK_AFP_Algoritmos_Programacao_2026-2.md), Pedro Henrique analisou o código da branch ciclo-2-estruturas-dinâmicas e reconheceu a presença das operações principais e o uso de listas e dicionários. Recomendou ampliar as validações de tipo, gênero e ano, incluindo os campos da atualização, e reforçar o tratamento de identificadores inválidos. A revisão foi realizada por inspeção do código, sem execução dessa versão. Ainda não implementei alterações decorrentes dessas recomendações.
+7. **Próximo passo:** Conferir a atualização e a exclusão com identificadores existentes e inexistentes, verificando se somente a mídia selecionada é afetada.
 
 ### 🧩 CAMPO 05 — Registro de Revisão por Pares
 *Adaptação do **Logbook do Time** (Apêndice C) para o CRUD individual. Documento atualizado pelo **revisor**. Cada decisão técnica relevante deve ter associado o objeto de conhecimento correspondente.*
@@ -620,7 +633,7 @@ As etapas de análise e execução foram realizadas em 23/11/2026. Não registre
 | 2. Analisar o menu e o armazenamento das tarefas. | Revisor: Pedro Lucas | Não registrado previamente | Concluída | Identifiquei um menu controlado por while e condicionais. As tarefas são armazenadas em uma lista de dicionários, com descrição e status. Os registros permanecem apenas na memória durante a execução. |
 | 3. Executar as operações de adicionar, visualizar, concluir e excluir tarefas. | Revisor: Pedro Lucas | Não registrado previamente | Concluída | Verifiquei que o cadastro com descrição válida adiciona a tarefa, a visualização apresenta os registros, a conclusão altera o status e a exclusão remove a tarefa selecionada. A opção 5 encerrou o programa. |
 | 4. Testar entradas vazias, inválidas e números fora do intervalo. | Revisor: Pedro Lucas | Não registrado previamente | Concluída | A entrada vazia no cadastro foi recusada, mas uma descrição somente com espaços foi aceita. Opções inválidas no menu e números fora do intervalo foram tratados com mensagem. A entrada abc ao concluir ou excluir provocou ValueError e interrompeu a execução. Evidências detalhadas no item 5c. |
-| 5. Compartilhar os achados e registrar a resposta do colega. | Pedro Lucas e Pedro Henrique | A definir | Pendente | Os achados e as recomendações foram registrados nos itens 5c, 5d e 5e. Ainda preciso apresentá-los ao autor e registrar sua resposta. |
+| 5. Compartilhar os achados e registrar a resposta do colega. | Pedro Lucas e Pedro Henrique | Comunicação realizada antes da segunda revisão | Concluída | Apresentei os achados ao colega, que publicou correções no código e acrescentou README. A verificação posterior está na segunda revisão. |
 
 **5b. ANÁLISE DE INSUMOS E CRITÉRIOS DE QUALIDADE:**
 
@@ -672,7 +685,7 @@ Os 16 casos são contados conforme as linhas da tabela; variações da mesma ent
 | 23/11/2026 | Recomendar tratar a conversão da seleção com `try/except ValueError`, informando o problema e permitindo nova tentativa. | Pedro Lucas — recomendação; Pedro Henrique — implementação pendente | Conversão de tipos, exceções e controle de fluxo | A entrada abc provocou ValueError ao concluir ou excluir tarefas. Referência: [Python — Tratamento de exceções](https://docs.python.org/pt-br/3/tutorial/errors.html#handling-exceptions). |
 | 23/11/2026 | Recomendar repetir os testes após os ajustes, incluindo entradas válidas, espaços, letras e números fora do intervalo. | Pedro Lucas — proposta de nova verificação | Testes, validação de entrada e comparação entre resultado esperado e observado | Casos de teste registrados no item 5c desta revisão, que servirão para comparar o comportamento antes e depois das alterações. |
 
-**Pendências:** apresentar os achados ao colega, registrar sua resposta e realizar a segunda revisão. O Grupo 3 permanece em andamento.
+**Atualização em 24/11/2026:** os achados foram apresentados ao colega, que publicou correções. A segunda revisão, registrada abaixo, verificou a versão corrigida. Permanece pendente a comunicação do resultado final da segunda revisão.
 
 > **IMPORTANTE:** Decisão registrada sem objeto de conhecimento associado e sem referência é considerada **não rastreável** e não conta para a avaliação formativa. O vínculo entre processo e conteúdo é obrigatório em todas as decisões relevantes.
 
@@ -688,13 +701,16 @@ Os 16 casos são contados conforme as linhas da tabela; variações da mesma ent
 </details>
 
 #### Registro do Ciclo 10 — 28/10
-1. **Desafio do ciclo (em 1 frase):** _…_
-2. **O que implementei (commits / arquivos / links):** _…_
-3. **Objeto(s) de conhecimento mobilizado(s):** _…_
-4. **Desvio ou erro encontrado + causa técnica:** _…_
-5. **Decisão de ajuste + fonte:** _…_
-6. **Feedback recebido e o que mudei:** _…_
-7. **Próximo passo:** _…_
+
+*Registro retrospectivo organizado em 24/11/2026 a partir do rascunho em Word.*
+
+1. **Desafio do ciclo (em 1 frase):** Separar as operações do CRUD em funções para facilitar a leitura e a manutenção do código.
+2. **O que implementei (commits / arquivos / links):** Na versão anterior, as operações estavam concentradas no fluxo do menu. Reorganizei o código em funções com responsabilidades específicas. A função cadastrar_midia() recebe e valida os dados de uma mídia, enquanto listar_midias() percorre o catálogo e exibe os registros. O menu chama a função correspondente à opção escolhida. Evidência: [versão ciclo-3-funções](https://github.com/pedruck9-crypto/algoritmos-e-programacao/blob/ciclo-3-fun%C3%A7%C3%B5es/crud_filmes_e_series.py).
+3. **Objeto(s) de conhecimento mobilizado(s):** Definição e chamada de funções, separação de responsabilidades, escopo de variáveis e uso de return. Na função de cadastro, usei global proximo_id porque ela atribui um novo valor à variável definida fora da função.
+4. **Desvio ou erro encontrado + causa técnica:** Não identifiquei um erro específico nesta etapa. Um cuidado foi manter o return após a mensagem de título vazio em cadastrar_midia(). Ele encerra a função antes de adicionar a mídia à lista e incrementar o identificador. **Entrada do teste:** tentar cadastrar um título vazio e, em seguida, cadastrar uma mídia com título válido. **Resultado esperado:** rejeitar o título vazio sem adicionar um registro nem incrementar o identificador; depois, aceitar o cadastro válido com o próximo ID disponível. **Resultado observado registrado no rascunho:** o título vazio exibiu “O título não pode ficar vazio.” e encerrou a função sem cadastrar; a entrada válida solicitou os demais dados, adicionou a mídia e exibiu o identificador.
+5. **Decisão de ajuste + fonte:** Separei as operações em funções para reunir a lógica de cada operação em um trecho próprio. Mantive a validação do título dentro de cadastrar_midia(), com return antes da inclusão de uma entrada inválida. Consultei [Definindo funções](https://docs.python.org/pt-br/3/tutorial/controlflow.html#defining-functions) para compreender def e return.
+6. **Feedback recebido e o que mudei:** No rascunho de 22/11/2026, ainda não havia recebido a revisão do colega. Posteriormente, na [revisão de 23/11/2026](https://github.com/venanciosampaioph-boop/Projeto-My-Life-CRUD/blob/main/LOGBOOK_AFP_Algoritmos_Programacao_2026-2.md), Pedro Henrique destacou a organização em funções e a reutilização de buscar_midia(), sugerindo melhorias de escopo, validação e apresentação. Essa revisão foi estática; não corresponde a testes executados na branch acadêmica. As sugestões ainda não foram implementadas.
+7. **Próximo passo:** Comparar o funcionamento antes e depois dos ajustes escolhidos, testando cadastro válido, título vazio e listagem do catálogo.
 
 ## 🔵 CICLO 11 — 04/11 — Recursividade
 
@@ -710,25 +726,40 @@ Os 16 casos são contados conforme as linhas da tabela; variações da mesma ent
 </details>
 
 #### Registro do Ciclo 11 — 04/11
-1. **Desafio do ciclo (em 1 frase):** _…_
-2. **O que implementei (commits / arquivos / links):** _…_
-3. **Objeto(s) de conhecimento mobilizado(s):** _…_
-4. **Desvio ou erro encontrado + causa técnica:** _…_
-5. **Decisão de ajuste + fonte:** _…_
-6. **Feedback recebido e o que mudei:** _…_
-7. **Próximo passo:** _…_
+
+*Estudo complementar iniciado em 22/11/2026; registro retrospectivo organizado em 24/11/2026.*
+
+1. **Desafio do ciclo (em 1 frase):** Compreender como uma função pode chamar a si mesma para resolver um problema em etapas menores.
+2. **O que implementei (commits / arquivos / links):** Acrescentei ao repositório um exercício complementar de fatorial, com uma função recursiva e outra utilizando while. O arquivo AULAS/fatorial_recursivo.py e sua explicação no README foram publicados no [commit 569eb5e](https://github.com/pedruck9-crypto/algoritmos-e-programacao/commit/569eb5ed710eceffc730c273626ed236976d9de0), em 22/11/2026, com apoio do Codex. Depois, registrei no rascunho uma validação adicional e seus testes; o commit citado identifica a versão inicial do exercício, não comprova a publicação dessa validação posterior.
+3. **Objeto(s) de conhecimento mobilizado(s):** Funções, parâmetros, retorno de valores, condicionais, multiplicação, laço while, recursividade e caso base. Cada chamada recebe n - 1, aproximando o cálculo do caso base n == 0.
+4. **Desvio ou erro encontrado + causa técnica:** A versão inicial pressupunha inteiros não negativos pequenos e não validava outras entradas. Na revisão do exercício, identifiquei que entradas negativas não alcançariam o caso base na função recursiva e que a versão com laço retornaria 1 sem informar a entrada inválida. Após acrescentar validação na versão testada, registrei os seguintes resultados:
+
+   | Entrada | Resultado esperado nas duas funções | Resultado observado registrado |
+   |---|---|---|
+   | 3 | 6 | Ambas retornaram 6. |
+   | -3 | ValueError com mensagem de orientação | Ambas geraram “Informe um número inteiro não negativo.”. |
+   | 2.5 | ValueError com mensagem de orientação | Ambas geraram a mensagem definida. |
+   | "3" | ValueError com mensagem de orientação | Ambas geraram a mensagem definida. |
+
+5. **Decisão de ajuste + fonte:** Defini n == 0 como caso base, retornando 1. Para as entradas válidas, cada chamada utiliza n - 1. Após identificar comportamentos inadequados com entradas inválidas, acrescentei uma validação nas duas funções da versão testada para aceitar somente inteiros não negativos e gerar ValueError nos demais casos. Utilizei o Codex como apoio. Consultei [Lançando exceções](https://docs.python.org/pt-br/3/tutorial/errors.html#raising-exceptions) e [RecursionError](https://docs.python.org/pt-br/3/library/exceptions.html#RecursionError).
+6. **Feedback recebido e o que mudei:** Até o registro de 22/11/2026, não havia recebido feedback específico de professor ou colega sobre o exercício de recursividade. O apoio da IA foi utilizado para compreender a validação e comparar as soluções.
+7. **Próximo passo:** Comparar a solução recursiva com a solução usando laço e explicar como cada uma chega ao resultado.
 
 ### 🧩 CAMPO 06 — Próximos passos para a defesa
 *AV Qualis — Grupo 3 | Individual | Quinta 26/11, 23h59*
 
 **6a. Decisão técnica que defendo com plena autonomia — o que aprendi que é exclusivamente meu e não consigo transferir para nenhum colega:**
 
-> _…_
+Uma decisão técnica que consigo explicar é impedir o cadastro de uma mídia com título vazio ou formado somente por espaços. No meu CRUD, .strip() remove os espaços das extremidades da entrada. Depois, uma condição verifica se o título ficou vazio e impede o cadastro nesse caso. Entendo que .strip() trata o texto, enquanto a estrutura condicional aplica a regra de título obrigatório. Essa validação evita registros sem identificação no catálogo.
 
 **6b. Lacuna técnica e plano de ação para saná-la:**
 
-- **Lacuna:** _…_
-- **Plano de ação (passos e datas):** _…_
+- **Lacuna:** Ainda preciso aprofundar a leitura e a escrita da sintaxe de Python, especialmente indentação, dois-pontos, aspas e diferenças entre maiúsculas e minúsculas. Também preciso compreender melhor como validar entradas e interpretar mensagens de erro, para não depender apenas das explicações da IA.
+- **Plano de ação (planejado em 24/11/2026; não representa atividades já concluídas):**
+  - **24/11/2026:** revisar uma função da versão acadêmica do CRUD e explicar, com minhas palavras, suas condições, variáveis e retornos.
+  - **25/11/2026:** executar pequenos exemplos com erros de sintaxe e conversão de tipos, observar as mensagens e registrar como corrigi cada caso.
+  - **26/11/2026:** testar entradas válidas e inválidas no CRUD e explicar o trecho revisado sem consultar a IA. Registrar as dificuldades que ainda permanecerem.
+- **Fontes de apoio:** [Erros e exceções — documentação oficial do Python](https://docs.python.org/pt-br/3/tutorial/errors.html) e código da versão acadêmica do projeto.
 
 **6c. Pergunta que a banca pode fazer — com resposta fundamentada (mínimo 5 linhas):**
 
@@ -769,58 +800,85 @@ Os 16 casos são contados conforme as linhas da tabela; variações da mesma ent
 </details>
 
 #### Registro do Ciclo 12 — 11/11
-1. **Desafio do ciclo (em 1 frase):** _…_
-2. **O que implementei (commits / arquivos / links):** _…_
-3. **Objeto(s) de conhecimento mobilizado(s):** _…_
-4. **Desvio ou erro encontrado + causa técnica:** _…_
-5. **Decisão de ajuste + fonte:** _…_
-6. **Feedback recebido e o que mudei:** _…_
-7. **Próximo passo:** _…_
+
+*Registro retrospectivo organizado em 24/11/2026.*
+
+1. **Desafio do ciclo (em 1 frase):** Melhorar a organização e a clareza do código, preservando seu funcionamento.
+2. **O que implementei ou revisei (commits / arquivos / links):** Revisei a [versão acadêmica da branch ciclo-3-funções](https://github.com/pedruck9-crypto/algoritmos-e-programacao/blob/ciclo-3-fun%C3%A7%C3%B5es/crud_filmes_e_series.py), observando a organização das funções, nomes das variáveis, indentação e clareza. A separação das operações em funções já havia sido realizada na modularização; neste ciclo, o foco foi avaliar a qualidade dessa organização e identificar possíveis melhorias.
+3. **Objeto(s) de conhecimento mobilizado(s):** Funções, legibilidade, reutilização, validação de entrada, conversão de tipos e testes.
+4. **Desvio ou erro encontrado + causa técnica:** Ao revisar o código, tive dificuldade para compreender o método .isdigit(). Esclareci que ele verifica se um texto não vazio contém somente dígitos e retorna um booleano, enquanto int() realiza a conversão separadamente. Não identifiquei erro específico nesse trecho; a dificuldade estava na compreensão. Reconheci uma limitação: alguns caracteres, como "²", passam em isdigit(), mas não são convertidos por int().
+5. **Decisão de ajuste + fonte:** Decidi revisar indentação, nomes e comentários para facilitar a leitura e manutenção, preservando as operações existentes. Consultei [Intermezzo: estilo de programação](https://docs.python.org/pt-br/3/tutorial/controlflow.html#intermezzo-coding-style). A discussão sobre isdigit() foi apoiada pela explicação da IA e pela [documentação de str.isdigit()](https://docs.python.org/pt-br/3/library/stdtypes.html#str.isdigit).
+6. **Feedback recebido e o que mudei:** Na [revisão registrada em 23/11/2026](https://github.com/venanciosampaioph-boop/Projeto-My-Life-CRUD/blob/main/LOGBOOK_AFP_Algoritmos_Programacao_2026-2.md), Pedro Henrique analisou a branch ciclo-3-funções e destacou que a modularização melhorou a organização do programa e que a reutilização de buscar_midia() reduziu repetições. Sugeriu reduzir a dependência da variável global proximo_id, revisar o uso de listas paralelas na atualização, padronizar a apresentação dos resultados e ampliar as validações. Essa avaliação foi baseada na leitura do código. As sugestões estão registradas para análise; ainda não implementei alterações decorrentes delas.
+7. **Próximo passo:** Analisar as sugestões de Pedro Henrique para a versão acadêmica organizada em funções, priorizando a validação dos campos e a padronização das mensagens. Após implementar os ajustes escolhidos, testar novamente cadastro, consulta, atualização e exclusão para verificar se o funcionamento foi preservado.
 
 ### 🧩 CAMPO 05 — Registro de Revisão por Pares (revisão nº 2)
 
-| | |
+*Revisão realizada em 24/11/2026, posteriormente ao Ciclo 12 previsto para 11/11/2026.*
+
+| Campo | Identificação |
 |---|---|
-| **Autor do CRUD revisado** | _nome_ |
-| **Repositório revisado** | _link_ |
-| **Revisor** | _seu nome_ |
-| **Ciclo / data** | _Ciclo 12 · 11/11_ |
+| **Autor do CRUD revisado** | Pedro Henrique (nome no GitHub: Venancio Sampaio) |
+| **Repositório revisado** | [Projeto MyLife CRUD](https://github.com/venanciosampaioph-boop/Projeto-My-Life-CRUD) |
+| **Revisor** | Pedro Lucas Pereira Rolim |
+| **Ciclo / data** | Ciclo 12 — referência: 11/11/2026; revisão realizada em 24/11/2026 |
 
 **5a. AVANÇO DO PROCESSO DE REVISÃO:**
 
 | ETAPA DO PROCESSO | RESPONSÁVEL | PRAZO | STATUS | DESVIO / JUSTIFICATIVA |
 |---|---|---|---|---|
-| 1. _…_ | Revisor / Autor | _DD/MM_ | ☐ Concluída ☐ Em andamento ☐ Com desvio | _…_ |
-| 2. _…_ | Revisor / Autor | _DD/MM_ | ☐ Concluída ☐ Em andamento ☐ Com desvio | _…_ |
-| 3. _…_ | Revisor / Autor | _DD/MM_ | ☐ Concluída ☐ Em andamento ☐ Com desvio | _…_ |
-| 4. _…_ | Revisor / Autor | _DD/MM_ | ☐ Concluída ☐ Em andamento ☐ Com desvio | _…_ |
-| 5. _…_ | Revisor / Autor | _DD/MM_ | ☐ Concluída ☐ Em andamento ☐ Com desvio | _…_ |
+| 1. Retomar os achados da primeira revisão e comunicar as sugestões. | Pedro Lucas e Pedro Henrique | Realizado antes desta segunda revisão | Concluída | Apresentei os problemas identificados e o colega publicou alterações no repositório. |
+| 2. Comparar o código atualizado com os problemas anteriores. | Revisor: Pedro Lucas | 24/11/2026 | Concluída — análise com apoio do Codex | Na leitura do código atualizado, foram identificados .strip() no cadastro e tratamento de ValueError nas operações de conclusão e exclusão. |
+| 3. Conferir documentação e legibilidade. | Revisor: Pedro Lucas | 24/11/2026 | Concluída | Conferi o README adicionado pelo colega, verificando a apresentação do projeto e as instruções para execução. A documentação atende à sugestão da primeira revisão. Também observei a organização do código e a remoção da impressão da lista bruta antes da listagem formatada. |
+| 4. Repetir os testes que falharam na primeira revisão. | Revisor: Pedro Lucas | Até 26/11/2026; realizado em 24/11 | Concluída | Repeti os testes na versão corrigida no terminal do VS Code. O cadastro somente com espaços foi recusado. Entradas textuais e vazias na seleção passaram a apresentar mensagem, sem encerrar o programa. |
+| 5. Verificar as operações válidas e compartilhar o resultado final. | Pedro Lucas e Pedro Henrique | Até 26/11/2026 | Verificação realizada; comunicação final pendente | As operações verificadas e os resultados constam no item 5c. Ainda falta comunicar ao autor a conclusão desta segunda revisão. |
 
 **5b. ANÁLISE DE INSUMOS E CRITÉRIOS DE QUALIDADE:**
 
 | RECURSO | QTDE PLANEJADA | QTDE UTILIZADA | VARIAÇÃO | JUSTIFICATIVA TÉCNICA |
 |---|---|---|---|---|
-| _…_ | _…_ | _…_ | _…_ | _…_ |
-| _…_ | _…_ | _…_ | _…_ | _…_ |
-| _…_ | _…_ | _…_ | _…_ | _…_ |
+| Código atualizado do colega — CRUD.py | Não registrada previamente | 1 arquivo | Não calculável | Conferir as alterações e executar novamente os casos que apresentaram falhas. |
+| Ambiente de execução | Não registrada previamente | 1 ambiente: VS Code, terminal integrado e Python 3.14.7 | Não calculável | Observar as mensagens e verificar a continuidade do programa após entradas inválidas. |
+| Documentação do projeto | Não registrada previamente | 1 README | Não calculável | Conferir a apresentação e as instruções de execução adicionadas. |
+| Casos de teste | 13 casos registrados previamente | 13 casos, conforme agrupamento da tabela 5c | 0 — conforme planejado | Verificar as correções e se as operações anteriores continuam funcionando. |
+
+Os casos desta segunda revisão foram definidos antes de sua execução, em novembro de 2026. A quantidade planejada refere-se à verificação da versão corrigida do colega, não ao planejamento inicial de desenvolvimento. As entradas 0 e 99 estão agrupadas na mesma linha de cada operação.
 
 **5c. CONTROLE DE QUALIDADE:**
-- **Critério ou norma técnica:** _…_
-- **A solução atende?** ☐ Sim ☐ Parcialmente ☐ Não
+
+- **Critério ou norma técnica:** O programa deve recusar tarefas com descrição vazia ou formada somente por espaços, tratar entradas textuais e vazias na seleção numérica sem encerrar inesperadamente e rejeitar números fora do intervalo. As operações válidas de cadastro, visualização, conclusão e exclusão devem continuar funcionando após as correções.
+- **A solução atende?** ☑ Sim ☐ Parcialmente ☐ Não
+- **Justificativa:** Nos casos testados nesta segunda revisão, os resultados observados atenderam aos critérios definidos. As entradas inválidas passaram a apresentar mensagens de orientação, mantendo o programa em execução, e as operações válidas verificadas continuaram funcionando. A avaliação refere-se aos casos executados, não a uma garantia de ausência de qualquer erro.
+
+| Nº | TESTE | RESULTADO OBSERVADO | AVALIAÇÃO |
+|---|---|---|---|
+| 1 | Cadastro somente com espaços | Exibiu “A tarefa não pode estar vazia.” e retornou ao menu. | Atende |
+| 2 | Visualização de tarefa válida | Mostrou “Estudar Python” com status “Pendente”. | Atende |
+| 3 | abc ao concluir | Exibiu “Digite um número válido.” e retornou ao menu. | Atende |
+| 4 | abc ao excluir | Exibiu “Digite um número válido.” e retornou ao menu. | Atende |
+| 5 | Entrada vazia ao concluir | Exibiu “Digite um número válido.” e retornou ao menu. | Atende |
+| 6 | Entrada vazia ao excluir | Exibiu “Digite um número válido.” e retornou ao menu. | Atende |
+| 7 | Número 0 ou 99 ao concluir | Exibiu “Opção inválida!” e retornou ao menu. | Atende |
+| 8 | Número 0 ou 99 ao excluir | Exibiu “Opção inválida!” e retornou ao menu. | Atende |
+| 9 | Selecionar tarefa já concluída, havendo outra pendente | Exibiu “Essa tarefa já foi concluída.”. | Atende |
+| 10 | Excluir tarefa existente | Exibiu “Tarefa excluída com sucesso!” e retornou ao menu. | Atende |
+| 11 | Tentar concluir quando todas estão concluídas | Exibiu “Todas as tarefas já foram concluídas.”. | Atende |
+| 12 | Opção 6 no menu | Exibiu “Opção inválida!” e retornou ao menu. | Atende |
+| 13 | Opção 5 | Encerrou normalmente e retornou ao PowerShell. | Atende |
 
 **5d. GESTÃO DE RISCOS:**
-- **Risco:** _…_
-- **Estratégia de mitigação:** _…_
+
+- **Risco:** Na primeira revisão, identifiquei o cadastro de tarefas formadas somente por espaços e o encerramento inesperado ao informar texto na seleção numérica. Esses comportamentos comprometiam a qualidade dos registros e podiam causar a perda das tarefas armazenadas em memória.
+- **Estratégia de mitigação:** O autor acrescentou .strip() à descrição e tratamento de ValueError nas operações de conclusão e exclusão. Repeti os testes na versão corrigida e confirmei que as entradas inválidas foram recusadas com mensagens, mantendo o programa em execução.
+- **Situação após a revisão:** Os riscos anteriores foram mitigados nos casos testados. Permanece a limitação de armazenamento apenas em memória: ao encerrar, os registros não são preservados para outra execução. Essa característica deve ficar documentada; uma solução de persistência poderá ser considerada caso faça parte dos requisitos.
 
 **5e. RASTREABILIDADE DAS DECISÕES TÉCNICAS — COM VÍNCULO AO CONTEÚDO:**
 
 | DATA | DECISÃO TÉCNICA | RESP. | OBJETO DE CONHECIMENTO MOBILIZADO | FUNDAMENTAÇÃO / REFERÊNCIA |
 |---|---|---|---|---|
-| _DD/MM/AA_ | _…_ | _…_ | _…_ | _…_ |
-| _DD/MM/AA_ | _…_ | _…_ | _…_ | _…_ |
-| _DD/MM/AA_ | _…_ | _…_ | _…_ | _…_ |
-| _DD/MM/AA_ | _…_ | _…_ | _…_ | _…_ |
-| _DD/MM/AA_ | _…_ | _…_ | _…_ | _…_ |
+| 24/11/2026 | Manter a aplicação de .strip() antes da verificação da descrição vazia, após confirmar a rejeição de tarefas somente com espaços. | Pedro Henrique — implementação; Pedro Lucas — verificação | Strings, métodos e estruturas condicionais | Teste registrado no item 5c e [Python — str.strip()](https://docs.python.org/pt-br/3/library/stdtypes.html#str.strip). |
+| 24/11/2026 | Manter o tratamento de ValueError na seleção de tarefas para concluir e excluir. | Pedro Henrique — implementação; Pedro Lucas — verificação | Conversão de tipos, tratamento de exceções e controle de fluxo | Os testes com abc e entrada vazia exibiram “Digite um número válido.” e retornaram ao menu. Referências: item 5c e [Tratamento de exceções](https://docs.python.org/pt-br/3/tutorial/errors.html#handling-exceptions). |
+| 24/11/2026 | Repetir os casos que falharam e verificar operações válidas após as alterações. | Pedro Lucas — execução dos testes | Casos de teste, comparação entre resultados esperados e observados e testes de regressão | Comparação entre os itens 5c das duas revisões, demonstrando a correção das falhas nos casos executados e a preservação das operações verificadas. |
+| 24/11/2026 | Considerar atendida a recomendação de incluir apresentação e instruções de execução no README. | Pedro Henrique — documentação; Pedro Lucas — leitura e conferência | Documentação técnica e reprodução da execução | Conferência do [README do projeto](https://github.com/venanciosampaioph-boop/Projeto-My-Life-CRUD/blob/main/README.md), incluído após a primeira revisão. |
 
 ### 🧩 CAMPO 07 — Evolução conceitual
 *AV Qualis — Grupo 3 | Individual | Quinta 26/11, 23h59*
