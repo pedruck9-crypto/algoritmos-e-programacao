@@ -6,6 +6,7 @@ A versão ampliada utiliza FastAPI, HTML/CSS/JavaScript e SQLite com SQLModel. I
 
 - [Demonstração publicada](https://algoritmos-e-programa-o.vercel.app/): versão publicada a partir da `main`, com catálogo temporário.
 - [Documentação da versão de portfólio](docs/DOCUMENTACAO-PORTFOLIO.md): instalação, execução, API, testes, Docker e limitações.
+- [Logbook — processo de aprendizagem e revisão por pares](LOGBOOK_AFP_Algoritmos_Programacao_2026-2.md): registros dos ciclos, decisões técnicas, testes e evolução do projeto.
 
 ![Interface do CRUD com abas, filtros e capa SVG](docs/images/crud-interface.png)
 
