@@ -126,7 +126,7 @@ Atualize a cada commit (troque ⬜ por ✅).
 | 3 | Campo 05 — Revisão por pares nº 1 e nº 2 | 26/11 | Revisões registradas; comunicação final pendente | Revisão nº 1 em 23/11; nº 2 em 24/11/2026 |
 | 3 | Campo 06 — Próximos passos | 26/11 | ✅ | 6a e 6b registrados em 24/11/2026; 6c preservado |
 | 3 | Campo 07 — Evolução conceitual | 26/11 | ✅ | Conteúdo anterior preservado; observação retrospectiva em 24/11/2026 |
-| 🏁 | Defesa Técnica | 18/11 | ⬜ | — |
+| 🏁 | Defesa Técnica | 18/11 | ✅ | Apresentada em 18/11/2026; Registro do Encerramento preenchido. Avaliação do professor não indicada por este status. |
 
 ---
 
