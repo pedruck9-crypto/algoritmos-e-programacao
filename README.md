@@ -38,7 +38,7 @@ Na primeira etapa, o escopo ainda não estava claramente delimitado para mim. De
 
 A API web, a interface gráfica, o ORM, o banco de dados, as credenciais demonstrativas, os testes e o Docker pertencem à evolução para portfólio. As branches dos ciclos apresentam o recorte da disciplina para avaliação.
 
-Desenvolvido por **Desenvolvido por **Pedro Lucas Pereira Rolim**, estudante de Sistemas de Informação com interesse profissional em desenvolvimento front-end.**, estudante de Sistemas de Informação.
+Desenvolvido por **Pedro Lucas Pereira Rolim**, estudante de Sistemas de Informação com interesse profissional em desenvolvimento front-end.
 
 ## Licença
 
