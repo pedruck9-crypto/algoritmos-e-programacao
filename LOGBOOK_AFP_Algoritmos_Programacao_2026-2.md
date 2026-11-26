@@ -761,6 +761,18 @@ Uma decisão técnica que consigo explicar é impedir o cadastro de uma mídia c
   - **26/11/2026:** testar entradas válidas e inválidas no CRUD e explicar o trecho revisado sem consultar a IA. Registrar as dificuldades que ainda permanecerem.
 - **Fontes de apoio:** [Erros e exceções — documentação oficial do Python](https://docs.python.org/pt-br/3/tutorial/errors.html) e código da versão acadêmica do projeto.
 
+**Atualização em 25/11/2026 — reprogramação do plano de ação**
+
+As atividades ainda pendentes do plano de ação foram reprogramadas para dezembro. Em 24/11, concentrei-me na finalização do Grupo 03 do logbook; em 25/11, precisei estudar para a segunda prova de Algoritmos e Programação. Também tenho a entrega do segundo checkpoint do paper de outra disciplina. Por isso, reorganizei o estudo complementar para realizá-lo com mais atenção.
+
+**Novas datas previstas:**
+
+- **09/12/2026:** revisar uma função da versão acadêmica do CRUD e explicar suas condições, variáveis e retornos.
+- **10/12/2026:** executar pequenos exemplos com erros de sintaxe e conversão de tipos, registrando as mensagens e as correções.
+- **12/12/2026:** testar entradas válidas e inválidas no CRUD e explicar o trecho revisado sem consultar a IA, anotando as dúvidas restantes.
+
+As datas originais ficam preservadas como histórico do planejamento. As atividades reprogramadas permanecem pendentes; registrarei os resultados após sua execução.
+
 **6c. Pergunta que a banca pode fazer — com resposta fundamentada (mínimo 5 linhas):**
 
 *Resposta registrada em 17/11/2026.*
